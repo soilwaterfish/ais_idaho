@@ -1,0 +1,13 @@
+pandoc: 3.1.1
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  final_scores: final_scores.html
+  hss: hss.html
+  sssc: sssc.html
+  test: test.html
+last_built: 2024-02-29T17:57Z
+urls:
+  reference: https://soilwaterfish.github.io/aisrisk/reference
+  article: https://soilwaterfish.github.io/aisrisk/articles
+
