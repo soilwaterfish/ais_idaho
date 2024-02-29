@@ -1,0 +1,728 @@
+---
+title: "Final Scores"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{final_scores}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")), fig.width = 11, fig.height = 7)
+
+library(sf)
+library(tidyverse)
+library(resourceviz)
+library(colorblindr)
+library(ggtext)
+library(gt)
+
+idaho <- AOI::aoi_get(state = 'Idaho')
+
+social_and_habitat_final_df_final <- read_csv('Z:/GIT/ais_idaho/data/social_and_habitat_final_df_final.csv')
+
+all_together_burp_wqp <- read_csv("Z:/GIT/ais_idaho/data/all_together_burp_wqp.csv") %>%
+  mutate(
+    p_h_model = case_when(
+    p_h > 0 & p_h <= 3.9 ~ 1,
+    p_h > 4 & p_h <= 5.4~ 2,
+    p_h > 5.5 & p_h <= 6.9 ~ 3,
+    p_h > 7 & p_h <= 9.9 ~ 4,
+    p_h > 10 & p_h <= 11 ~ 3,
+    p_h > 11 & p_h <= 13 ~ 2,
+    p_h > 13 & p_h <= 14 ~ 1,
+    TRUE ~ NA
+  ) %>% factor(levels = c('1', '2', '3', '4', NA_character_)),
+    calcium_model = case_when(
+    calcium > 0 & calcium <= 4 ~ 1,
+    calcium > 4 & calcium <= 13~ 2,
+    calcium > 13 & calcium <= 24 ~ 3,
+    calcium > 24 & calcium <= 100 ~ 4,
+    TRUE ~ NA
+  ) %>% factor(levels = c('1', '2', '3', '4', NA_character_)),
+    hardness_model = case_when(
+    hardness_non_carbonate > 0 & hardness_non_carbonate <= 50 ~ 1,
+    hardness_non_carbonate > 50 & hardness_non_carbonate <= 99~ 2,
+    hardness_non_carbonate > 99 & hardness_non_carbonate <= 125 ~ 3,
+    hardness_non_carbonate > 125 & hardness_non_carbonate <= 1000 ~ 4,
+    TRUE ~ NA
+  ) %>% factor(levels = c('1', '2', '3', '4', NA_character_)),
+    do_model = case_when(
+    dissolved_oxygen > 0 & dissolved_oxygen <= 3 ~ 1,
+    dissolved_oxygen > 3 & dissolved_oxygen <= 7~ 2,
+    dissolved_oxygen > 7 & dissolved_oxygen <= 12 ~ 3,
+    dissolved_oxygen > 12 & dissolved_oxygen <= 50 ~ 4,
+    TRUE ~ NA
+  ) %>% factor(levels = c('1', '2', '3', '4', NA_character_)),
+    conductivity_model = case_when(
+    conductivity > 0 & conductivity <= 490 ~ 1,
+    conductivity > 490 & conductivity <= 989~ 2,
+    conductivity > 989 & conductivity <= 1499 ~ 3,
+    conductivity > 1499 & conductivity <= 3000 ~ 4,
+    TRUE ~ NA
+  ) %>% factor(levels = c('1', '2', '3', '4', NA_character_))
+  ) 
+
+myColors <- c("#F0E442", "#56B4E9", "#E69F00", "#009E73")
+
+names(myColors) <- factor(1:4)
+
+# 
+# final_stream <- read_sf('Z:/GIT/ais_idaho/data/simple_features.gpkg', layer = 'final_stream')
+# 
+# final_lakes <- read_sf('Z:/GIT/ais_idaho/data/simple_features.gpkg', layer = 'final_lakes')
+
+```
+
+
+## Overview    
+
+This is a report that covers the methods used to generate Aquatic Invasive Species (AIS) prioritization in Idaho specifically the Nez-Perce/Clearwater and Idaho Panhandle National Forests. We used methods described by Montana Fish, Wildlife and Parks AIS prioritization lotic and lentic environments to the best we could. Some of the input data is difficult to retrieve due to lack of collection and various sources, thus there are data gaps that would likely help with these methods.    
+
+
+## Social Suitability Score Criteria  {.tabset .tabset-pills}   
+
+The Social Suitability Score is broken into 5 different indicators of potential risk of invasion via social players. These factors are then stratified into categories 1-4 based on different thresholds (see Tables below). These scores are then used for the final risk score by adding to the Habitat Suitability Score.  
+
+```{r, echo = FALSE, out.width='200%'}
+social_and_habitat_final_df_final %>% 
+  count(final_score_social) %>% 
+  ggplot(aes(final_score_social, n))  +   
+   geom_col(aes(fill = factor(final_score_social)), color = 'black') + 
+  scale_fill_manual(values = myColors, guide = 'none') +
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = 'Final Scores Social') +
+  resourceviz::custom_theme()
+```
+
+1. Waterbody Type - This is simply breaking waters into risk by large lakes being most risk and small streams being less risk.  
+
+2. Waterbody Size - This is a surrogate to recreation based on the idea that the longer the river or larger the lake we would then typically see more recreational use.   
+
+3. Position in Watershed - Position in watershed highlights areas that are lower in the watershed are typically going to be at more risk for AIS due to accessibility and downstream of other waterways.   
+
+4. Mussel Proximity - This is the distance from nearest invasive mussel populations via road network.  
+
+5. Angler Days - These are the days that anglers are fishing and higher days mean higher risk.   
+
+### Waterbody Type   
+
+:::: {style="display: flex;"}
+
+::: {style="flex-basis: 500%;"}
+```{r, echo=F, out.width='200%',message=FALSE, warning=FALSE, error=FALSE}
+
+social_and_habitat_final_df_final %>% 
+  count(waterbody_type) %>% 
+  ggplot(aes(waterbody_type, n))  +   
+   geom_col(aes(fill = factor(waterbody_type)), color = 'black') + 
+  scale_fill_manual(values = myColors, name = 'pH Score', guide = 'none') +
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = 'Waterbody Type') +
+  resourceviz::custom_theme()
+```
+
+:::
+
+::: {style="flex-basis: 250%;"}
+```{r, echo = F}
+tribble(
+  ~`Waterbody Type`, ~Score,
+  'Stream/Creek', 1,
+  'River', 2,
+  'Hatchery water/ small lake < 25 ac',  3,
+  'Lake > 25 ac or Very Large River', 4
+) %>% 
+  gt() %>% 
+  data_color(
+    columns = Score,
+    palette = myColors
+  )
+  
+
+```
+
+:::
+
+::::  
+
+```{r, echo = F, out.width='200%'}
+  
+# dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
+# 
+# dummy_sf <- st_sf(waterbody_type = factor(1:4, levels = 1:4), geom = dummy_sf)
+# 
+# ggplot() +
+#     geom_sf(data = dummy_sf, aes(color = waterbody_type, fill = waterbody_type), show.legend = F) +
+#     geom_sf(data = final_stream , aes(color = factor(waterbody_type)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = final_lakes , aes(fill = factor(waterbody_type)), linewidth = 0, inherit.aes = F) +
+#     scale_color_manual(values = myColors, guide = 'none',  name = 'Waterbody Type Score') +
+#     scale_fill_manual(values = myColors, name = 'Waterbody Type Score') +
+#     guides(fill = guide_legend(order = 3)) +
+#     resourceviz::custom_theme(map_void = 4) +
+#     theme(legend.position = 'bottom')
+  
+knitr::include_graphics('www/images/waterbody_type.png')
+
+```
+
+
+### Waterbody Size   
+
+:::: {style="display: flex;"}
+
+::: {style="flex-basis: 500%;"}
+```{r, echo=F, out.width='200%',message=FALSE, warning=FALSE, error=FALSE}
+
+social_and_habitat_final_df_final %>% 
+  count(waterbody_size_rec) %>% 
+  ggplot(aes(waterbody_size_rec, n))  +   
+   geom_col(aes(fill = factor(waterbody_size_rec)), color = 'black') + 
+  scale_fill_manual(values = myColors, name = 'pH Score', guide = 'none') +
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = 'Waterbody Size') +
+  resourceviz::custom_theme()
+```
+
+:::
+
+::: {style="flex-basis: 250%;"}
+
+
+
+```{r, echo = F}
+tribble(
+  ~`Waterbody Size`, ~Score,
+  '<25% or <15km', 1,
+  '26-50% or 16-30km', 2,
+  '51-75% or 30-60km',  3,
+  '>75% or >60km', 4
+) %>% 
+  gt() %>% 
+  data_color(
+    columns = Score,
+    palette = myColors
+  )
+  
+
+```
+
+:::
+
+::::  
+```{r, echo=F, out.width='200%'}
+# dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
+# 
+# dummy_sf <- st_sf(waterbody_size_rec = factor(1:4, levels = 1:4), geom = dummy_sf)
+# 
+# ggplot() +
+#     geom_sf(data = dummy_sf, aes(color = waterbody_size_rec, fill = waterbody_size_rec), show.legend = F) +
+#     geom_sf(data = final_stream , aes(color = factor(waterbody_size_rec)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = final_lakes , aes(fill = factor(waterbody_size_rec)), linewidth = 0, inherit.aes = F) +
+#     scale_color_manual(values = myColors, guide = 'none',  name = 'Waterbody Size Score') +
+#     scale_fill_manual(values = myColors, name = 'Waterbody Size Score') +
+#     guides(fill = guide_legend(order = 3)) +
+#     resourceviz::custom_theme(map_void = 4) +
+#     theme(legend.position = 'bottom')
+
+
+knitr::include_graphics('www/images/waterbody_size.png')
+```
+
+### Position in Watershed   
+
+:::: {style="display: flex;"}
+
+::: {style="flex-basis: 500%;"}
+```{r, echo=F, out.width='200%',message=FALSE, warning=FALSE, error=FALSE}
+
+social_and_habitat_final_df_final %>% 
+  count(waterbody_position) %>% 
+  ggplot(aes(waterbody_position, n))  +   
+   geom_col(aes(fill = factor(waterbody_position)), color = 'black') + 
+  scale_fill_manual(values = myColors, name = 'pH Score', guide = 'none') +
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = 'Waterbody Position') +
+  resourceviz::custom_theme()
+```
+
+:::
+
+::: {style="flex-basis: 250%;"}
+```{r, echo = F}
+tribble(
+  ~`Waterbody Position`, ~Score,
+  'Mountain Stream', 1,
+  'Lowland/Prairie Stream', 2,
+  'Mountain Lake/Reservoir or Lowland/Prairie River',  3,
+  'Lowland Lake/Reservoir', 4
+) %>% 
+  gt()%>% 
+  data_color(
+    columns = Score,
+    palette = myColors
+  )
+  
+
+```
+
+:::
+
+::::  
+```{r, echo=F, out.width='150%'}
+# dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
+# 
+# dummy_sf <- st_sf(waterbody_position = factor(1:4, levels = 1:4), geom = dummy_sf)
+# 
+# ggplot() +
+#     geom_sf(data = dummy_sf, aes(color = waterbody_position, fill = waterbody_position), show.legend = F) +
+#     geom_sf(data = final_stream , aes(color = factor(waterbody_position)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = final_lakes , aes(fill = factor(waterbody_position)), linewidth = 0, inherit.aes = F) +
+#     scale_color_manual(values = myColors, guide = 'none',  name = 'Waterbody Position Score') +
+#     scale_fill_manual(values = myColors, name = 'Waterbody Position Score') +
+#     guides(fill = guide_legend(order = 3)) +
+#     resourceviz::custom_theme(map_void = 4) +
+#     theme(legend.position = 'bottom')
+
+
+knitr::include_graphics('www/images/waterbody_position.png')
+```
+
+
+
+### Mussel Proximity   
+
+Still need to figure out mussel proximity.  
+
+
+### Angler Days   
+
+Still need to figure out angler days.  
+
+
+## Habitat Suitability Score  {.tabset .tabset-pills}    
+
+The Habitat Suitability Score is broken into 6 different indicators of potential risk of invasion via physical conditions. These factors are then stratified into categories 1-4 based on different thresholds (see Tables below). These scores are then used for the final risk score by adding to the Social Suitability Score. Of note, there was a large data gap in some of these variables (calcium, dissolved oxygen, hardness), which will likely effect the overall score since it will be missing these data. This data gap leads to a low score, which it might be, but is structurally biased since the scores are additive.  
+
+```{r, echo = FALSE, out.width='200%'}
+social_and_habitat_final_df_final %>% 
+  count(final_score_habitat) %>% 
+  ggplot(aes(final_score_habitat, n))  +   
+   geom_col(aes(fill = factor(final_score_habitat)), color = 'black') + 
+  scale_fill_manual(values = myColors, name = 'pH Score', guide = 'none') +
+  scale_y_continuous(labels = scales::comma) +
+  labs(x = 'Final Scores Habitat') +
+  resourceviz::custom_theme()
+```
+
+
+1. Water Temperature - This breaks water into different levels of risk based on stream temperature. There were a total of `r scales::comma(nrow(
+social_and_habitat_final_df_final %>% filter(!is.na(mean_aug_temp))))` streams with temperature data that were used in the model.  
+
+2. pH - This is a surrogate to recreation based on the idea that the longer the river or larger the lake we would then typically see more recreational use.   
+
+3. Hardness - Position in watershed highlights areas that are lower in the watershed are typically going to be at more risk for AIS due to accessibility and downstream of other waterways.   
+
+4. Calcium - This is the distance from nearest invasive mussel populations via road network.  
+
+5. Conductivity - These are the days that anglers are fishing and higher days mean higher risk.  
+
+6. Dissolved Oxygen - These are the days that anglers are fishing and higher days mean higher risk.  
+
+<br>
+
+
+### Stream Temperature    
+
+
+:::: {style="display: flex;"}
+
+::: {style="flex-basis: 500%;"}
+```{r, echo=F, out.width='200%',message=FALSE, warning=FALSE, error=FALSE}
+
+social_and_habitat_final_df_final %>% 
+  ggplot(aes(mean_aug_temp))  +   
+   geom_histogram(aes(y=..density..), fill = NA, color = 'black') + 
+   geom_density(aes(y=..density..)) +
+  geom_rug(aes(color = factor(stream_model)), size = 2) +
+  scale_color_manual(values = myColors, name = 'Water Temperature Score', guide = 'none') +
+  labs(x = 'Water Temperature (f)', subtitle = paste0('n = ', scales::comma(nrow(
+social_and_habitat_final_df_final %>% filter(!is.na(mean_aug_temp)))))) +
+  resourceviz::custom_theme()
+```
+
+:::
+
+::: {style="flex-basis: 250%;"}
+```{r, echo=F}
+
+tribble(
+  ~`Water Temp (f)`, ~Score,
+  
+'0 - 40',	1,
+'40.1 - 46',	2,
+'46.01 - 56',	3,
+'56.01 - 71',	4,
+'71.01 - 75',	3,
+'75.01 - 83',	2,
+'83.01 - 120',	1,
+) %>% gt()%>% 
+  data_color(
+    columns = Score,
+    palette = myColors
+  )
+
+```
+:::
+
+::::  
+```{r, echo=FALSE, out.width='200%'}
+
+# dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
+# 
+# dummy_sf <- st_sf(stream_model = factor(1:4, levels = 1:4), geom = dummy_sf)
+# 
+# ggplot() +
+#     geom_sf(data = dummy_sf, aes(color = stream_model, fill = stream_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(color = factor(stream_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = final_lakes , aes(fill = factor(stream_model)), linewidth = 0, inherit.aes = F) +
+#     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score') +
+#     scale_fill_manual(values = myColors, name = 'Water Temperature Score') +
+#     guides(fill = guide_legend(order = 3)) +
+#     resourceviz::custom_theme(map_void = 4) +
+#     theme(legend.position = 'bottom')
+
+knitr::include_graphics('www/images/stream_temperature.png')
+  
+```
+
+
+
+
+
+### pH  
+
+:::: {style="display: flex;"}
+
+::: {style="flex-basis: 500%;"}
+```{r, echo=F, out.width='200%',message=FALSE, warning=FALSE, error=FALSE}
+
+all_together_burp_wqp %>% filter(p_h < 20, p_h > 0, !is.na(p_h_model)) %>% 
+  ggplot(aes(p_h))  +   
+   geom_histogram(aes(y=..density..), fill = NA, color = 'black') + 
+   geom_density(aes(y=..density..)) +
+  geom_rug(aes(color = factor(p_h_model)), size = 2) +
+  scale_color_manual(values = myColors, name = 'pH Score', guide = 'none') +
+  labs(x = 'pH', subtitle = paste0('n = ', scales::comma(nrow(
+all_together_burp_wqp %>% filter(p_h < 20, p_h > 0, !is.na(p_h_model)))))) +
+  resourceviz::custom_theme()
+```
+
+:::
+
+::: {style="flex-basis: 250%;"}
+
+
+```{r, echo=F, fig.align='center'}
+
+tribble(
+  ~`pH`, ~Score,
+  
+'0 - 40',	1,
+'40.1 - 46',	2,
+'46.01 - 56',	3,
+'56.01 - 71',	4,
+'71.01 - 75',	3,
+'75.01 - 83',	2,
+'83.01 - 120',	1,
+) %>% gt()%>% 
+  data_color(
+    columns = Score,
+    palette = myColors
+  )
+
+```
+:::
+
+::::  
+
+```{r, echo=F,out.width='200%',  fig.align='center'}
+
+# dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
+# 
+# dummy_sf <- st_sf(p_h_model = factor(1:4, levels = 1:4), geom = dummy_sf)
+# 
+# ggplot() +
+#     geom_sf(data = dummy_sf, aes(color = p_h_model, fill = p_h_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(color = factor(p_h_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = final_lakes , aes(fill = factor(p_h_model)), linewidth = 0, inherit.aes = F) +
+#     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score') +
+#     scale_fill_manual(values = myColors, name = 'pH Score') +
+#     guides(fill = guide_legend(order = 3)) +
+#     resourceviz::custom_theme(map_void = 4) +
+#     theme(legend.position = 'bottom')
+
+
+knitr::include_graphics('www/images/ph_model.png')
+  
+
+```
+
+### Hardness   
+
+:::: {style="display: flex;"}
+
+::: {style="flex-basis: 500%;"}
+```{r, echo=F, out.width='200%',message=FALSE, warning=FALSE, error=FALSE}
+
+all_together_burp_wqp %>% filter(hardness_non_carbonate > 0, !is.na(hardness_model)) %>% 
+  ggplot(aes(hardness_non_carbonate))  +   
+   geom_histogram(aes(y=..density..), fill = NA, color = 'black') + 
+   geom_density(aes(y=..density..)) +
+  geom_rug(aes(color = factor(hardness_model)), size = 2) +
+  scale_color_manual(values = myColors, name = 'pH Score', guide = 'none') +
+  labs(x = 'Hardness Non-carbonate',
+       subtitle = paste0('n = ', scales::comma(nrow(all_together_burp_wqp %>% filter(hardness_non_carbonate > 0, !is.na(hardness_model)))))
+       ) +
+  resourceviz::custom_theme()
+```
+
+
+
+
+:::
+
+::: {style="flex-basis: 250%;"}
+
+
+```{r, echo=F, fig.align='center'}
+
+tribble(
+  ~`Water Temp (f)`, ~Score,
+  
+'0 - 50',1,
+'50.1 - 99',2,
+'100 - 125',3,
+'125 - 1000',4,
+) %>% gt()%>% 
+  data_color(
+    columns = Score,
+    palette = myColors
+  )
+
+```
+
+:::
+
+
+::::  
+
+```{r, echo=F,out.width='200%',  fig.align='center'}
+# 
+# dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
+# 
+# dummy_sf <- st_sf(hardness_model = factor(1:4, levels = 1:4), geom = dummy_sf)
+# 
+# ggplot() +
+#     geom_sf(data = dummy_sf, aes(color = hardness_model, fill = hardness_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(color = factor(hardness_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = final_lakes , aes(fill = factor(hardness_model)), linewidth = 0, inherit.aes = F) +
+#     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score') +
+#     scale_fill_manual(values = myColors, name = 'Hardness Score') +
+#     guides(fill = guide_legend(order = 3)) +
+#     resourceviz::custom_theme(map_void = 4) +
+#     theme(legend.position = 'bottom')
+
+
+knitr::include_graphics('www/images/hardness_model.png')
+```
+
+
+### Calcium  
+
+:::: {style="display: flex;"}
+
+::: {style="flex-basis: 500%;"}
+```{r, echo=F, out.width='200%',message=FALSE, warning=FALSE, error=FALSE}
+
+all_together_burp_wqp %>% filter(calcium > 0, !is.na(calcium_model)) %>% 
+  ggplot(aes(calcium))  +   
+   geom_histogram(aes(y=..density..), fill = NA, color = 'black') + 
+   geom_density(aes(y=..density..)) +
+  geom_rug(aes(color = factor(calcium_model)), size = 2) +
+  scale_color_manual(values = myColors, name = 'pH Score', guide = 'none') +
+  labs(x = 'Calcium',
+       subtitle = paste0('n = ', scales::comma(nrow(all_together_burp_wqp %>% filter(calcium > 0, !is.na(calcium_model)))))) +
+  resourceviz::custom_theme()
+```
+
+:::
+
+::: {style="flex-basis: 250%;"}
+
+```{r, echo=F, fig.align='center'}
+
+tribble(
+  ~`Calcium`, ~Score,
+  
+'0 - 4',1,
+'4.1 - 13',2,
+'13.1 - 24',3,
+'24.1 - 100',4,
+) %>% gt()%>% 
+  data_color(
+    columns = Score,
+    palette = myColors
+  )
+
+```
+
+:::
+
+::::
+```{r, echo=F,out.width='200%',  fig.align='center'}
+# 
+# 
+# dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
+# 
+# dummy_sf <- st_sf(calcium_model = factor(1:4, levels = 1:4), geom = dummy_sf)
+# 
+# ggplot() +
+#     geom_sf(data = dummy_sf, aes(color = calcium_model, fill = calcium_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(color = factor(calcium_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = final_lakes , aes(fill = factor(calcium_model)), linewidth = 0, inherit.aes = F) +
+#     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score') +
+#     scale_fill_manual(values = myColors, name = 'Calcium Score') +
+#     guides(fill = guide_legend(order = 3)) +
+#     resourceviz::custom_theme(map_void = 4) +
+#     theme(legend.position = 'bottom')
+
+knitr::include_graphics('www/images/calcium_model.png')
+```
+
+
+### Conductivity  
+
+:::: {style="display: flex;"}
+
+::: {style="flex-basis: 500%;"}
+```{r, echo=F, out.width='200%',message=FALSE, warning=FALSE, error=FALSE}
+
+all_together_burp_wqp %>% filter(conductivity > 0, !is.na(conductivity_model)) %>% 
+  ggplot(aes(conductivity))  +   
+   geom_histogram(aes(y=..density..), fill = NA, color = 'black') + 
+   geom_density(aes(y=..density..)) +
+  geom_rug(aes(color = factor(conductivity_model)), size = 2) +
+  scale_color_manual(values = myColors, name = 'pH Score', guide = 'none') +
+  labs(x = 'Conductivity',
+       subtitle = paste0('n = ', scales::comma(nrow(all_together_burp_wqp %>% filter(conductivity > 0, !is.na(conductivity_model)))))) +
+  resourceviz::custom_theme()
+```
+
+:::
+
+::: {style="flex-basis: 250%;"}
+```{r, echo=F, fig.align='center'}
+
+tribble(
+  ~`Conductivity`, ~Score,
+  
+'0 - 490',1,
+'491 - 989',2,
+'990 - 1499',3,
+'1500 - 3000',4,
+) %>% gt()%>% 
+  data_color(
+    columns = Score,
+    palette = myColors
+  )
+
+```
+
+:::
+
+::::  
+
+```{r, echo=F,out.width='200%',  fig.align='center'}
+
+
+# dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
+# 
+# dummy_sf <- st_sf(conductivity_model = factor(1:4, levels = 1:4), geom = dummy_sf)
+# 
+# ggplot() +
+#     geom_sf(data = dummy_sf, aes(color = conductivity_model, fill = conductivity_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(color = factor(conductivity_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = final_lakes , aes(fill = factor(conductivity_model)), linewidth = 0, inherit.aes = F) +
+#     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score') +
+#     scale_fill_manual(values = myColors, name = 'Conductivity Score') +
+#     guides(fill = guide_legend(order = 3)) +
+#     resourceviz::custom_theme(map_void = 4) +
+#     theme(legend.position = 'bottom')
+
+knitr::include_graphics('www/images/conductivity_model.png')
+```
+
+
+### Dissolved Oxygen  
+
+:::: {style="display: flex;"}
+
+::: {style="flex-basis: 500%;"}
+```{r, echo=F, out.width='200%',message=FALSE, warning=FALSE, error=FALSE}
+
+all_together_burp_wqp %>% filter(dissolved_oxygen > 0, !is.na(do_model)) %>% 
+  ggplot(aes(dissolved_oxygen))  +   
+   geom_histogram(aes(y=..density..), fill = NA, color = 'black') + 
+   geom_density(aes(y=..density..)) +
+  geom_rug(aes(color = factor(do_model)), size = 2) +
+  scale_color_manual(values = myColors, name = 'pH Score', guide = 'none') +
+  labs(x = 'Dissolved Oxygen',
+       subtitle = paste0('n = ', scales::comma(nrow(all_together_burp_wqp %>% filter(dissolved_oxygen > 0, !is.na(do_model)))))) +
+  resourceviz::custom_theme()
+```
+
+:::
+
+::: {style="flex-basis: 250%;"}
+```{r, echo=F, fig.align='center'}
+
+tribble(
+  ~`Dissolved Oxygen`, ~Score,
+  
+'0 - 3',1,
+'3.1 - 7',2,
+'7.1 - 12',3,
+'12.1 - 50',4,
+) %>% gt()%>% 
+  data_color(
+    columns = Score,
+    palette = myColors
+  )
+
+```
+
+:::
+
+::::
+
+
+```{r, echo=F,out.width='200%',  fig.align='center'}
+
+
+# dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
+# 
+# dummy_sf <- st_sf(do_model = factor(1:4, levels = 1:4), geom = dummy_sf)
+# 
+# ggplot() +
+#     geom_sf(data = dummy_sf, aes(color = do_model, fill = do_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(color = factor(do_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = final_lakes , aes(fill = factor(do_model)), linewidth = 0, inherit.aes = F) +
+#     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score') +
+#     scale_fill_manual(values = myColors, name = 'Dissolved Oxygen Score') +
+#     guides(fill = guide_legend(order = 3)) +
+#     resourceviz::custom_theme(map_void = 4) +
+#     theme(legend.position = 'bottom')
+
+knitr::include_graphics('www/images/do_model.png')
+
+```

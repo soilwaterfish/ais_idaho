@@ -1,0 +1,28 @@
+---
+title: "Habitat Suitability Score Criteria - GIS "
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{hss}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+pkgdown:
+  as_is: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev.args = list(png = list(type = "cairo")), fig.width = 11, fig.height = 7)
+library(dplyr)
+library(gt)
+
+
+myColors <- c("#F0E442", "#56B4E9", "#E69F00", "#009E73")
+
+names(myColors) <- factor(1:4)
+
+```
+
+
+# Overview  
+
+This is the GIS workflow that covers the social suitability methods used to generate Aquatic Invasive Species (AIS) prioritization in Idaho specifically the Nez-Perce/Clearwater and Idaho Panhandle National Forests. We used methods described by Montana Fish, Wildlife and Parks AIS prioritization for lotic and lentic environments to the best we could.  

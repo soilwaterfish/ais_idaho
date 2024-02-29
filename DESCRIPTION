@@ -1,0 +1,19 @@
+Package: aisrisk
+Title: Model Risk for Aquatic Invasive Species
+Version: 0.1
+Authors@R: 
+    person("Josh", "Erickson", email = "joshualerickson@gmail.com", role = c("aut", "cre"))
+Description: The package provides functions and workflows for reproducing and updating Aquatic Invasive Species (AIS) risk models. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+URL: https://soilwaterfish.github.io/aisrisk/
+imports: 
+  dplyr,
+  sf,
+  sfnetworks
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
