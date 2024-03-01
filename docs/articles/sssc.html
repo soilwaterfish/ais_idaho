@@ -28,7 +28,7 @@
     
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
-    <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
+    <a href="https://www.fs.usda.gov/" class="external-link"><img src="https://www.fs.usda.gov/themes/custom/fs_uswds/logo.svg" id="hexlogo" alt="US Forest Service"></a>
     <a class="navbar-brand me-2" href="../index.html">aisrisk</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1</small>
@@ -62,14 +62,13 @@
     <a class="dropdown-item" href="../articles/final_scores.html">Final Scores</a>
     <a class="dropdown-item" href="../articles/sssc.html">Social Sutiability Score</a>
     <a class="dropdown-item" href="../articles/hss.html">Habitat Sutiability Score</a>
-    <a class="dropdown-item" href="../articles/test.html">Test</a>
   </div>
 </li>
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">reference</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="https://soilwaterfish.github.io/aisrisk/">
+  <a class="nav-link" href="https://github.com/soilwaterfish/aisrisk/">
     <span class="fa fa fa fa-github fa-lg"></span>
      
     github
@@ -83,6 +82,8 @@
 </nav><div class="container template-article">
 
 
+
+
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Social Suitability Score Criteria - GIS </h1>
@@ -94,7 +95,11 @@
 
     
     
-<div class="section level2">
+<script type="text/javascript">
+$(document).ready(function () {
+  window.initializeCodeFolding("show" === "hide");
+});
+</script><div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>This is the GIS workflow that covers the social suitability methods
@@ -107,18 +112,23 @@ could.</p>
 <h3 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a>
 </h3>
 <p>The methods used to generate the social suitability scores involve
-GIS processing in R or Python (eventually implementing). The challenging
-part was not necessarily the geospatial analysis but instead getting the
-data to work and relate together, e.g. waterbodies and streams/rivers.
-The first part of the vignette will go over the logic used for the
-waterbody type, size, and position and how to link them together using
-Hydrological Unit Codes (HUC) and National Hydrography Dataset Plus
-Version 2 (NHDPlus V2). This will then follow with the mussel proximity
-workflow using a road network to find how far away the recently (2023,
-Snake River near Twin Falls, Idaho) found mussel population is from the
-waterbodies and streams/rivers. We do not have any angler data or a
-proxy for this variable right now so this was left out of the
-analysis.</p>
+GIS processing in R and/or Python (eventually implementing). The
+challenging part was not necessarily the geospatial analysis but instead
+getting the data to work and relate together, e.g. waterbodies and
+streams/rivers. The first part of the vignette will go over the logic
+used for the waterbody type, size, and position and how to link them
+together using Hydrological Unit Codes (HUC) and National Hydrography
+Dataset Plus Version 2 (NHDPlus V2). This will then follow with the
+mussel proximity workflow using a road network to find how far away the
+recently (2023, Snake River near Twin Falls, Idaho) found mussel
+population is from the waterbodies and streams/rivers. We do not have
+any angler data or a proxy for this variable right now so this was left
+out of the analysis.</p>
+<p>Our goal with the vignette is to show the steps it took to get to the
+figure output below. The {aisrisk} package abstracts away these steps
+into functions but this is the real meat of the workflow and how it was
+created.</p>
+<p><img src="www/images/social_final.png" width="200%"></p>
 <div class="section level4">
 <h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h4>
@@ -136,23 +146,23 @@ things are done certain ways.</p>
 <p>Waterbody type was calculated using the NHDPlus dataset and
 associated attribute streamorder (Strahler) for streams and rivers and
 acreage for the waterbodies.</p>
-<div id="kjoamlfxil" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kjoamlfxil table {
+<div id="ikkeiwfhts" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ikkeiwfhts table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#kjoamlfxil thead, #kjoamlfxil tbody, #kjoamlfxil tfoot, #kjoamlfxil tr, #kjoamlfxil td, #kjoamlfxil th {
+#ikkeiwfhts thead, #ikkeiwfhts tbody, #ikkeiwfhts tfoot, #ikkeiwfhts tr, #ikkeiwfhts td, #ikkeiwfhts th {
   border-style: none;
 }
 
-#kjoamlfxil p {
+#ikkeiwfhts p {
   margin: 0;
   padding: 0;
 }
 
-#kjoamlfxil .gt_table {
+#ikkeiwfhts .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -178,12 +188,12 @@ acreage for the waterbodies.</p>
   border-left-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_caption {
+#ikkeiwfhts .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kjoamlfxil .gt_title {
+#ikkeiwfhts .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -195,7 +205,7 @@ acreage for the waterbodies.</p>
   border-bottom-width: 0;
 }
 
-#kjoamlfxil .gt_subtitle {
+#ikkeiwfhts .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -207,7 +217,7 @@ acreage for the waterbodies.</p>
   border-top-width: 0;
 }
 
-#kjoamlfxil .gt_heading {
+#ikkeiwfhts .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -219,13 +229,13 @@ acreage for the waterbodies.</p>
   border-right-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_bottom_border {
+#ikkeiwfhts .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_col_headings {
+#ikkeiwfhts .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -240,7 +250,7 @@ acreage for the waterbodies.</p>
   border-right-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_col_heading {
+#ikkeiwfhts .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -260,7 +270,7 @@ acreage for the waterbodies.</p>
   overflow-x: hidden;
 }
 
-#kjoamlfxil .gt_column_spanner_outer {
+#ikkeiwfhts .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -272,15 +282,15 @@ acreage for the waterbodies.</p>
   padding-right: 4px;
 }
 
-#kjoamlfxil .gt_column_spanner_outer:first-child {
+#ikkeiwfhts .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kjoamlfxil .gt_column_spanner_outer:last-child {
+#ikkeiwfhts .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kjoamlfxil .gt_column_spanner {
+#ikkeiwfhts .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -292,11 +302,11 @@ acreage for the waterbodies.</p>
   width: 100%;
 }
 
-#kjoamlfxil .gt_spanner_row {
+#ikkeiwfhts .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#kjoamlfxil .gt_group_heading {
+#ikkeiwfhts .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -322,7 +332,7 @@ acreage for the waterbodies.</p>
   text-align: left;
 }
 
-#kjoamlfxil .gt_empty_group_heading {
+#ikkeiwfhts .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -337,15 +347,15 @@ acreage for the waterbodies.</p>
   vertical-align: middle;
 }
 
-#kjoamlfxil .gt_from_md > :first-child {
+#ikkeiwfhts .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kjoamlfxil .gt_from_md > :last-child {
+#ikkeiwfhts .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kjoamlfxil .gt_row {
+#ikkeiwfhts .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -364,7 +374,7 @@ acreage for the waterbodies.</p>
   overflow-x: hidden;
 }
 
-#kjoamlfxil .gt_stub {
+#ikkeiwfhts .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -377,7 +387,7 @@ acreage for the waterbodies.</p>
   padding-right: 5px;
 }
 
-#kjoamlfxil .gt_stub_row_group {
+#ikkeiwfhts .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -391,15 +401,15 @@ acreage for the waterbodies.</p>
   vertical-align: top;
 }
 
-#kjoamlfxil .gt_row_group_first td {
+#ikkeiwfhts .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kjoamlfxil .gt_row_group_first th {
+#ikkeiwfhts .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#kjoamlfxil .gt_summary_row {
+#ikkeiwfhts .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -409,16 +419,16 @@ acreage for the waterbodies.</p>
   padding-right: 5px;
 }
 
-#kjoamlfxil .gt_first_summary_row {
+#ikkeiwfhts .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_first_summary_row.thick {
+#ikkeiwfhts .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kjoamlfxil .gt_last_summary_row {
+#ikkeiwfhts .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -428,7 +438,7 @@ acreage for the waterbodies.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_grand_summary_row {
+#ikkeiwfhts .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -438,7 +448,7 @@ acreage for the waterbodies.</p>
   padding-right: 5px;
 }
 
-#kjoamlfxil .gt_first_grand_summary_row {
+#ikkeiwfhts .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -448,7 +458,7 @@ acreage for the waterbodies.</p>
   border-top-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_last_grand_summary_row_top {
+#ikkeiwfhts .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -458,11 +468,11 @@ acreage for the waterbodies.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_striped {
+#ikkeiwfhts .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kjoamlfxil .gt_table_body {
+#ikkeiwfhts .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -471,7 +481,7 @@ acreage for the waterbodies.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_footnotes {
+#ikkeiwfhts .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -485,7 +495,7 @@ acreage for the waterbodies.</p>
   border-right-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_footnote {
+#ikkeiwfhts .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -494,7 +504,7 @@ acreage for the waterbodies.</p>
   padding-right: 5px;
 }
 
-#kjoamlfxil .gt_sourcenotes {
+#ikkeiwfhts .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -508,7 +518,7 @@ acreage for the waterbodies.</p>
   border-right-color: #D3D3D3;
 }
 
-#kjoamlfxil .gt_sourcenote {
+#ikkeiwfhts .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -516,63 +526,63 @@ acreage for the waterbodies.</p>
   padding-right: 5px;
 }
 
-#kjoamlfxil .gt_left {
+#ikkeiwfhts .gt_left {
   text-align: left;
 }
 
-#kjoamlfxil .gt_center {
+#ikkeiwfhts .gt_center {
   text-align: center;
 }
 
-#kjoamlfxil .gt_right {
+#ikkeiwfhts .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kjoamlfxil .gt_font_normal {
+#ikkeiwfhts .gt_font_normal {
   font-weight: normal;
 }
 
-#kjoamlfxil .gt_font_bold {
+#ikkeiwfhts .gt_font_bold {
   font-weight: bold;
 }
 
-#kjoamlfxil .gt_font_italic {
+#ikkeiwfhts .gt_font_italic {
   font-style: italic;
 }
 
-#kjoamlfxil .gt_super {
+#ikkeiwfhts .gt_super {
   font-size: 65%;
 }
 
-#kjoamlfxil .gt_footnote_marks {
+#ikkeiwfhts .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#kjoamlfxil .gt_asterisk {
+#ikkeiwfhts .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kjoamlfxil .gt_indent_1 {
+#ikkeiwfhts .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kjoamlfxil .gt_indent_2 {
+#ikkeiwfhts .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kjoamlfxil .gt_indent_3 {
+#ikkeiwfhts .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kjoamlfxil .gt_indent_4 {
+#ikkeiwfhts .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kjoamlfxil .gt_indent_5 {
+#ikkeiwfhts .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -633,23 +643,23 @@ flowlines by name to get lengths.</p>
 <li><p>Get the length of flowlines based on <code>gnis_name</code>;
 meaning flowlines with names will be connected by length.</p></li>
 </ol>
-<div id="bnsudjaanu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bnsudjaanu table {
+<div id="tzustmqdjd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tzustmqdjd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bnsudjaanu thead, #bnsudjaanu tbody, #bnsudjaanu tfoot, #bnsudjaanu tr, #bnsudjaanu td, #bnsudjaanu th {
+#tzustmqdjd thead, #tzustmqdjd tbody, #tzustmqdjd tfoot, #tzustmqdjd tr, #tzustmqdjd td, #tzustmqdjd th {
   border-style: none;
 }
 
-#bnsudjaanu p {
+#tzustmqdjd p {
   margin: 0;
   padding: 0;
 }
 
-#bnsudjaanu .gt_table {
+#tzustmqdjd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -675,12 +685,12 @@ meaning flowlines with names will be connected by length.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_caption {
+#tzustmqdjd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bnsudjaanu .gt_title {
+#tzustmqdjd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -692,7 +702,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-bottom-width: 0;
 }
 
-#bnsudjaanu .gt_subtitle {
+#tzustmqdjd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -704,7 +714,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-top-width: 0;
 }
 
-#bnsudjaanu .gt_heading {
+#tzustmqdjd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -716,13 +726,13 @@ meaning flowlines with names will be connected by length.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_bottom_border {
+#tzustmqdjd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_col_headings {
+#tzustmqdjd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -737,7 +747,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_col_heading {
+#tzustmqdjd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -757,7 +767,7 @@ meaning flowlines with names will be connected by length.</p></li>
   overflow-x: hidden;
 }
 
-#bnsudjaanu .gt_column_spanner_outer {
+#tzustmqdjd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -769,15 +779,15 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 4px;
 }
 
-#bnsudjaanu .gt_column_spanner_outer:first-child {
+#tzustmqdjd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bnsudjaanu .gt_column_spanner_outer:last-child {
+#tzustmqdjd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bnsudjaanu .gt_column_spanner {
+#tzustmqdjd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -789,11 +799,11 @@ meaning flowlines with names will be connected by length.</p></li>
   width: 100%;
 }
 
-#bnsudjaanu .gt_spanner_row {
+#tzustmqdjd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bnsudjaanu .gt_group_heading {
+#tzustmqdjd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -819,7 +829,7 @@ meaning flowlines with names will be connected by length.</p></li>
   text-align: left;
 }
 
-#bnsudjaanu .gt_empty_group_heading {
+#tzustmqdjd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -834,15 +844,15 @@ meaning flowlines with names will be connected by length.</p></li>
   vertical-align: middle;
 }
 
-#bnsudjaanu .gt_from_md > :first-child {
+#tzustmqdjd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bnsudjaanu .gt_from_md > :last-child {
+#tzustmqdjd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bnsudjaanu .gt_row {
+#tzustmqdjd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -861,7 +871,7 @@ meaning flowlines with names will be connected by length.</p></li>
   overflow-x: hidden;
 }
 
-#bnsudjaanu .gt_stub {
+#tzustmqdjd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -874,7 +884,7 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 5px;
 }
 
-#bnsudjaanu .gt_stub_row_group {
+#tzustmqdjd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -888,15 +898,15 @@ meaning flowlines with names will be connected by length.</p></li>
   vertical-align: top;
 }
 
-#bnsudjaanu .gt_row_group_first td {
+#tzustmqdjd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bnsudjaanu .gt_row_group_first th {
+#tzustmqdjd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bnsudjaanu .gt_summary_row {
+#tzustmqdjd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -906,16 +916,16 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 5px;
 }
 
-#bnsudjaanu .gt_first_summary_row {
+#tzustmqdjd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_first_summary_row.thick {
+#tzustmqdjd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bnsudjaanu .gt_last_summary_row {
+#tzustmqdjd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -925,7 +935,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_grand_summary_row {
+#tzustmqdjd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -935,7 +945,7 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 5px;
 }
 
-#bnsudjaanu .gt_first_grand_summary_row {
+#tzustmqdjd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -945,7 +955,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_last_grand_summary_row_top {
+#tzustmqdjd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -955,11 +965,11 @@ meaning flowlines with names will be connected by length.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_striped {
+#tzustmqdjd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bnsudjaanu .gt_table_body {
+#tzustmqdjd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -968,7 +978,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_footnotes {
+#tzustmqdjd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -982,7 +992,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_footnote {
+#tzustmqdjd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -991,7 +1001,7 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 5px;
 }
 
-#bnsudjaanu .gt_sourcenotes {
+#tzustmqdjd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1005,7 +1015,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#bnsudjaanu .gt_sourcenote {
+#tzustmqdjd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1013,63 +1023,63 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 5px;
 }
 
-#bnsudjaanu .gt_left {
+#tzustmqdjd .gt_left {
   text-align: left;
 }
 
-#bnsudjaanu .gt_center {
+#tzustmqdjd .gt_center {
   text-align: center;
 }
 
-#bnsudjaanu .gt_right {
+#tzustmqdjd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bnsudjaanu .gt_font_normal {
+#tzustmqdjd .gt_font_normal {
   font-weight: normal;
 }
 
-#bnsudjaanu .gt_font_bold {
+#tzustmqdjd .gt_font_bold {
   font-weight: bold;
 }
 
-#bnsudjaanu .gt_font_italic {
+#tzustmqdjd .gt_font_italic {
   font-style: italic;
 }
 
-#bnsudjaanu .gt_super {
+#tzustmqdjd .gt_super {
   font-size: 65%;
 }
 
-#bnsudjaanu .gt_footnote_marks {
+#tzustmqdjd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bnsudjaanu .gt_asterisk {
+#tzustmqdjd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bnsudjaanu .gt_indent_1 {
+#tzustmqdjd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bnsudjaanu .gt_indent_2 {
+#tzustmqdjd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bnsudjaanu .gt_indent_3 {
+#tzustmqdjd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bnsudjaanu .gt_indent_4 {
+#tzustmqdjd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bnsudjaanu .gt_indent_5 {
+#tzustmqdjd .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1127,23 +1137,23 @@ waterbodies dataset. To account for mountain lake or reservoir (score
 3), I just took the elevation of the waterbodies centroid when available
 andand if no value then it was a larger lake likely in the lowland. This
 is definitely not perfect, but works for .</p>
-<div id="cmozukcnid" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cmozukcnid table {
+<div id="tpdzyvnenq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tpdzyvnenq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cmozukcnid thead, #cmozukcnid tbody, #cmozukcnid tfoot, #cmozukcnid tr, #cmozukcnid td, #cmozukcnid th {
+#tpdzyvnenq thead, #tpdzyvnenq tbody, #tpdzyvnenq tfoot, #tpdzyvnenq tr, #tpdzyvnenq td, #tpdzyvnenq th {
   border-style: none;
 }
 
-#cmozukcnid p {
+#tpdzyvnenq p {
   margin: 0;
   padding: 0;
 }
 
-#cmozukcnid .gt_table {
+#tpdzyvnenq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1169,12 +1179,12 @@ is definitely not perfect, but works for .</p>
   border-left-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_caption {
+#tpdzyvnenq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cmozukcnid .gt_title {
+#tpdzyvnenq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1186,7 +1196,7 @@ is definitely not perfect, but works for .</p>
   border-bottom-width: 0;
 }
 
-#cmozukcnid .gt_subtitle {
+#tpdzyvnenq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1198,7 +1208,7 @@ is definitely not perfect, but works for .</p>
   border-top-width: 0;
 }
 
-#cmozukcnid .gt_heading {
+#tpdzyvnenq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1210,13 +1220,13 @@ is definitely not perfect, but works for .</p>
   border-right-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_bottom_border {
+#tpdzyvnenq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_col_headings {
+#tpdzyvnenq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1231,7 +1241,7 @@ is definitely not perfect, but works for .</p>
   border-right-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_col_heading {
+#tpdzyvnenq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1251,7 +1261,7 @@ is definitely not perfect, but works for .</p>
   overflow-x: hidden;
 }
 
-#cmozukcnid .gt_column_spanner_outer {
+#tpdzyvnenq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1263,15 +1273,15 @@ is definitely not perfect, but works for .</p>
   padding-right: 4px;
 }
 
-#cmozukcnid .gt_column_spanner_outer:first-child {
+#tpdzyvnenq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cmozukcnid .gt_column_spanner_outer:last-child {
+#tpdzyvnenq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cmozukcnid .gt_column_spanner {
+#tpdzyvnenq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1283,11 +1293,11 @@ is definitely not perfect, but works for .</p>
   width: 100%;
 }
 
-#cmozukcnid .gt_spanner_row {
+#tpdzyvnenq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cmozukcnid .gt_group_heading {
+#tpdzyvnenq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1313,7 +1323,7 @@ is definitely not perfect, but works for .</p>
   text-align: left;
 }
 
-#cmozukcnid .gt_empty_group_heading {
+#tpdzyvnenq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1328,15 +1338,15 @@ is definitely not perfect, but works for .</p>
   vertical-align: middle;
 }
 
-#cmozukcnid .gt_from_md > :first-child {
+#tpdzyvnenq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cmozukcnid .gt_from_md > :last-child {
+#tpdzyvnenq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cmozukcnid .gt_row {
+#tpdzyvnenq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1355,7 +1365,7 @@ is definitely not perfect, but works for .</p>
   overflow-x: hidden;
 }
 
-#cmozukcnid .gt_stub {
+#tpdzyvnenq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1368,7 +1378,7 @@ is definitely not perfect, but works for .</p>
   padding-right: 5px;
 }
 
-#cmozukcnid .gt_stub_row_group {
+#tpdzyvnenq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1382,15 +1392,15 @@ is definitely not perfect, but works for .</p>
   vertical-align: top;
 }
 
-#cmozukcnid .gt_row_group_first td {
+#tpdzyvnenq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cmozukcnid .gt_row_group_first th {
+#tpdzyvnenq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cmozukcnid .gt_summary_row {
+#tpdzyvnenq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1400,16 +1410,16 @@ is definitely not perfect, but works for .</p>
   padding-right: 5px;
 }
 
-#cmozukcnid .gt_first_summary_row {
+#tpdzyvnenq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_first_summary_row.thick {
+#tpdzyvnenq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cmozukcnid .gt_last_summary_row {
+#tpdzyvnenq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1419,7 +1429,7 @@ is definitely not perfect, but works for .</p>
   border-bottom-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_grand_summary_row {
+#tpdzyvnenq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1429,7 +1439,7 @@ is definitely not perfect, but works for .</p>
   padding-right: 5px;
 }
 
-#cmozukcnid .gt_first_grand_summary_row {
+#tpdzyvnenq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1439,7 +1449,7 @@ is definitely not perfect, but works for .</p>
   border-top-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_last_grand_summary_row_top {
+#tpdzyvnenq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1449,11 +1459,11 @@ is definitely not perfect, but works for .</p>
   border-bottom-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_striped {
+#tpdzyvnenq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cmozukcnid .gt_table_body {
+#tpdzyvnenq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1462,7 +1472,7 @@ is definitely not perfect, but works for .</p>
   border-bottom-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_footnotes {
+#tpdzyvnenq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1476,7 +1486,7 @@ is definitely not perfect, but works for .</p>
   border-right-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_footnote {
+#tpdzyvnenq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1485,7 +1495,7 @@ is definitely not perfect, but works for .</p>
   padding-right: 5px;
 }
 
-#cmozukcnid .gt_sourcenotes {
+#tpdzyvnenq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1499,7 +1509,7 @@ is definitely not perfect, but works for .</p>
   border-right-color: #D3D3D3;
 }
 
-#cmozukcnid .gt_sourcenote {
+#tpdzyvnenq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1507,63 +1517,63 @@ is definitely not perfect, but works for .</p>
   padding-right: 5px;
 }
 
-#cmozukcnid .gt_left {
+#tpdzyvnenq .gt_left {
   text-align: left;
 }
 
-#cmozukcnid .gt_center {
+#tpdzyvnenq .gt_center {
   text-align: center;
 }
 
-#cmozukcnid .gt_right {
+#tpdzyvnenq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cmozukcnid .gt_font_normal {
+#tpdzyvnenq .gt_font_normal {
   font-weight: normal;
 }
 
-#cmozukcnid .gt_font_bold {
+#tpdzyvnenq .gt_font_bold {
   font-weight: bold;
 }
 
-#cmozukcnid .gt_font_italic {
+#tpdzyvnenq .gt_font_italic {
   font-style: italic;
 }
 
-#cmozukcnid .gt_super {
+#tpdzyvnenq .gt_super {
   font-size: 65%;
 }
 
-#cmozukcnid .gt_footnote_marks {
+#tpdzyvnenq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cmozukcnid .gt_asterisk {
+#tpdzyvnenq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cmozukcnid .gt_indent_1 {
+#tpdzyvnenq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cmozukcnid .gt_indent_2 {
+#tpdzyvnenq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cmozukcnid .gt_indent_3 {
+#tpdzyvnenq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cmozukcnid .gt_indent_4 {
+#tpdzyvnenq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cmozukcnid .gt_indent_5 {
+#tpdzyvnenq .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1623,35 +1633,33 @@ is definitely not perfect, but works for .</p>
 <span><span class="va">nhdplus_idaho</span> <span class="op">&lt;-</span> <span class="va">nhdplus_idaho</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>waterbody_position <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="va">streamorde</span> <span class="op">&lt;=</span> <span class="fl">2</span>, <span class="fl">1</span>,</span>
 <span>                                      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="va">streamorde</span> <span class="op">&gt;</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">streamorde</span> <span class="op">&lt;=</span><span class="fl">3</span>, <span class="fl">2</span>,</span>
-<span>                                          <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="va">streamorde</span> <span class="op">&gt;</span> <span class="fl">3</span> <span class="op">&amp;</span> <span class="va">streamorde</span> <span class="op">&lt;=</span><span class="fl">5</span> , <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_write.html" class="external-link">write_sf</a></span><span class="op">(</span><span class="va">waterbodies_idaho</span>,<span class="st">'data/simple_features.gpkg'</span>, layer <span class="op">=</span> <span class="st">'waterbodies_idaho_processed'</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_write.html" class="external-link">write_sf</a></span><span class="op">(</span><span class="va">nhdplus_idaho</span>,<span class="st">'data/simple_features.gpkg'</span>, layer <span class="op">=</span> <span class="st">'nhdplus_idaho_processed'</span><span class="op">)</span></span></code></pre></div>
+<span>                                          <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="va">streamorde</span> <span class="op">&gt;</span> <span class="fl">3</span> <span class="op">&amp;</span> <span class="va">streamorde</span> <span class="op">&lt;=</span><span class="fl">5</span> , <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="mussel-proximity">Mussel Proximity<a class="anchor" aria-label="anchor" href="#mussel-proximity"></a>
 </h4>
 <p>Mussel proximity involves calculating the distance via roadways to
 the nearest mussel population. In Idaho this is the Snake River near
-Twin Falls. This is likely to change so updating will be important.
-Below is the workflow used to get</p>
-<div id="jnzbuieflh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jnzbuieflh table {
+Twin Falls but could change so updating will be important. Below is the
+workflow used to create a road network and then calculate the cost
+distance from that affected area.</p>
+<div id="yijnvezpnp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yijnvezpnp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jnzbuieflh thead, #jnzbuieflh tbody, #jnzbuieflh tfoot, #jnzbuieflh tr, #jnzbuieflh td, #jnzbuieflh th {
+#yijnvezpnp thead, #yijnvezpnp tbody, #yijnvezpnp tfoot, #yijnvezpnp tr, #yijnvezpnp td, #yijnvezpnp th {
   border-style: none;
 }
 
-#jnzbuieflh p {
+#yijnvezpnp p {
   margin: 0;
   padding: 0;
 }
 
-#jnzbuieflh .gt_table {
+#yijnvezpnp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1677,12 +1685,12 @@ Below is the workflow used to get</p>
   border-left-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_caption {
+#yijnvezpnp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jnzbuieflh .gt_title {
+#yijnvezpnp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1694,7 +1702,7 @@ Below is the workflow used to get</p>
   border-bottom-width: 0;
 }
 
-#jnzbuieflh .gt_subtitle {
+#yijnvezpnp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1706,7 +1714,7 @@ Below is the workflow used to get</p>
   border-top-width: 0;
 }
 
-#jnzbuieflh .gt_heading {
+#yijnvezpnp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1718,13 +1726,13 @@ Below is the workflow used to get</p>
   border-right-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_bottom_border {
+#yijnvezpnp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_col_headings {
+#yijnvezpnp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1739,7 +1747,7 @@ Below is the workflow used to get</p>
   border-right-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_col_heading {
+#yijnvezpnp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1759,7 +1767,7 @@ Below is the workflow used to get</p>
   overflow-x: hidden;
 }
 
-#jnzbuieflh .gt_column_spanner_outer {
+#yijnvezpnp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1771,15 +1779,15 @@ Below is the workflow used to get</p>
   padding-right: 4px;
 }
 
-#jnzbuieflh .gt_column_spanner_outer:first-child {
+#yijnvezpnp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jnzbuieflh .gt_column_spanner_outer:last-child {
+#yijnvezpnp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jnzbuieflh .gt_column_spanner {
+#yijnvezpnp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1791,11 +1799,11 @@ Below is the workflow used to get</p>
   width: 100%;
 }
 
-#jnzbuieflh .gt_spanner_row {
+#yijnvezpnp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jnzbuieflh .gt_group_heading {
+#yijnvezpnp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1821,7 +1829,7 @@ Below is the workflow used to get</p>
   text-align: left;
 }
 
-#jnzbuieflh .gt_empty_group_heading {
+#yijnvezpnp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1836,15 +1844,15 @@ Below is the workflow used to get</p>
   vertical-align: middle;
 }
 
-#jnzbuieflh .gt_from_md > :first-child {
+#yijnvezpnp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jnzbuieflh .gt_from_md > :last-child {
+#yijnvezpnp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jnzbuieflh .gt_row {
+#yijnvezpnp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1863,7 +1871,7 @@ Below is the workflow used to get</p>
   overflow-x: hidden;
 }
 
-#jnzbuieflh .gt_stub {
+#yijnvezpnp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1876,7 +1884,7 @@ Below is the workflow used to get</p>
   padding-right: 5px;
 }
 
-#jnzbuieflh .gt_stub_row_group {
+#yijnvezpnp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1890,15 +1898,15 @@ Below is the workflow used to get</p>
   vertical-align: top;
 }
 
-#jnzbuieflh .gt_row_group_first td {
+#yijnvezpnp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jnzbuieflh .gt_row_group_first th {
+#yijnvezpnp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jnzbuieflh .gt_summary_row {
+#yijnvezpnp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1908,16 +1916,16 @@ Below is the workflow used to get</p>
   padding-right: 5px;
 }
 
-#jnzbuieflh .gt_first_summary_row {
+#yijnvezpnp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_first_summary_row.thick {
+#yijnvezpnp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jnzbuieflh .gt_last_summary_row {
+#yijnvezpnp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1927,7 +1935,7 @@ Below is the workflow used to get</p>
   border-bottom-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_grand_summary_row {
+#yijnvezpnp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1937,7 +1945,7 @@ Below is the workflow used to get</p>
   padding-right: 5px;
 }
 
-#jnzbuieflh .gt_first_grand_summary_row {
+#yijnvezpnp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1947,7 +1955,7 @@ Below is the workflow used to get</p>
   border-top-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_last_grand_summary_row_top {
+#yijnvezpnp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1957,11 +1965,11 @@ Below is the workflow used to get</p>
   border-bottom-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_striped {
+#yijnvezpnp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jnzbuieflh .gt_table_body {
+#yijnvezpnp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1970,7 +1978,7 @@ Below is the workflow used to get</p>
   border-bottom-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_footnotes {
+#yijnvezpnp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1984,7 +1992,7 @@ Below is the workflow used to get</p>
   border-right-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_footnote {
+#yijnvezpnp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1993,7 +2001,7 @@ Below is the workflow used to get</p>
   padding-right: 5px;
 }
 
-#jnzbuieflh .gt_sourcenotes {
+#yijnvezpnp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2007,7 +2015,7 @@ Below is the workflow used to get</p>
   border-right-color: #D3D3D3;
 }
 
-#jnzbuieflh .gt_sourcenote {
+#yijnvezpnp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2015,63 +2023,63 @@ Below is the workflow used to get</p>
   padding-right: 5px;
 }
 
-#jnzbuieflh .gt_left {
+#yijnvezpnp .gt_left {
   text-align: left;
 }
 
-#jnzbuieflh .gt_center {
+#yijnvezpnp .gt_center {
   text-align: center;
 }
 
-#jnzbuieflh .gt_right {
+#yijnvezpnp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jnzbuieflh .gt_font_normal {
+#yijnvezpnp .gt_font_normal {
   font-weight: normal;
 }
 
-#jnzbuieflh .gt_font_bold {
+#yijnvezpnp .gt_font_bold {
   font-weight: bold;
 }
 
-#jnzbuieflh .gt_font_italic {
+#yijnvezpnp .gt_font_italic {
   font-style: italic;
 }
 
-#jnzbuieflh .gt_super {
+#yijnvezpnp .gt_super {
   font-size: 65%;
 }
 
-#jnzbuieflh .gt_footnote_marks {
+#yijnvezpnp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jnzbuieflh .gt_asterisk {
+#yijnvezpnp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jnzbuieflh .gt_indent_1 {
+#yijnvezpnp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jnzbuieflh .gt_indent_2 {
+#yijnvezpnp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jnzbuieflh .gt_indent_3 {
+#yijnvezpnp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jnzbuieflh .gt_indent_4 {
+#yijnvezpnp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jnzbuieflh .gt_indent_5 {
+#yijnvezpnp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2100,46 +2108,110 @@ Below is the workflow used to get</p>
 </tbody>
 </table>
 </div>
+<p>First we’ll need to have a roadnetwork that is cleaned. What I mean
+be <em>clean</em> is a network that has no multiples, loops, or missing
+vertices when crossing over other lines. There are a few ways to do this
+but I’d recommend using the <code>planarize</code> tool in
+<code>ArcPro</code> to be able to do this quickly (need to find a R
+alternative).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://luukvdmeer.github.io/sfnetworks/" class="external-link">sfnetworks</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/R-ArcGIS/arcgis/" class="external-link">arcgis</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidygraph.data-imaginist.com" class="external-link">tidygraph</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># bring in a clean version of the roads in idaho</span></span>
+<span><span class="va">idaho</span> <span class="op">&lt;-</span> <span class="fu">AOI</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/AOI/man/aoi_get.html" class="external-link">aoi_get</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">'Idaho'</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">roads_mt_id_clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">read_sf</a></span><span class="op">(</span><span class="st">'data/road_mt_id_fs.shp'</span><span class="op">)</span></span>
+<span><span class="va">id_roads_sf</span> <span class="op">&lt;-</span> <span class="fu">arc_select</span><span class="op">(</span><span class="fu">arc_open</span><span class="op">(</span><span class="st">'https://gisportalp.itd.idaho.gov/xserver/rest/services/RH_GeneralService/MapServer/1/'</span><span class="op">)</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fl">3742</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">### this is because of an empty geometry; hopefully you won't have to deal with....</span></span>
+<span><span class="va">empty_geom</span> <span class="op">&lt;-</span> <span class="va">id_roads_sf</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://rlang.r-lib.org/reference/is_empty.html" class="external-link">is_empty</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">id_roads_sf</span><span class="op">$</span><span class="va">empty_geom</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">empty_geom</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">id_roads_sf</span> <span class="op">&lt;-</span> <span class="va">id_roads_sf</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">empty_geom</span> <span class="op">==</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># you'll need to figure out how to get your usfs simple feature; here it was local for me.</span></span>
+<span></span>
+<span><span class="va">usfs_roads</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">read_sf</a></span><span class="op">(</span><span class="st">'Z:/simple_features/roads/r1_rd_core.shp'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_binary_ops.html" class="external-link">st_intersection</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">idaho</span>, <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fl">3742</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">roads_together</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="va">id_roads_sf</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">SystemCode</span> <span class="op">!=</span> <span class="st">'FD'</span><span class="op">)</span>, <span class="va">usfs_roads</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_cast.html" class="external-link">st_cast</a></span><span class="op">(</span><span class="st">'LINESTRING'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">########### Or bring in a clean version of the roads for your AOI ########</span></span>
+<span></span>
+<span><span class="co">#roads_mt_id_clean &lt;- read_sf('data/road_mt_id_fs.shp')</span></span>
 <span></span>
 <span><span class="co"># get the mussel locations</span></span>
-<span><span class="va">mussel_point</span> <span class="op">&lt;-</span> <span class="fu">mapedit</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mapedit/man/drawFeatures.html" class="external-link">drawFeatures</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">roads_mt_id_clean</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">mussel_point</span> <span class="op">&lt;-</span> <span class="fu">mapedit</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mapedit/man/drawFeatures.html" class="external-link">drawFeatures</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">usfs_roads</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># create a network and check for errors.... </span></span>
 <span></span>
-<span><span class="co"># also convert to a crs that is good for north to south, etc.</span></span>
+<span><span class="co"># set to conda env</span></span>
+<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">use_condaenv</a></span><span class="op">(</span><span class="st">r'{C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3}'</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">net</span> <span class="op">=</span> <span class="fu"><a href="https://luukvdmeer.github.io/sfnetworks/reference/as_sfnetwork.html" class="external-link">as_sfnetwork</a></span><span class="op">(</span><span class="va">roads_mt_id_clean</span>, directed <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="va">arcpy</span> <span class="op">&lt;-</span> <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/import.html" class="external-link">import</a></span><span class="op">(</span><span class="st">'arcpy'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_write.html" class="external-link">write_sf</a></span><span class="op">(</span><span class="va">roads_together</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">'/data/together_roads.shp'</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">arcpy</span><span class="op">$</span><span class="va">env</span><span class="op">$</span><span class="va">workspace</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">'/data'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">arcpy</span><span class="op">$</span><span class="fu">CreateFileGDB_management</span><span class="op">(</span>out_name <span class="op">=</span> <span class="st">'roads.gdb'</span>, out_folder_path <span class="op">=</span> <span class="va">arcpy</span><span class="op">$</span><span class="va">env</span><span class="op">$</span><span class="va">workspace</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">arcpy</span><span class="op">$</span><span class="fu">FeatureToLine_management</span><span class="op">(</span>in_features <span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">'/data/together_roads.shp'</span><span class="op">)</span>, out_feature_class <span class="op">=</span> <span class="st">'roads.gdb/together_roads'</span>, cluster_tolerance <span class="op">=</span> <span class="st">'5 Meters'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">roads_together</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">read_sf</a></span><span class="op">(</span><span class="st">'data/roads.gdb'</span>, layer <span class="op">=</span> <span class="st">'together_roads'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_cast.html" class="external-link">st_cast</a></span><span class="op">(</span><span class="st">"LINESTRING"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># also convert to a crs that is good for north to south, etc. 3742 EPSG for Idaho UTM 12</span></span>
+<span></span>
+<span><span class="va">net</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://luukvdmeer.github.io/sfnetworks/reference/as_sfnetwork.html" class="external-link">as_sfnetwork</a></span><span class="op">(</span><span class="va">roads_together</span>, directed <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/activate.html" class="external-link">activate</a></span><span class="op">(</span><span class="st">"edges"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="fl">3742</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>weight <span class="op">=</span> <span class="fu"><a href="https://luukvdmeer.github.io/sfnetworks/reference/spatial_edge_measures.html" class="external-link">edge_length</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu">tidygraph</span><span class="fu">::</span><span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/edge_types.html" class="external-link">edge_is_multiple</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu">tidygraph</span><span class="fu">::</span><span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/edge_types.html" class="external-link">edge_is_loop</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu">tidygraph</span><span class="fu">::</span><span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/edge_types.html" class="external-link">edge_is_loop</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Once we have a clean network, then we can start by getting the
+distances from the affected area (<code>mussel_point</code>). Depending
+on the CRS and projection you’ll want to adjust for the distances and
+also the final metric, which is miles in our case.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># get the distances between the mussel_point and the nodes in the network</span></span>
 <span></span>
-<span><span class="co"># get the distances between the mussel_point and the nodes in the network</span></span>
-<span></span>
-<span><span class="va">distances</span> <span class="op">&lt;-</span> <span class="fu">sfnetworks</span><span class="fu">::</span><span class="fu"><a href="https://luukvdmeer.github.io/sfnetworks/reference/st_network_cost.html" class="external-link">st_network_cost</a></span><span class="op">(</span><span class="va">net</span>, from <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">mussel_point</span>, <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">net</span><span class="op">)</span><span class="op">)</span>, weights <span class="op">=</span> <span class="st">'weight'</span><span class="op">)</span></span>
+<span><span class="va">distances</span> <span class="op">&lt;-</span> <span class="fu">sfnetworks</span><span class="fu">::</span><span class="fu"><a href="https://luukvdmeer.github.io/sfnetworks/reference/st_network_cost.html" class="external-link">st_network_cost</a></span><span class="op">(</span><span class="va">net</span>, from <span class="op">=</span> <span class="va">mussel_point</span>, weights <span class="op">=</span> <span class="st">'weight'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># now get the 'from' in the network</span></span>
 <span><span class="va">edged_start</span> <span class="op">&lt;-</span> <span class="va">net</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/activate.html" class="external-link">activate</a></span><span class="op">(</span><span class="st">'edges'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">from</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># convert infinite to numeric</span></span>
 <span><span class="va">net_final</span> <span class="op">&lt;-</span> <span class="va">net</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>             <span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/activate.html" class="external-link">activate</a></span><span class="op">(</span><span class="st">'edges'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>             <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>new_weight <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span><span class="va">edged_start</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.infinite</a></span><span class="op">(</span><span class="va">distances</span><span class="op">[[</span><span class="va">.x</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="cn">NA_real_</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">distances</span><span class="op">[[</span><span class="va">.x</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># convert from meters to miles</span></span>
 <span><span class="va">net_final_edges</span> <span class="op">&lt;-</span> <span class="va">net_final</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/activate.html" class="external-link">activate</a></span><span class="op">(</span><span class="st">'edges'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>new_weight <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">new_weight</span><span class="op">)</span>,</span>
-<span>         new_weight <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.infinite</a></span><span class="op">(</span><span class="va">new_weight</span><span class="op">)</span>, <span class="cn">NA_real_</span>, <span class="va">new_weight</span><span class="op">)</span>,</span>
-<span>         new_weight_miles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">new_weight</span><span class="op">*</span><span class="fl">0.000621371</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">new_weight</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># adding huc12s and aggregating with a mean distance will make it easier for joining and not a lot of information lost</span></span>
+<span>                   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>new_weight <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">new_weight</span><span class="op">)</span>,</span>
+<span>                   new_weight <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/is.finite.html" class="external-link">is.infinite</a></span><span class="op">(</span><span class="va">new_weight</span><span class="op">)</span>, <span class="cn">NA_real_</span>, <span class="va">new_weight</span><span class="op">)</span>,</span>
+<span>                   new_weight_miles <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">new_weight</span><span class="op">*</span><span class="fl">0.000621371</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>                   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">new_weight</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Now we have a network of roads and the shortest path from the mussel
+location.</p>
+<p><img src="www/images/mussel_proximity.png" width="200%"></p>
+<p>A way to link these road network distances from
+<code>mussel_point</code> would be to find the closest waterbody and
+then snap together. This is a more precise and accurate way of doing
+this but is heavily intensive but likely not gaining much more insight,
+i.e. we are dealing with miles. Thus, we’ll take the HUC 12 that the
+road intersects and use as a surrogate for distance by taking the mean
+of all distances. Then we can join back to the original datasets
+<code>waterbodies_idaho</code> and <code>nhdplus_idaho</code>. This will
+help having a HUC 12 linked with these datasets not only for distance
+but also for the other suitability score <em>habitat</em>. It’s not
+perfect and has it’s flaws but is an efficient way of getting this
+indicator score. Another issue is that getting all of the road data can
+be difficult. There are places that show up on satellite imagery as
+having roads but the state and government road layers are not there.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># adding huc12s and aggregating with a mean distance will make it easier for joining and not a lot of information lost</span></span>
 <span></span>
 <span><span class="co"># now combined with HUCS to make easier.</span></span>
 <span></span>
@@ -2147,7 +2219,7 @@ Below is the workflow used to get</p>
 <span></span>
 <span><span class="va">huc_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_binary_pred.html" class="external-link">st_intersects</a></span><span class="op">(</span><span class="va">net_final_edges</span>, <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">huc12</span>, crs <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">net_final_edges</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">huc_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_vec</a></span><span class="op">(</span><span class="va">huc_list</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="cn">NA</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">huc_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_vec</a></span><span class="op">(</span><span class="va">huc_list</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="cn">NA</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">huc12s</span> <span class="op">&lt;-</span> <span class="va">huc12</span><span class="op">[</span><span class="va">huc_list</span>,<span class="op">]</span><span class="op">$</span><span class="va">huc12</span></span>
 <span></span>
@@ -2163,7 +2235,7 @@ Below is the workflow used to get</p>
 <span>    <span class="va">mean_dist</span> <span class="op">&gt;</span> <span class="fl">300</span> <span class="op">&amp;</span> <span class="va">mean_dist</span> <span class="op">&lt;=</span> <span class="fl">400</span> <span class="op">~</span> <span class="fl">2</span>,</span>
 <span>    <span class="va">mean_dist</span> <span class="op">&gt;</span> <span class="fl">200</span> <span class="op">&amp;</span> <span class="va">mean_dist</span> <span class="op">&lt;=</span> <span class="fl">300</span> <span class="op">~</span> <span class="fl">3</span>,</span>
 <span>    <span class="va">mean_dist</span> <span class="op">&lt;=</span> <span class="fl">200</span> <span class="op">~</span> <span class="fl">4</span>, </span>
-<span>    <span class="cn">TRUE</span> <span class="op">~</span> <span class="fl">1</span></span>
+<span>    <span class="cn">TRUE</span> <span class="op">~</span> <span class="cn">NA_real_</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -2179,19 +2251,54 @@ Below is the workflow used to get</p>
 <span></span>
 <span><span class="co"># we'll need to get COMIDs and HUC12 codes</span></span>
 <span></span>
-<span><span class="co"># download from online</span></span>
+<span><span class="co"># download from online https://www.sciencebase.gov/catalog/item/57eaa10fe4b09082500db04e</span></span>
 <span><span class="va">huc_comid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">read_sf</a></span><span class="op">(</span><span class="st">r'{Z:\Downloads\HUC12_PU_COMIDs_CONUS\HUC12_PU_COMIDs_CONUS.dbf}'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html" class="external-link">clean_names</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">nhdplus_idaho</span> <span class="op">&lt;-</span> <span class="va">nhdplus_idaho</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">huc_comid</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">comid</span>, <span class="va">huc12</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># now join back with the waterbodies and nhdplus datasets</span></span>
 <span></span>
-<span><span class="va">nhdplus_idaho</span> <span class="op">&lt;-</span> <span class="va">nhdplus_idaho</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">distance_by_huc</span><span class="op">)</span></span>
+<span><span class="va">nhdplus_idaho</span> <span class="op">&lt;-</span> <span class="va">nhdplus_idaho</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">distance_by_huc</span>, by <span class="op">=</span> <span class="st">'huc12'</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">waterbodies_idaho</span> <span class="op">&lt;-</span> <span class="va">waterbodies_idaho</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">distance_by_huc</span><span class="op">)</span></span>
+<span><span class="va">waterbodies_idaho</span> <span class="op">&lt;-</span> <span class="va">waterbodies_idaho</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">distance_by_huc</span>, by <span class="op">=</span> <span class="st">'huc12'</span><span class="op">)</span></span></code></pre></div>
+<p>Finally, to make this complete we need to account for the areas that
+are NA’s and within Forest Service land and give them a <code>1</code>
+since these are likely wildnerness areas.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">### bring in your own admin units layer</span></span>
+<span><span class="va">fs_lands</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">read_sf</a></span><span class="op">(</span><span class="st">'Z:/fisheries/btbaseline/data/bt_baseline.gpkg'</span>, layer <span class="op">=</span> <span class="st">'admin_units'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">waterbodies_idaho</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">huc12</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_write.html" class="external-link">write_sf</a></span><span class="op">(</span><span class="st">'data/simple_features.gpkg'</span>, layer <span class="op">=</span> <span class="st">'waterbodies_idaho'</span>, delete_layer <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
-<span><span class="va">nhdplus_idaho</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">huc12</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_write.html" class="external-link">write_sf</a></span><span class="op">(</span><span class="st">'data/simple_features.gpkg'</span>, layer <span class="op">=</span> <span class="st">'nhdplus_idaho'</span>, delete_layer <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">npcw_idph</span> <span class="op">&lt;-</span> <span class="va">fs_lands</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">FORESTNAME</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Nez Perce-Clearwater National Forest'</span>,<span class="st">'Idaho Panhandle National Forests'</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/valid.html" class="external-link">st_make_valid</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_combine.html" class="external-link">st_union</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">### get for nhdplus</span></span>
+<span><span class="va">wild_water</span> <span class="op">&lt;-</span> <span class="va">nhdplus_idaho</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_binary_pred.html" class="external-link">st_intersects</a></span><span class="op">(</span><span class="va">npcw_idph</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">wild_water</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_vec</a></span><span class="op">(</span><span class="va">wild_water</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="cn">NA</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">nhdplus_idaho</span><span class="op">$</span><span class="va">fs_land</span> <span class="op">&lt;-</span> <span class="va">wild_water</span></span>
+<span></span>
+<span><span class="co">### now for waterbodies</span></span>
+<span></span>
+<span><span class="va">wild_water</span> <span class="op">&lt;-</span> <span class="va">waterbodies_idaho</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_binary_pred.html" class="external-link">st_intersects</a></span><span class="op">(</span><span class="va">npcw_idph</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">wild_water</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_vec</a></span><span class="op">(</span><span class="va">wild_water</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="cn">NA</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">waterbodies_idaho</span><span class="op">$</span><span class="va">fs_land</span> <span class="op">&lt;-</span> <span class="va">wild_water</span></span>
+<span></span>
+<span></span>
+<span><span class="co">### bring it all together</span></span>
+<span><span class="va">nhdplus_idaho_final_social</span> <span class="op">&lt;-</span> <span class="va">nhdplus_idaho</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>mussel_proximity <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">mussel_proximity</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">fs_land</span> <span class="op">==</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="va">mussel_proximity</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">waterbodies_idaho_final_social</span> <span class="op">&lt;-</span> <span class="va">waterbodies_idaho</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>mussel_proximity <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">mussel_proximity</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">fs_land</span> <span class="op">==</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="va">mussel_proximity</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">waterbodies_idaho_final_social</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_binary_ops.html" class="external-link">st_intersection</a></span><span class="op">(</span><span class="va">idaho</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_write.html" class="external-link">write_sf</a></span><span class="op">(</span><span class="st">'data/simple_features.gpkg'</span>, layer <span class="op">=</span> <span class="st">'waterbodies_idaho_final_social'</span>, delete_layer <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">nhdplus_idaho_final_social</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_binary_ops.html" class="external-link">st_intersection</a></span><span class="op">(</span><span class="va">idaho</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_write.html" class="external-link">write_sf</a></span><span class="op">(</span><span class="st">'data/simple_features.gpkg'</span>, layer <span class="op">=</span> <span class="st">'nhdplus_idaho_final_social'</span>, delete_layer <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -2206,32 +2313,7 @@ Below is the workflow used to get</p>
 
     <h2 class="footer-heading">aisrisk</h2>
 
-    <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-<li>aisrisk</li>
-          <li><a href="mailto:"></a></li>
-		  <li><a href="https://github.com///edit/gh-pages/" class="external-link">Improve Content</a></li>
-        </ul>
-</div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul>
-</div>
-
-      <div class="footer-col footer-col-3">
         <p></p>
       </div>
     </div>
@@ -2239,14 +2321,12 @@ Below is the workflow used to get</p>
 <!-- / end footer -->
 
 
-    
-   </div>
-
-  
-
-  
-
-  </footer>
+    </footer>
 </div>
-</body>
+
+  
+
+  
+
+  </body>
 </html>

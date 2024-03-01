@@ -1,4 +1,4 @@
-url: https://soilwaterfish.github.io/aisrisk/
+url: https://github.com/soilwaterfish/aisrisk/
 template:
   package: rrmtemplate
 navbar:
@@ -19,4 +19,4 @@ navbar:
       href: reference/index.html
     - icon: fa fa-github fa-lg
       text: "github"
-      href: https://soilwaterfish.github.io/aisrisk/
+      href: https://github.com/soilwaterfish/aisrisk/
