@@ -17,7 +17,7 @@ Panhandle National Forests.
 
 This is a preliminary output accomplished by the vignettes.
 
-# Disclaimer
+## Disclaimer
 
 This information is preliminary or provisional and is subject to
 revision. It is being provided to meet the need for timely best science.

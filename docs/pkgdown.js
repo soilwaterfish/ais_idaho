@@ -1,3 +1,4 @@
+
 /* http://gregfranko.com/blog/jquery-best-practices/ */
 (function($) {
   $(function() {
@@ -152,5 +153,4 @@ async function searchFuse(query, callback) {
   });
   });
 })(window.jQuery || window.$)
-
 
