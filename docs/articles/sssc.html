@@ -125,16 +125,18 @@ population is from the waterbodies and streams/rivers. We do not have
 any angler data or a proxy for this variable right now so this was left
 out of the analysis.</p>
 <p>Our goal with the vignette is to show the steps it took to get to the
-figure output below. The {aisrisk} package abstracts away these steps
-into functions but this is the real meat of the workflow and how it was
-created.</p>
-<p><img src="www/images/social_final.png" width="200%"></p>
+figure output below.</p>
+<div class="figure">
+<img src="www/images/social_final.png" alt="Final social scores for the 4 metrics." width="200%"><p class="caption">
+Final social scores for the 4 metrics.
+</p>
+</div>
 <div class="section level4">
 <h4 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
 </h4>
 <p>You’ll need the waterbodies, flowlines and HUC 12’s for Idaho via
 NDHPLus V2. This can be retrieved from various <a href="https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer" class="external-link">sources</a>
-but was retrieved via thr <a href="">nhdplusTools</a> package in R. The
+but was retrieved via the <a href="">nhdplusTools</a> package in R. The
 waterbodies and flowlines will contain two different geometry types:
 POLYLINE (flowlines) and MULTIPOLYGON (waterbodies). So be aware when
 bringing it all together at the end for the final score and why some
@@ -146,23 +148,23 @@ things are done certain ways.</p>
 <p>Waterbody type was calculated using the NHDPlus dataset and
 associated attribute streamorder (Strahler) for streams and rivers and
 acreage for the waterbodies.</p>
-<div id="ikkeiwfhts" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ikkeiwfhts table {
+<div id="ubvzkvukrp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ubvzkvukrp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ikkeiwfhts thead, #ikkeiwfhts tbody, #ikkeiwfhts tfoot, #ikkeiwfhts tr, #ikkeiwfhts td, #ikkeiwfhts th {
+#ubvzkvukrp thead, #ubvzkvukrp tbody, #ubvzkvukrp tfoot, #ubvzkvukrp tr, #ubvzkvukrp td, #ubvzkvukrp th {
   border-style: none;
 }
 
-#ikkeiwfhts p {
+#ubvzkvukrp p {
   margin: 0;
   padding: 0;
 }
 
-#ikkeiwfhts .gt_table {
+#ubvzkvukrp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -188,12 +190,12 @@ acreage for the waterbodies.</p>
   border-left-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_caption {
+#ubvzkvukrp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ikkeiwfhts .gt_title {
+#ubvzkvukrp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -205,7 +207,7 @@ acreage for the waterbodies.</p>
   border-bottom-width: 0;
 }
 
-#ikkeiwfhts .gt_subtitle {
+#ubvzkvukrp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -217,7 +219,7 @@ acreage for the waterbodies.</p>
   border-top-width: 0;
 }
 
-#ikkeiwfhts .gt_heading {
+#ubvzkvukrp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -229,13 +231,13 @@ acreage for the waterbodies.</p>
   border-right-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_bottom_border {
+#ubvzkvukrp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_col_headings {
+#ubvzkvukrp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -250,7 +252,7 @@ acreage for the waterbodies.</p>
   border-right-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_col_heading {
+#ubvzkvukrp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -270,7 +272,7 @@ acreage for the waterbodies.</p>
   overflow-x: hidden;
 }
 
-#ikkeiwfhts .gt_column_spanner_outer {
+#ubvzkvukrp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -282,15 +284,15 @@ acreage for the waterbodies.</p>
   padding-right: 4px;
 }
 
-#ikkeiwfhts .gt_column_spanner_outer:first-child {
+#ubvzkvukrp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ikkeiwfhts .gt_column_spanner_outer:last-child {
+#ubvzkvukrp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ikkeiwfhts .gt_column_spanner {
+#ubvzkvukrp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -302,11 +304,11 @@ acreage for the waterbodies.</p>
   width: 100%;
 }
 
-#ikkeiwfhts .gt_spanner_row {
+#ubvzkvukrp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ikkeiwfhts .gt_group_heading {
+#ubvzkvukrp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -332,7 +334,7 @@ acreage for the waterbodies.</p>
   text-align: left;
 }
 
-#ikkeiwfhts .gt_empty_group_heading {
+#ubvzkvukrp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -347,15 +349,15 @@ acreage for the waterbodies.</p>
   vertical-align: middle;
 }
 
-#ikkeiwfhts .gt_from_md > :first-child {
+#ubvzkvukrp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ikkeiwfhts .gt_from_md > :last-child {
+#ubvzkvukrp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ikkeiwfhts .gt_row {
+#ubvzkvukrp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -374,7 +376,7 @@ acreage for the waterbodies.</p>
   overflow-x: hidden;
 }
 
-#ikkeiwfhts .gt_stub {
+#ubvzkvukrp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -387,7 +389,7 @@ acreage for the waterbodies.</p>
   padding-right: 5px;
 }
 
-#ikkeiwfhts .gt_stub_row_group {
+#ubvzkvukrp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -401,15 +403,15 @@ acreage for the waterbodies.</p>
   vertical-align: top;
 }
 
-#ikkeiwfhts .gt_row_group_first td {
+#ubvzkvukrp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ikkeiwfhts .gt_row_group_first th {
+#ubvzkvukrp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ikkeiwfhts .gt_summary_row {
+#ubvzkvukrp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -419,16 +421,16 @@ acreage for the waterbodies.</p>
   padding-right: 5px;
 }
 
-#ikkeiwfhts .gt_first_summary_row {
+#ubvzkvukrp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_first_summary_row.thick {
+#ubvzkvukrp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ikkeiwfhts .gt_last_summary_row {
+#ubvzkvukrp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -438,7 +440,7 @@ acreage for the waterbodies.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_grand_summary_row {
+#ubvzkvukrp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -448,7 +450,7 @@ acreage for the waterbodies.</p>
   padding-right: 5px;
 }
 
-#ikkeiwfhts .gt_first_grand_summary_row {
+#ubvzkvukrp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -458,7 +460,7 @@ acreage for the waterbodies.</p>
   border-top-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_last_grand_summary_row_top {
+#ubvzkvukrp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -468,11 +470,11 @@ acreage for the waterbodies.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_striped {
+#ubvzkvukrp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ikkeiwfhts .gt_table_body {
+#ubvzkvukrp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -481,7 +483,7 @@ acreage for the waterbodies.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_footnotes {
+#ubvzkvukrp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -495,7 +497,7 @@ acreage for the waterbodies.</p>
   border-right-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_footnote {
+#ubvzkvukrp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -504,7 +506,7 @@ acreage for the waterbodies.</p>
   padding-right: 5px;
 }
 
-#ikkeiwfhts .gt_sourcenotes {
+#ubvzkvukrp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -518,7 +520,7 @@ acreage for the waterbodies.</p>
   border-right-color: #D3D3D3;
 }
 
-#ikkeiwfhts .gt_sourcenote {
+#ubvzkvukrp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -526,63 +528,63 @@ acreage for the waterbodies.</p>
   padding-right: 5px;
 }
 
-#ikkeiwfhts .gt_left {
+#ubvzkvukrp .gt_left {
   text-align: left;
 }
 
-#ikkeiwfhts .gt_center {
+#ubvzkvukrp .gt_center {
   text-align: center;
 }
 
-#ikkeiwfhts .gt_right {
+#ubvzkvukrp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ikkeiwfhts .gt_font_normal {
+#ubvzkvukrp .gt_font_normal {
   font-weight: normal;
 }
 
-#ikkeiwfhts .gt_font_bold {
+#ubvzkvukrp .gt_font_bold {
   font-weight: bold;
 }
 
-#ikkeiwfhts .gt_font_italic {
+#ubvzkvukrp .gt_font_italic {
   font-style: italic;
 }
 
-#ikkeiwfhts .gt_super {
+#ubvzkvukrp .gt_super {
   font-size: 65%;
 }
 
-#ikkeiwfhts .gt_footnote_marks {
+#ubvzkvukrp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ikkeiwfhts .gt_asterisk {
+#ubvzkvukrp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ikkeiwfhts .gt_indent_1 {
+#ubvzkvukrp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ikkeiwfhts .gt_indent_2 {
+#ubvzkvukrp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ikkeiwfhts .gt_indent_3 {
+#ubvzkvukrp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ikkeiwfhts .gt_indent_4 {
+#ubvzkvukrp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ikkeiwfhts .gt_indent_5 {
+#ubvzkvukrp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -643,23 +645,23 @@ flowlines by name to get lengths.</p>
 <li><p>Get the length of flowlines based on <code>gnis_name</code>;
 meaning flowlines with names will be connected by length.</p></li>
 </ol>
-<div id="tzustmqdjd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tzustmqdjd table {
+<div id="qdnjabrbpq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qdnjabrbpq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tzustmqdjd thead, #tzustmqdjd tbody, #tzustmqdjd tfoot, #tzustmqdjd tr, #tzustmqdjd td, #tzustmqdjd th {
+#qdnjabrbpq thead, #qdnjabrbpq tbody, #qdnjabrbpq tfoot, #qdnjabrbpq tr, #qdnjabrbpq td, #qdnjabrbpq th {
   border-style: none;
 }
 
-#tzustmqdjd p {
+#qdnjabrbpq p {
   margin: 0;
   padding: 0;
 }
 
-#tzustmqdjd .gt_table {
+#qdnjabrbpq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -685,12 +687,12 @@ meaning flowlines with names will be connected by length.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_caption {
+#qdnjabrbpq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tzustmqdjd .gt_title {
+#qdnjabrbpq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -702,7 +704,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-bottom-width: 0;
 }
 
-#tzustmqdjd .gt_subtitle {
+#qdnjabrbpq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -714,7 +716,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-top-width: 0;
 }
 
-#tzustmqdjd .gt_heading {
+#qdnjabrbpq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -726,13 +728,13 @@ meaning flowlines with names will be connected by length.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_bottom_border {
+#qdnjabrbpq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_col_headings {
+#qdnjabrbpq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -747,7 +749,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_col_heading {
+#qdnjabrbpq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -767,7 +769,7 @@ meaning flowlines with names will be connected by length.</p></li>
   overflow-x: hidden;
 }
 
-#tzustmqdjd .gt_column_spanner_outer {
+#qdnjabrbpq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -779,15 +781,15 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 4px;
 }
 
-#tzustmqdjd .gt_column_spanner_outer:first-child {
+#qdnjabrbpq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tzustmqdjd .gt_column_spanner_outer:last-child {
+#qdnjabrbpq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tzustmqdjd .gt_column_spanner {
+#qdnjabrbpq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -799,11 +801,11 @@ meaning flowlines with names will be connected by length.</p></li>
   width: 100%;
 }
 
-#tzustmqdjd .gt_spanner_row {
+#qdnjabrbpq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tzustmqdjd .gt_group_heading {
+#qdnjabrbpq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -829,7 +831,7 @@ meaning flowlines with names will be connected by length.</p></li>
   text-align: left;
 }
 
-#tzustmqdjd .gt_empty_group_heading {
+#qdnjabrbpq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -844,15 +846,15 @@ meaning flowlines with names will be connected by length.</p></li>
   vertical-align: middle;
 }
 
-#tzustmqdjd .gt_from_md > :first-child {
+#qdnjabrbpq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tzustmqdjd .gt_from_md > :last-child {
+#qdnjabrbpq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tzustmqdjd .gt_row {
+#qdnjabrbpq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -871,7 +873,7 @@ meaning flowlines with names will be connected by length.</p></li>
   overflow-x: hidden;
 }
 
-#tzustmqdjd .gt_stub {
+#qdnjabrbpq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -884,7 +886,7 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 5px;
 }
 
-#tzustmqdjd .gt_stub_row_group {
+#qdnjabrbpq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -898,15 +900,15 @@ meaning flowlines with names will be connected by length.</p></li>
   vertical-align: top;
 }
 
-#tzustmqdjd .gt_row_group_first td {
+#qdnjabrbpq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tzustmqdjd .gt_row_group_first th {
+#qdnjabrbpq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tzustmqdjd .gt_summary_row {
+#qdnjabrbpq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -916,16 +918,16 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 5px;
 }
 
-#tzustmqdjd .gt_first_summary_row {
+#qdnjabrbpq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_first_summary_row.thick {
+#qdnjabrbpq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tzustmqdjd .gt_last_summary_row {
+#qdnjabrbpq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -935,7 +937,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_grand_summary_row {
+#qdnjabrbpq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -945,7 +947,7 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 5px;
 }
 
-#tzustmqdjd .gt_first_grand_summary_row {
+#qdnjabrbpq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -955,7 +957,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_last_grand_summary_row_top {
+#qdnjabrbpq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -965,11 +967,11 @@ meaning flowlines with names will be connected by length.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_striped {
+#qdnjabrbpq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tzustmqdjd .gt_table_body {
+#qdnjabrbpq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -978,7 +980,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_footnotes {
+#qdnjabrbpq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -992,7 +994,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_footnote {
+#qdnjabrbpq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1001,7 +1003,7 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 5px;
 }
 
-#tzustmqdjd .gt_sourcenotes {
+#qdnjabrbpq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1015,7 +1017,7 @@ meaning flowlines with names will be connected by length.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#tzustmqdjd .gt_sourcenote {
+#qdnjabrbpq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1023,63 +1025,63 @@ meaning flowlines with names will be connected by length.</p></li>
   padding-right: 5px;
 }
 
-#tzustmqdjd .gt_left {
+#qdnjabrbpq .gt_left {
   text-align: left;
 }
 
-#tzustmqdjd .gt_center {
+#qdnjabrbpq .gt_center {
   text-align: center;
 }
 
-#tzustmqdjd .gt_right {
+#qdnjabrbpq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tzustmqdjd .gt_font_normal {
+#qdnjabrbpq .gt_font_normal {
   font-weight: normal;
 }
 
-#tzustmqdjd .gt_font_bold {
+#qdnjabrbpq .gt_font_bold {
   font-weight: bold;
 }
 
-#tzustmqdjd .gt_font_italic {
+#qdnjabrbpq .gt_font_italic {
   font-style: italic;
 }
 
-#tzustmqdjd .gt_super {
+#qdnjabrbpq .gt_super {
   font-size: 65%;
 }
 
-#tzustmqdjd .gt_footnote_marks {
+#qdnjabrbpq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tzustmqdjd .gt_asterisk {
+#qdnjabrbpq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tzustmqdjd .gt_indent_1 {
+#qdnjabrbpq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tzustmqdjd .gt_indent_2 {
+#qdnjabrbpq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tzustmqdjd .gt_indent_3 {
+#qdnjabrbpq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tzustmqdjd .gt_indent_4 {
+#qdnjabrbpq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tzustmqdjd .gt_indent_5 {
+#qdnjabrbpq .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1137,23 +1139,23 @@ waterbodies dataset. To account for mountain lake or reservoir (score
 3), I just took the elevation of the waterbodies centroid when available
 andand if no value then it was a larger lake likely in the lowland. This
 is definitely not perfect, but works for .</p>
-<div id="tpdzyvnenq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tpdzyvnenq table {
+<div id="eybjdxwmnf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#eybjdxwmnf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tpdzyvnenq thead, #tpdzyvnenq tbody, #tpdzyvnenq tfoot, #tpdzyvnenq tr, #tpdzyvnenq td, #tpdzyvnenq th {
+#eybjdxwmnf thead, #eybjdxwmnf tbody, #eybjdxwmnf tfoot, #eybjdxwmnf tr, #eybjdxwmnf td, #eybjdxwmnf th {
   border-style: none;
 }
 
-#tpdzyvnenq p {
+#eybjdxwmnf p {
   margin: 0;
   padding: 0;
 }
 
-#tpdzyvnenq .gt_table {
+#eybjdxwmnf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1179,12 +1181,12 @@ is definitely not perfect, but works for .</p>
   border-left-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_caption {
+#eybjdxwmnf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tpdzyvnenq .gt_title {
+#eybjdxwmnf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1196,7 +1198,7 @@ is definitely not perfect, but works for .</p>
   border-bottom-width: 0;
 }
 
-#tpdzyvnenq .gt_subtitle {
+#eybjdxwmnf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1208,7 +1210,7 @@ is definitely not perfect, but works for .</p>
   border-top-width: 0;
 }
 
-#tpdzyvnenq .gt_heading {
+#eybjdxwmnf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1220,13 +1222,13 @@ is definitely not perfect, but works for .</p>
   border-right-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_bottom_border {
+#eybjdxwmnf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_col_headings {
+#eybjdxwmnf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1241,7 +1243,7 @@ is definitely not perfect, but works for .</p>
   border-right-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_col_heading {
+#eybjdxwmnf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1261,7 +1263,7 @@ is definitely not perfect, but works for .</p>
   overflow-x: hidden;
 }
 
-#tpdzyvnenq .gt_column_spanner_outer {
+#eybjdxwmnf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1273,15 +1275,15 @@ is definitely not perfect, but works for .</p>
   padding-right: 4px;
 }
 
-#tpdzyvnenq .gt_column_spanner_outer:first-child {
+#eybjdxwmnf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tpdzyvnenq .gt_column_spanner_outer:last-child {
+#eybjdxwmnf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tpdzyvnenq .gt_column_spanner {
+#eybjdxwmnf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1293,11 +1295,11 @@ is definitely not perfect, but works for .</p>
   width: 100%;
 }
 
-#tpdzyvnenq .gt_spanner_row {
+#eybjdxwmnf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tpdzyvnenq .gt_group_heading {
+#eybjdxwmnf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1323,7 +1325,7 @@ is definitely not perfect, but works for .</p>
   text-align: left;
 }
 
-#tpdzyvnenq .gt_empty_group_heading {
+#eybjdxwmnf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1338,15 +1340,15 @@ is definitely not perfect, but works for .</p>
   vertical-align: middle;
 }
 
-#tpdzyvnenq .gt_from_md > :first-child {
+#eybjdxwmnf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tpdzyvnenq .gt_from_md > :last-child {
+#eybjdxwmnf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tpdzyvnenq .gt_row {
+#eybjdxwmnf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1365,7 +1367,7 @@ is definitely not perfect, but works for .</p>
   overflow-x: hidden;
 }
 
-#tpdzyvnenq .gt_stub {
+#eybjdxwmnf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1378,7 +1380,7 @@ is definitely not perfect, but works for .</p>
   padding-right: 5px;
 }
 
-#tpdzyvnenq .gt_stub_row_group {
+#eybjdxwmnf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1392,15 +1394,15 @@ is definitely not perfect, but works for .</p>
   vertical-align: top;
 }
 
-#tpdzyvnenq .gt_row_group_first td {
+#eybjdxwmnf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tpdzyvnenq .gt_row_group_first th {
+#eybjdxwmnf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tpdzyvnenq .gt_summary_row {
+#eybjdxwmnf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1410,16 +1412,16 @@ is definitely not perfect, but works for .</p>
   padding-right: 5px;
 }
 
-#tpdzyvnenq .gt_first_summary_row {
+#eybjdxwmnf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_first_summary_row.thick {
+#eybjdxwmnf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tpdzyvnenq .gt_last_summary_row {
+#eybjdxwmnf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1429,7 +1431,7 @@ is definitely not perfect, but works for .</p>
   border-bottom-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_grand_summary_row {
+#eybjdxwmnf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1439,7 +1441,7 @@ is definitely not perfect, but works for .</p>
   padding-right: 5px;
 }
 
-#tpdzyvnenq .gt_first_grand_summary_row {
+#eybjdxwmnf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1449,7 +1451,7 @@ is definitely not perfect, but works for .</p>
   border-top-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_last_grand_summary_row_top {
+#eybjdxwmnf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1459,11 +1461,11 @@ is definitely not perfect, but works for .</p>
   border-bottom-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_striped {
+#eybjdxwmnf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tpdzyvnenq .gt_table_body {
+#eybjdxwmnf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1472,7 +1474,7 @@ is definitely not perfect, but works for .</p>
   border-bottom-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_footnotes {
+#eybjdxwmnf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1486,7 +1488,7 @@ is definitely not perfect, but works for .</p>
   border-right-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_footnote {
+#eybjdxwmnf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1495,7 +1497,7 @@ is definitely not perfect, but works for .</p>
   padding-right: 5px;
 }
 
-#tpdzyvnenq .gt_sourcenotes {
+#eybjdxwmnf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1509,7 +1511,7 @@ is definitely not perfect, but works for .</p>
   border-right-color: #D3D3D3;
 }
 
-#tpdzyvnenq .gt_sourcenote {
+#eybjdxwmnf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1517,63 +1519,63 @@ is definitely not perfect, but works for .</p>
   padding-right: 5px;
 }
 
-#tpdzyvnenq .gt_left {
+#eybjdxwmnf .gt_left {
   text-align: left;
 }
 
-#tpdzyvnenq .gt_center {
+#eybjdxwmnf .gt_center {
   text-align: center;
 }
 
-#tpdzyvnenq .gt_right {
+#eybjdxwmnf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tpdzyvnenq .gt_font_normal {
+#eybjdxwmnf .gt_font_normal {
   font-weight: normal;
 }
 
-#tpdzyvnenq .gt_font_bold {
+#eybjdxwmnf .gt_font_bold {
   font-weight: bold;
 }
 
-#tpdzyvnenq .gt_font_italic {
+#eybjdxwmnf .gt_font_italic {
   font-style: italic;
 }
 
-#tpdzyvnenq .gt_super {
+#eybjdxwmnf .gt_super {
   font-size: 65%;
 }
 
-#tpdzyvnenq .gt_footnote_marks {
+#eybjdxwmnf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tpdzyvnenq .gt_asterisk {
+#eybjdxwmnf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tpdzyvnenq .gt_indent_1 {
+#eybjdxwmnf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tpdzyvnenq .gt_indent_2 {
+#eybjdxwmnf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tpdzyvnenq .gt_indent_3 {
+#eybjdxwmnf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tpdzyvnenq .gt_indent_4 {
+#eybjdxwmnf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tpdzyvnenq .gt_indent_5 {
+#eybjdxwmnf .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1643,23 +1645,23 @@ the nearest mussel population. In Idaho this is the Snake River near
 Twin Falls but could change so updating will be important. Below is the
 workflow used to create a road network and then calculate the cost
 distance from that affected area.</p>
-<div id="yijnvezpnp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yijnvezpnp table {
+<div id="clitszjqeo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#clitszjqeo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yijnvezpnp thead, #yijnvezpnp tbody, #yijnvezpnp tfoot, #yijnvezpnp tr, #yijnvezpnp td, #yijnvezpnp th {
+#clitszjqeo thead, #clitszjqeo tbody, #clitszjqeo tfoot, #clitszjqeo tr, #clitszjqeo td, #clitszjqeo th {
   border-style: none;
 }
 
-#yijnvezpnp p {
+#clitszjqeo p {
   margin: 0;
   padding: 0;
 }
 
-#yijnvezpnp .gt_table {
+#clitszjqeo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1685,12 +1687,12 @@ distance from that affected area.</p>
   border-left-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_caption {
+#clitszjqeo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yijnvezpnp .gt_title {
+#clitszjqeo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1702,7 +1704,7 @@ distance from that affected area.</p>
   border-bottom-width: 0;
 }
 
-#yijnvezpnp .gt_subtitle {
+#clitszjqeo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1714,7 +1716,7 @@ distance from that affected area.</p>
   border-top-width: 0;
 }
 
-#yijnvezpnp .gt_heading {
+#clitszjqeo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1726,13 +1728,13 @@ distance from that affected area.</p>
   border-right-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_bottom_border {
+#clitszjqeo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_col_headings {
+#clitszjqeo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1747,7 +1749,7 @@ distance from that affected area.</p>
   border-right-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_col_heading {
+#clitszjqeo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1767,7 +1769,7 @@ distance from that affected area.</p>
   overflow-x: hidden;
 }
 
-#yijnvezpnp .gt_column_spanner_outer {
+#clitszjqeo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1779,15 +1781,15 @@ distance from that affected area.</p>
   padding-right: 4px;
 }
 
-#yijnvezpnp .gt_column_spanner_outer:first-child {
+#clitszjqeo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yijnvezpnp .gt_column_spanner_outer:last-child {
+#clitszjqeo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yijnvezpnp .gt_column_spanner {
+#clitszjqeo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1799,11 +1801,11 @@ distance from that affected area.</p>
   width: 100%;
 }
 
-#yijnvezpnp .gt_spanner_row {
+#clitszjqeo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yijnvezpnp .gt_group_heading {
+#clitszjqeo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1829,7 +1831,7 @@ distance from that affected area.</p>
   text-align: left;
 }
 
-#yijnvezpnp .gt_empty_group_heading {
+#clitszjqeo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1844,15 +1846,15 @@ distance from that affected area.</p>
   vertical-align: middle;
 }
 
-#yijnvezpnp .gt_from_md > :first-child {
+#clitszjqeo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yijnvezpnp .gt_from_md > :last-child {
+#clitszjqeo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yijnvezpnp .gt_row {
+#clitszjqeo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1871,7 +1873,7 @@ distance from that affected area.</p>
   overflow-x: hidden;
 }
 
-#yijnvezpnp .gt_stub {
+#clitszjqeo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1884,7 +1886,7 @@ distance from that affected area.</p>
   padding-right: 5px;
 }
 
-#yijnvezpnp .gt_stub_row_group {
+#clitszjqeo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1898,15 +1900,15 @@ distance from that affected area.</p>
   vertical-align: top;
 }
 
-#yijnvezpnp .gt_row_group_first td {
+#clitszjqeo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yijnvezpnp .gt_row_group_first th {
+#clitszjqeo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yijnvezpnp .gt_summary_row {
+#clitszjqeo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1916,16 +1918,16 @@ distance from that affected area.</p>
   padding-right: 5px;
 }
 
-#yijnvezpnp .gt_first_summary_row {
+#clitszjqeo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_first_summary_row.thick {
+#clitszjqeo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yijnvezpnp .gt_last_summary_row {
+#clitszjqeo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1935,7 +1937,7 @@ distance from that affected area.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_grand_summary_row {
+#clitszjqeo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1945,7 +1947,7 @@ distance from that affected area.</p>
   padding-right: 5px;
 }
 
-#yijnvezpnp .gt_first_grand_summary_row {
+#clitszjqeo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1955,7 +1957,7 @@ distance from that affected area.</p>
   border-top-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_last_grand_summary_row_top {
+#clitszjqeo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1965,11 +1967,11 @@ distance from that affected area.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_striped {
+#clitszjqeo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yijnvezpnp .gt_table_body {
+#clitszjqeo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1978,7 +1980,7 @@ distance from that affected area.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_footnotes {
+#clitszjqeo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1992,7 +1994,7 @@ distance from that affected area.</p>
   border-right-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_footnote {
+#clitszjqeo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2001,7 +2003,7 @@ distance from that affected area.</p>
   padding-right: 5px;
 }
 
-#yijnvezpnp .gt_sourcenotes {
+#clitszjqeo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2015,7 +2017,7 @@ distance from that affected area.</p>
   border-right-color: #D3D3D3;
 }
 
-#yijnvezpnp .gt_sourcenote {
+#clitszjqeo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2023,63 +2025,63 @@ distance from that affected area.</p>
   padding-right: 5px;
 }
 
-#yijnvezpnp .gt_left {
+#clitszjqeo .gt_left {
   text-align: left;
 }
 
-#yijnvezpnp .gt_center {
+#clitszjqeo .gt_center {
   text-align: center;
 }
 
-#yijnvezpnp .gt_right {
+#clitszjqeo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yijnvezpnp .gt_font_normal {
+#clitszjqeo .gt_font_normal {
   font-weight: normal;
 }
 
-#yijnvezpnp .gt_font_bold {
+#clitszjqeo .gt_font_bold {
   font-weight: bold;
 }
 
-#yijnvezpnp .gt_font_italic {
+#clitszjqeo .gt_font_italic {
   font-style: italic;
 }
 
-#yijnvezpnp .gt_super {
+#clitszjqeo .gt_super {
   font-size: 65%;
 }
 
-#yijnvezpnp .gt_footnote_marks {
+#clitszjqeo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yijnvezpnp .gt_asterisk {
+#clitszjqeo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yijnvezpnp .gt_indent_1 {
+#clitszjqeo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yijnvezpnp .gt_indent_2 {
+#clitszjqeo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yijnvezpnp .gt_indent_3 {
+#clitszjqeo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yijnvezpnp .gt_indent_4 {
+#clitszjqeo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yijnvezpnp .gt_indent_5 {
+#clitszjqeo .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2219,7 +2221,7 @@ having roads but the state and government road layers are not there.</p>
 <span></span>
 <span><span class="va">huc_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_binary_pred.html" class="external-link">st_intersects</a></span><span class="op">(</span><span class="va">net_final_edges</span>, <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">huc12</span>, crs <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">net_final_edges</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">huc_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_vec</a></span><span class="op">(</span><span class="va">huc_list</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="cn">NA</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">huc_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_vec</a></span><span class="op">(</span><span class="va">huc_list</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span>, <span class="cn">NA</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">huc12s</span> <span class="op">&lt;-</span> <span class="va">huc12</span><span class="op">[</span><span class="va">huc_list</span>,<span class="op">]</span><span class="op">$</span><span class="va">huc12</span></span>
 <span></span>
@@ -2311,11 +2313,8 @@ since these are likely wildnerness areas.</p>
     <footer><!-- begin footer --><div class="footer">
     <div class="wrapper">
 
-    <h2 class="footer-heading">aisrisk</h2>
+    <h2 class="footer-heading"></h2>
 
-      <div class="footer-col footer-col-1">
-        <p></p>
-      </div>
     </div>
 </div>
 <!-- / end footer -->

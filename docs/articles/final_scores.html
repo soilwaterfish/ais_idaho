@@ -104,18 +104,31 @@ Nez-Perce/Clearwater and Idaho Panhandle National Forests. We used
 methods described by Montana Fish, Wildlife and Parks AIS prioritization
 lotic and lentic environments to the best we could. Some of the input
 data is difficult to retrieve due to lack of collection and various
-sources, thus there are data gaps that would likely help with these
-methods.</p>
+unorganized sources, thus there are data gaps that would likely help
+with these final results.</p>
+</div>
+<div class="section level2">
+<h2 id="final-scores">Final Scores<a class="anchor" aria-label="anchor" href="#final-scores"></a>
+</h2>
+<p>The final score calculations are done by adding together both social
+and habitat scores and then fitting into a refined scoring matrix. This
+forces the scores to be from 1 (highest risk) to 10 (least risk). You’ll
+notice below that there are no scores with 1, 2, or 5 and this can be
+attributed to the lack of data available in the habitat suitability
+metrics (1 and 2) as well as 5 being a peculiar scoring designation (no
+data in either habitat or social), which doesn’t happen in our case.
+Below are the final designations;</p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-1-1.png" width="200%"></p>
 </div>
 <div class="section level2 tabset tabset-pills">
-<h2 class="tabset tabset-pills" id="social-suitability-score-criteria">Social Suitability Score Criteria<a class="anchor" aria-label="anchor" href="#social-suitability-score-criteria"></a>
+<h2 class="tabset tabset-pills" id="social-suitability-score">Social Suitability Score<a class="anchor" aria-label="anchor" href="#social-suitability-score"></a>
 </h2>
 <p>The Social Suitability Score is broken into 5 different indicators of
-potential risk of invasion via social players. These factors are then
+potential invasion risk via social proxies. These factors are then
 stratified into categories 1-4 based on different thresholds (see Tables
 below). These scores are then used for the final risk score by adding to
 the Habitat Suitability Score.</p>
-<p><img src="final_scores_files/figure-html/unnamed-chunk-1-1.png" width="200%"></p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-2-1.png" width="200%"></p>
 <ol style="list-style-type: decimal">
 <li><p>Waterbody Type - This is simply breaking waters into risk by
 large lakes being most risk and small streams being less risk.</p></li>
@@ -134,7 +147,7 @@ higher days mean higher risk.</p></li>
 
 
 
-<ul class="nav nav-pills" id="social-suitability-score-criteria" role="tablist">
+<ul class="nav nav-pills" id="social-suitability-score" role="tablist">
 <li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#waterbody-type" id="waterbody-type-tab" type="button" role="tab" aria-controls="waterbody-type" aria-selected="true" class="active nav-link">Waterbody Type</button></li>
 <li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#waterbody-size" id="waterbody-size-tab" type="button" role="tab" aria-controls="waterbody-size" aria-selected="false" class="nav-link">Waterbody Size</button></li>
 <li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#position-in-watershed" id="position-in-watershed-tab" type="button" role="tab" aria-controls="position-in-watershed" aria-selected="false" class="nav-link">Position in Watershed</button></li>
@@ -146,26 +159,26 @@ higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-2-1.png" width="200%"></p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-3-1.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
-<div id="oswnysfkpa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oswnysfkpa table {
+<div id="vtvavkgvpo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vtvavkgvpo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oswnysfkpa thead, #oswnysfkpa tbody, #oswnysfkpa tfoot, #oswnysfkpa tr, #oswnysfkpa td, #oswnysfkpa th {
+#vtvavkgvpo thead, #vtvavkgvpo tbody, #vtvavkgvpo tfoot, #vtvavkgvpo tr, #vtvavkgvpo td, #vtvavkgvpo th {
   border-style: none;
 }
 
-#oswnysfkpa p {
+#vtvavkgvpo p {
   margin: 0;
   padding: 0;
 }
 
-#oswnysfkpa .gt_table {
+#vtvavkgvpo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -191,12 +204,12 @@ higher days mean higher risk.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_caption {
+#vtvavkgvpo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oswnysfkpa .gt_title {
+#vtvavkgvpo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -208,7 +221,7 @@ higher days mean higher risk.</p></li>
   border-bottom-width: 0;
 }
 
-#oswnysfkpa .gt_subtitle {
+#vtvavkgvpo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -220,7 +233,7 @@ higher days mean higher risk.</p></li>
   border-top-width: 0;
 }
 
-#oswnysfkpa .gt_heading {
+#vtvavkgvpo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -232,13 +245,13 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_bottom_border {
+#vtvavkgvpo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_col_headings {
+#vtvavkgvpo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -253,7 +266,7 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_col_heading {
+#vtvavkgvpo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -273,7 +286,7 @@ higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#oswnysfkpa .gt_column_spanner_outer {
+#vtvavkgvpo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -285,15 +298,15 @@ higher days mean higher risk.</p></li>
   padding-right: 4px;
 }
 
-#oswnysfkpa .gt_column_spanner_outer:first-child {
+#vtvavkgvpo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oswnysfkpa .gt_column_spanner_outer:last-child {
+#vtvavkgvpo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oswnysfkpa .gt_column_spanner {
+#vtvavkgvpo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -305,11 +318,11 @@ higher days mean higher risk.</p></li>
   width: 100%;
 }
 
-#oswnysfkpa .gt_spanner_row {
+#vtvavkgvpo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oswnysfkpa .gt_group_heading {
+#vtvavkgvpo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -335,7 +348,7 @@ higher days mean higher risk.</p></li>
   text-align: left;
 }
 
-#oswnysfkpa .gt_empty_group_heading {
+#vtvavkgvpo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -350,15 +363,15 @@ higher days mean higher risk.</p></li>
   vertical-align: middle;
 }
 
-#oswnysfkpa .gt_from_md > :first-child {
+#vtvavkgvpo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oswnysfkpa .gt_from_md > :last-child {
+#vtvavkgvpo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oswnysfkpa .gt_row {
+#vtvavkgvpo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -377,7 +390,7 @@ higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#oswnysfkpa .gt_stub {
+#vtvavkgvpo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -390,7 +403,7 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#oswnysfkpa .gt_stub_row_group {
+#vtvavkgvpo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -404,15 +417,15 @@ higher days mean higher risk.</p></li>
   vertical-align: top;
 }
 
-#oswnysfkpa .gt_row_group_first td {
+#vtvavkgvpo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oswnysfkpa .gt_row_group_first th {
+#vtvavkgvpo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oswnysfkpa .gt_summary_row {
+#vtvavkgvpo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -422,16 +435,16 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#oswnysfkpa .gt_first_summary_row {
+#vtvavkgvpo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_first_summary_row.thick {
+#vtvavkgvpo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oswnysfkpa .gt_last_summary_row {
+#vtvavkgvpo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -441,7 +454,7 @@ higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_grand_summary_row {
+#vtvavkgvpo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -451,7 +464,7 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#oswnysfkpa .gt_first_grand_summary_row {
+#vtvavkgvpo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -461,7 +474,7 @@ higher days mean higher risk.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_last_grand_summary_row_top {
+#vtvavkgvpo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -471,11 +484,11 @@ higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_striped {
+#vtvavkgvpo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oswnysfkpa .gt_table_body {
+#vtvavkgvpo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -484,7 +497,7 @@ higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_footnotes {
+#vtvavkgvpo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -498,7 +511,7 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_footnote {
+#vtvavkgvpo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -507,7 +520,7 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#oswnysfkpa .gt_sourcenotes {
+#vtvavkgvpo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -521,7 +534,7 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#oswnysfkpa .gt_sourcenote {
+#vtvavkgvpo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -529,63 +542,63 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#oswnysfkpa .gt_left {
+#vtvavkgvpo .gt_left {
   text-align: left;
 }
 
-#oswnysfkpa .gt_center {
+#vtvavkgvpo .gt_center {
   text-align: center;
 }
 
-#oswnysfkpa .gt_right {
+#vtvavkgvpo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oswnysfkpa .gt_font_normal {
+#vtvavkgvpo .gt_font_normal {
   font-weight: normal;
 }
 
-#oswnysfkpa .gt_font_bold {
+#vtvavkgvpo .gt_font_bold {
   font-weight: bold;
 }
 
-#oswnysfkpa .gt_font_italic {
+#vtvavkgvpo .gt_font_italic {
   font-style: italic;
 }
 
-#oswnysfkpa .gt_super {
+#vtvavkgvpo .gt_super {
   font-size: 65%;
 }
 
-#oswnysfkpa .gt_footnote_marks {
+#vtvavkgvpo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oswnysfkpa .gt_asterisk {
+#vtvavkgvpo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oswnysfkpa .gt_indent_1 {
+#vtvavkgvpo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oswnysfkpa .gt_indent_2 {
+#vtvavkgvpo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oswnysfkpa .gt_indent_3 {
+#vtvavkgvpo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oswnysfkpa .gt_indent_4 {
+#vtvavkgvpo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oswnysfkpa .gt_indent_5 {
+#vtvavkgvpo .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -622,26 +635,26 @@ higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-5-1.png" width="200%"></p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-6-1.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
-<div id="pzxdwolpse" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pzxdwolpse table {
+<div id="kgvgfncryj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kgvgfncryj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pzxdwolpse thead, #pzxdwolpse tbody, #pzxdwolpse tfoot, #pzxdwolpse tr, #pzxdwolpse td, #pzxdwolpse th {
+#kgvgfncryj thead, #kgvgfncryj tbody, #kgvgfncryj tfoot, #kgvgfncryj tr, #kgvgfncryj td, #kgvgfncryj th {
   border-style: none;
 }
 
-#pzxdwolpse p {
+#kgvgfncryj p {
   margin: 0;
   padding: 0;
 }
 
-#pzxdwolpse .gt_table {
+#kgvgfncryj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -667,12 +680,12 @@ higher days mean higher risk.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_caption {
+#kgvgfncryj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pzxdwolpse .gt_title {
+#kgvgfncryj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -684,7 +697,7 @@ higher days mean higher risk.</p></li>
   border-bottom-width: 0;
 }
 
-#pzxdwolpse .gt_subtitle {
+#kgvgfncryj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -696,7 +709,7 @@ higher days mean higher risk.</p></li>
   border-top-width: 0;
 }
 
-#pzxdwolpse .gt_heading {
+#kgvgfncryj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -708,13 +721,13 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_bottom_border {
+#kgvgfncryj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_col_headings {
+#kgvgfncryj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -729,7 +742,7 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_col_heading {
+#kgvgfncryj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -749,7 +762,7 @@ higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#pzxdwolpse .gt_column_spanner_outer {
+#kgvgfncryj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -761,15 +774,15 @@ higher days mean higher risk.</p></li>
   padding-right: 4px;
 }
 
-#pzxdwolpse .gt_column_spanner_outer:first-child {
+#kgvgfncryj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pzxdwolpse .gt_column_spanner_outer:last-child {
+#kgvgfncryj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pzxdwolpse .gt_column_spanner {
+#kgvgfncryj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -781,11 +794,11 @@ higher days mean higher risk.</p></li>
   width: 100%;
 }
 
-#pzxdwolpse .gt_spanner_row {
+#kgvgfncryj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pzxdwolpse .gt_group_heading {
+#kgvgfncryj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -811,7 +824,7 @@ higher days mean higher risk.</p></li>
   text-align: left;
 }
 
-#pzxdwolpse .gt_empty_group_heading {
+#kgvgfncryj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -826,15 +839,15 @@ higher days mean higher risk.</p></li>
   vertical-align: middle;
 }
 
-#pzxdwolpse .gt_from_md > :first-child {
+#kgvgfncryj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pzxdwolpse .gt_from_md > :last-child {
+#kgvgfncryj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pzxdwolpse .gt_row {
+#kgvgfncryj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -853,7 +866,7 @@ higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#pzxdwolpse .gt_stub {
+#kgvgfncryj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -866,7 +879,7 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#pzxdwolpse .gt_stub_row_group {
+#kgvgfncryj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -880,15 +893,15 @@ higher days mean higher risk.</p></li>
   vertical-align: top;
 }
 
-#pzxdwolpse .gt_row_group_first td {
+#kgvgfncryj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pzxdwolpse .gt_row_group_first th {
+#kgvgfncryj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pzxdwolpse .gt_summary_row {
+#kgvgfncryj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -898,16 +911,16 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#pzxdwolpse .gt_first_summary_row {
+#kgvgfncryj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_first_summary_row.thick {
+#kgvgfncryj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pzxdwolpse .gt_last_summary_row {
+#kgvgfncryj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -917,7 +930,7 @@ higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_grand_summary_row {
+#kgvgfncryj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -927,7 +940,7 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#pzxdwolpse .gt_first_grand_summary_row {
+#kgvgfncryj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -937,7 +950,7 @@ higher days mean higher risk.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_last_grand_summary_row_top {
+#kgvgfncryj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -947,11 +960,11 @@ higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_striped {
+#kgvgfncryj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pzxdwolpse .gt_table_body {
+#kgvgfncryj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -960,7 +973,7 @@ higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_footnotes {
+#kgvgfncryj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -974,7 +987,7 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_footnote {
+#kgvgfncryj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -983,7 +996,7 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#pzxdwolpse .gt_sourcenotes {
+#kgvgfncryj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -997,7 +1010,7 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#pzxdwolpse .gt_sourcenote {
+#kgvgfncryj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1005,63 +1018,63 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#pzxdwolpse .gt_left {
+#kgvgfncryj .gt_left {
   text-align: left;
 }
 
-#pzxdwolpse .gt_center {
+#kgvgfncryj .gt_center {
   text-align: center;
 }
 
-#pzxdwolpse .gt_right {
+#kgvgfncryj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pzxdwolpse .gt_font_normal {
+#kgvgfncryj .gt_font_normal {
   font-weight: normal;
 }
 
-#pzxdwolpse .gt_font_bold {
+#kgvgfncryj .gt_font_bold {
   font-weight: bold;
 }
 
-#pzxdwolpse .gt_font_italic {
+#kgvgfncryj .gt_font_italic {
   font-style: italic;
 }
 
-#pzxdwolpse .gt_super {
+#kgvgfncryj .gt_super {
   font-size: 65%;
 }
 
-#pzxdwolpse .gt_footnote_marks {
+#kgvgfncryj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pzxdwolpse .gt_asterisk {
+#kgvgfncryj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pzxdwolpse .gt_indent_1 {
+#kgvgfncryj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pzxdwolpse .gt_indent_2 {
+#kgvgfncryj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pzxdwolpse .gt_indent_3 {
+#kgvgfncryj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pzxdwolpse .gt_indent_4 {
+#kgvgfncryj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pzxdwolpse .gt_indent_5 {
+#kgvgfncryj .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1098,26 +1111,26 @@ higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-8-1.png" width="200%"></p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-9-1.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
-<div id="owtfofwybm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#owtfofwybm table {
+<div id="tovowphdxa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tovowphdxa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#owtfofwybm thead, #owtfofwybm tbody, #owtfofwybm tfoot, #owtfofwybm tr, #owtfofwybm td, #owtfofwybm th {
+#tovowphdxa thead, #tovowphdxa tbody, #tovowphdxa tfoot, #tovowphdxa tr, #tovowphdxa td, #tovowphdxa th {
   border-style: none;
 }
 
-#owtfofwybm p {
+#tovowphdxa p {
   margin: 0;
   padding: 0;
 }
 
-#owtfofwybm .gt_table {
+#tovowphdxa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1143,12 +1156,12 @@ higher days mean higher risk.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_caption {
+#tovowphdxa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#owtfofwybm .gt_title {
+#tovowphdxa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1160,7 +1173,7 @@ higher days mean higher risk.</p></li>
   border-bottom-width: 0;
 }
 
-#owtfofwybm .gt_subtitle {
+#tovowphdxa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1172,7 +1185,7 @@ higher days mean higher risk.</p></li>
   border-top-width: 0;
 }
 
-#owtfofwybm .gt_heading {
+#tovowphdxa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1184,13 +1197,13 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_bottom_border {
+#tovowphdxa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_col_headings {
+#tovowphdxa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1205,7 +1218,7 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_col_heading {
+#tovowphdxa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1225,7 +1238,7 @@ higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#owtfofwybm .gt_column_spanner_outer {
+#tovowphdxa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1237,15 +1250,15 @@ higher days mean higher risk.</p></li>
   padding-right: 4px;
 }
 
-#owtfofwybm .gt_column_spanner_outer:first-child {
+#tovowphdxa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#owtfofwybm .gt_column_spanner_outer:last-child {
+#tovowphdxa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#owtfofwybm .gt_column_spanner {
+#tovowphdxa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1257,11 +1270,11 @@ higher days mean higher risk.</p></li>
   width: 100%;
 }
 
-#owtfofwybm .gt_spanner_row {
+#tovowphdxa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#owtfofwybm .gt_group_heading {
+#tovowphdxa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1287,7 +1300,7 @@ higher days mean higher risk.</p></li>
   text-align: left;
 }
 
-#owtfofwybm .gt_empty_group_heading {
+#tovowphdxa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1302,15 +1315,15 @@ higher days mean higher risk.</p></li>
   vertical-align: middle;
 }
 
-#owtfofwybm .gt_from_md > :first-child {
+#tovowphdxa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#owtfofwybm .gt_from_md > :last-child {
+#tovowphdxa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#owtfofwybm .gt_row {
+#tovowphdxa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1329,7 +1342,7 @@ higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#owtfofwybm .gt_stub {
+#tovowphdxa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1342,7 +1355,7 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#owtfofwybm .gt_stub_row_group {
+#tovowphdxa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1356,15 +1369,15 @@ higher days mean higher risk.</p></li>
   vertical-align: top;
 }
 
-#owtfofwybm .gt_row_group_first td {
+#tovowphdxa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#owtfofwybm .gt_row_group_first th {
+#tovowphdxa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#owtfofwybm .gt_summary_row {
+#tovowphdxa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1374,16 +1387,16 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#owtfofwybm .gt_first_summary_row {
+#tovowphdxa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_first_summary_row.thick {
+#tovowphdxa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#owtfofwybm .gt_last_summary_row {
+#tovowphdxa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1393,7 +1406,7 @@ higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_grand_summary_row {
+#tovowphdxa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1403,7 +1416,7 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#owtfofwybm .gt_first_grand_summary_row {
+#tovowphdxa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1413,7 +1426,7 @@ higher days mean higher risk.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_last_grand_summary_row_top {
+#tovowphdxa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1423,11 +1436,11 @@ higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_striped {
+#tovowphdxa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#owtfofwybm .gt_table_body {
+#tovowphdxa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1436,7 +1449,7 @@ higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_footnotes {
+#tovowphdxa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1450,7 +1463,7 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_footnote {
+#tovowphdxa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1459,7 +1472,7 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#owtfofwybm .gt_sourcenotes {
+#tovowphdxa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1473,7 +1486,7 @@ higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#owtfofwybm .gt_sourcenote {
+#tovowphdxa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1481,63 +1494,63 @@ higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#owtfofwybm .gt_left {
+#tovowphdxa .gt_left {
   text-align: left;
 }
 
-#owtfofwybm .gt_center {
+#tovowphdxa .gt_center {
   text-align: center;
 }
 
-#owtfofwybm .gt_right {
+#tovowphdxa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#owtfofwybm .gt_font_normal {
+#tovowphdxa .gt_font_normal {
   font-weight: normal;
 }
 
-#owtfofwybm .gt_font_bold {
+#tovowphdxa .gt_font_bold {
   font-weight: bold;
 }
 
-#owtfofwybm .gt_font_italic {
+#tovowphdxa .gt_font_italic {
   font-style: italic;
 }
 
-#owtfofwybm .gt_super {
+#tovowphdxa .gt_super {
   font-size: 65%;
 }
 
-#owtfofwybm .gt_footnote_marks {
+#tovowphdxa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#owtfofwybm .gt_asterisk {
+#tovowphdxa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#owtfofwybm .gt_indent_1 {
+#tovowphdxa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#owtfofwybm .gt_indent_2 {
+#tovowphdxa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#owtfofwybm .gt_indent_3 {
+#tovowphdxa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#owtfofwybm .gt_indent_4 {
+#tovowphdxa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#owtfofwybm .gt_indent_5 {
+#tovowphdxa .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1572,85 +1585,28 @@ higher days mean higher risk.</p></li>
 </div>
 <div class="tab-pane" id="mussel-proximity" role="tabpanel" aria-labelledby="mussel-proximity-tab">
 
-<p>Still need to figure out mussel proximity.</p>
-</div>
-<div class="tab-pane" id="angler-days" role="tabpanel" aria-labelledby="angler-days-tab">
-
-<p>Still need to figure out angler days.</p>
-</div>
-</div>
-</div>
-<div class="section level2 tabset tabset-pills">
-<h2 class="tabset tabset-pills" id="habitat-suitability-score">Habitat Suitability Score<a class="anchor" aria-label="anchor" href="#habitat-suitability-score"></a>
-</h2>
-<p>The Habitat Suitability Score is broken into 6 different indicators
-of potential risk of invasion via physical conditions. These factors are
-then stratified into categories 1-4 based on different thresholds (see
-Tables below). These scores are then used for the final risk score by
-adding to the Social Suitability Score. Of note, there was a large data
-gap in some of these variables (calcium, dissolved oxygen, hardness),
-which will likely effect the overall score since it will be missing
-these data. This data gap leads to a low score, which it might be, but
-is structurally biased since the scores are additive.</p>
-<pre><code><span><span class="co">## Warning: Removed 1 rows containing missing values (`position_stack()`).</span></span></code></pre>
-<p><img src="final_scores_files/figure-html/unnamed-chunk-11-1.png" width="200%"></p>
-<ol style="list-style-type: decimal">
-<li><p>Water Temperature - This breaks water into different levels of
-risk based on stream temperature. There were a total of 28,059 streams
-with temperature data that were used in the model.</p></li>
-<li><p>pH - This is a surrogate to recreation based on the idea that the
-longer the river or larger the lake we would then typically see more
-recreational use.</p></li>
-<li><p>Hardness - Position in watershed highlights areas that are lower
-in the watershed are typically going to be at more risk for AIS due to
-accessibility and downstream of other waterways.</p></li>
-<li><p>Calcium - This is the distance from nearest invasive mussel
-populations via road network.</p></li>
-<li><p>Conductivity - These are the days that anglers are fishing and
-higher days mean higher risk.</p></li>
-<li><p>Dissolved Oxygen - These are the days that anglers are fishing
-and higher days mean higher risk.</p></li>
-</ol>
-<p><br></p>
-
-
-
-
-
-
-<ul class="nav nav-pills" id="habitat-suitability-score" role="tablist">
-<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#stream-temperature" id="stream-temperature-tab" type="button" role="tab" aria-controls="stream-temperature" aria-selected="true" class="active nav-link">Stream Temperature</button></li>
-<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#ph" id="ph-tab" type="button" role="tab" aria-controls="ph" aria-selected="false" class="nav-link">pH</button></li>
-<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#hardness" id="hardness-tab" type="button" role="tab" aria-controls="hardness" aria-selected="false" class="nav-link">Hardness</button></li>
-<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#calcium" id="calcium-tab" type="button" role="tab" aria-controls="calcium" aria-selected="false" class="nav-link">Calcium</button></li>
-<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#conductivity" id="conductivity-tab" type="button" role="tab" aria-controls="conductivity" aria-selected="false" class="nav-link">Conductivity</button></li>
-<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#dissolved-oxygen" id="dissolved-oxygen-tab" type="button" role="tab" aria-controls="dissolved-oxygen" aria-selected="false" class="nav-link">Dissolved Oxygen</button></li>
-</ul>
-<div class="tab-content">
-<div class="active  tab-pane" id="stream-temperature" role="tabpanel" aria-labelledby="stream-temperature-tab">
-
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
 <p><img src="final_scores_files/figure-html/unnamed-chunk-12-1.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
-<div id="cbcgyltvgz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cbcgyltvgz table {
+<div id="hrkkhzgloh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hrkkhzgloh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cbcgyltvgz thead, #cbcgyltvgz tbody, #cbcgyltvgz tfoot, #cbcgyltvgz tr, #cbcgyltvgz td, #cbcgyltvgz th {
+#hrkkhzgloh thead, #hrkkhzgloh tbody, #hrkkhzgloh tfoot, #hrkkhzgloh tr, #hrkkhzgloh td, #hrkkhzgloh th {
   border-style: none;
 }
 
-#cbcgyltvgz p {
+#hrkkhzgloh p {
   margin: 0;
   padding: 0;
 }
 
-#cbcgyltvgz .gt_table {
+#hrkkhzgloh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1676,12 +1632,12 @@ and higher days mean higher risk.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_caption {
+#hrkkhzgloh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cbcgyltvgz .gt_title {
+#hrkkhzgloh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1693,7 +1649,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-width: 0;
 }
 
-#cbcgyltvgz .gt_subtitle {
+#hrkkhzgloh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1705,7 +1661,7 @@ and higher days mean higher risk.</p></li>
   border-top-width: 0;
 }
 
-#cbcgyltvgz .gt_heading {
+#hrkkhzgloh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1717,13 +1673,13 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_bottom_border {
+#hrkkhzgloh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_col_headings {
+#hrkkhzgloh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1738,7 +1694,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_col_heading {
+#hrkkhzgloh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1758,7 +1714,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#cbcgyltvgz .gt_column_spanner_outer {
+#hrkkhzgloh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1770,15 +1726,15 @@ and higher days mean higher risk.</p></li>
   padding-right: 4px;
 }
 
-#cbcgyltvgz .gt_column_spanner_outer:first-child {
+#hrkkhzgloh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cbcgyltvgz .gt_column_spanner_outer:last-child {
+#hrkkhzgloh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cbcgyltvgz .gt_column_spanner {
+#hrkkhzgloh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1790,11 +1746,11 @@ and higher days mean higher risk.</p></li>
   width: 100%;
 }
 
-#cbcgyltvgz .gt_spanner_row {
+#hrkkhzgloh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cbcgyltvgz .gt_group_heading {
+#hrkkhzgloh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1820,7 +1776,7 @@ and higher days mean higher risk.</p></li>
   text-align: left;
 }
 
-#cbcgyltvgz .gt_empty_group_heading {
+#hrkkhzgloh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1835,15 +1791,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: middle;
 }
 
-#cbcgyltvgz .gt_from_md > :first-child {
+#hrkkhzgloh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cbcgyltvgz .gt_from_md > :last-child {
+#hrkkhzgloh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cbcgyltvgz .gt_row {
+#hrkkhzgloh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1862,7 +1818,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#cbcgyltvgz .gt_stub {
+#hrkkhzgloh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1875,7 +1831,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#cbcgyltvgz .gt_stub_row_group {
+#hrkkhzgloh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1889,15 +1845,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: top;
 }
 
-#cbcgyltvgz .gt_row_group_first td {
+#hrkkhzgloh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cbcgyltvgz .gt_row_group_first th {
+#hrkkhzgloh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cbcgyltvgz .gt_summary_row {
+#hrkkhzgloh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1907,16 +1863,16 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#cbcgyltvgz .gt_first_summary_row {
+#hrkkhzgloh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_first_summary_row.thick {
+#hrkkhzgloh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cbcgyltvgz .gt_last_summary_row {
+#hrkkhzgloh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1926,7 +1882,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_grand_summary_row {
+#hrkkhzgloh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1936,7 +1892,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#cbcgyltvgz .gt_first_grand_summary_row {
+#hrkkhzgloh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1946,7 +1902,7 @@ and higher days mean higher risk.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_last_grand_summary_row_top {
+#hrkkhzgloh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1956,11 +1912,11 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_striped {
+#hrkkhzgloh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cbcgyltvgz .gt_table_body {
+#hrkkhzgloh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1969,7 +1925,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_footnotes {
+#hrkkhzgloh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1983,7 +1939,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_footnote {
+#hrkkhzgloh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1992,7 +1948,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#cbcgyltvgz .gt_sourcenotes {
+#hrkkhzgloh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2006,7 +1962,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#cbcgyltvgz .gt_sourcenote {
+#hrkkhzgloh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2014,63 +1970,590 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#cbcgyltvgz .gt_left {
+#hrkkhzgloh .gt_left {
   text-align: left;
 }
 
-#cbcgyltvgz .gt_center {
+#hrkkhzgloh .gt_center {
   text-align: center;
 }
 
-#cbcgyltvgz .gt_right {
+#hrkkhzgloh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cbcgyltvgz .gt_font_normal {
+#hrkkhzgloh .gt_font_normal {
   font-weight: normal;
 }
 
-#cbcgyltvgz .gt_font_bold {
+#hrkkhzgloh .gt_font_bold {
   font-weight: bold;
 }
 
-#cbcgyltvgz .gt_font_italic {
+#hrkkhzgloh .gt_font_italic {
   font-style: italic;
 }
 
-#cbcgyltvgz .gt_super {
+#hrkkhzgloh .gt_super {
   font-size: 65%;
 }
 
-#cbcgyltvgz .gt_footnote_marks {
+#hrkkhzgloh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cbcgyltvgz .gt_asterisk {
+#hrkkhzgloh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cbcgyltvgz .gt_indent_1 {
+#hrkkhzgloh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cbcgyltvgz .gt_indent_2 {
+#hrkkhzgloh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cbcgyltvgz .gt_indent_3 {
+#hrkkhzgloh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cbcgyltvgz .gt_indent_4 {
+#hrkkhzgloh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cbcgyltvgz .gt_indent_5 {
+#hrkkhzgloh .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings">
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Mussel Proximity">Mussel Proximity</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Score">Score</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr>
+<td headers="Mussel Proximity" class="gt_row gt_left">&gt; 400 miles</td>
+<td headers="Score" class="gt_row gt_right" style="background-color: #F0E442; color: #000000;">1</td>
+</tr>
+<tr>
+<td headers="Mussel Proximity" class="gt_row gt_left">300-400 miles</td>
+<td headers="Score" class="gt_row gt_right" style="background-color: #56B4E9; color: #000000;">2</td>
+</tr>
+<tr>
+<td headers="Mussel Proximity" class="gt_row gt_left">200-300 miles</td>
+<td headers="Score" class="gt_row gt_right" style="background-color: #E69F00; color: #000000;">3</td>
+</tr>
+<tr>
+<td headers="Mussel Proximity" class="gt_row gt_left">&lt; 200 miles</td>
+<td headers="Score" class="gt_row gt_right" style="background-color: #009E73; color: #FFFFFF;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><img src="www/images/mussel_prox_score.png" width="150%"></p>
+</div>
+<div class="tab-pane" id="angler-days" role="tabpanel" aria-labelledby="angler-days-tab">
+
+<p>Still need to figure out angler days.</p>
+</div>
+</div>
+</div>
+<div class="section level2 tabset tabset-pills">
+<h2 class="tabset tabset-pills" id="habitat-suitability-score">Habitat Suitability Score<a class="anchor" aria-label="anchor" href="#habitat-suitability-score"></a>
+</h2>
+<p>The Habitat Suitability Score is broken into 6 different indicators
+of potential risk of invasion via physical conditions. These factors are
+then stratified into categories 1-4 based on different thresholds (see
+Tables below). These scores are then used for the final risk score by
+adding to the Social Suitability Score. Of note, there was a large data
+gap in some of these variables (calcium, dissolved oxygen, hardness),
+which will likely effect the overall score since it will be missing
+these data. This data gap leads to a low score, which it might be, but
+is structurally biased since the scores are additive.</p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-15-1.png" width="200%"></p>
+<ol style="list-style-type: decimal">
+<li><p>Water Temperature - This breaks water into different levels of
+risk based on temperature.</p></li>
+<li><p>pH - This is a surrogate to recreation based on the idea that the
+longer the river or larger the lake we would then typically see more
+recreational use.</p></li>
+<li><p>Hardness - Position in watershed highlights areas that are lower
+in the watershed are typically going to be at more risk for AIS due to
+accessibility and downstream of other waterways.</p></li>
+<li><p>Calcium - This is the distance from nearest invasive mussel
+populations via road network.</p></li>
+<li><p>Conductivity - These are the days that anglers are fishing and
+higher days mean higher risk.</p></li>
+<li><p>Dissolved Oxygen - These are the days that anglers are fishing
+and higher days mean higher risk.</p></li>
+</ol>
+<p><br></p>
+
+
+
+
+
+
+<ul class="nav nav-pills" id="habitat-suitability-score" role="tablist">
+<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#water-temperature" id="water-temperature-tab" type="button" role="tab" aria-controls="water-temperature" aria-selected="true" class="active nav-link">Water Temperature</button></li>
+<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#ph" id="ph-tab" type="button" role="tab" aria-controls="ph" aria-selected="false" class="nav-link">pH</button></li>
+<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#hardness" id="hardness-tab" type="button" role="tab" aria-controls="hardness" aria-selected="false" class="nav-link">Hardness</button></li>
+<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#calcium" id="calcium-tab" type="button" role="tab" aria-controls="calcium" aria-selected="false" class="nav-link">Calcium</button></li>
+<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#conductivity" id="conductivity-tab" type="button" role="tab" aria-controls="conductivity" aria-selected="false" class="nav-link">Conductivity</button></li>
+<li role="presentation" class="nav-item"><button data-bs-toggle="tab" data-bs-target="#dissolved-oxygen" id="dissolved-oxygen-tab" type="button" role="tab" aria-controls="dissolved-oxygen" aria-selected="false" class="nav-link">Dissolved Oxygen</button></li>
+</ul>
+<div class="tab-content">
+<div class="active  tab-pane" id="water-temperature" role="tabpanel" aria-labelledby="water-temperature-tab">
+
+<div style="display: flex;">
+<div style="flex-basis: 500%;">
+<p><img src="final_scores_files/figure-html/unnamed-chunk-16-1.png" width="200%"></p>
+</div>
+<div style="flex-basis: 250%;">
+<div id="hlqwioysxv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hlqwioysxv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hlqwioysxv thead, #hlqwioysxv tbody, #hlqwioysxv tfoot, #hlqwioysxv tr, #hlqwioysxv td, #hlqwioysxv th {
+  border-style: none;
+}
+
+#hlqwioysxv p {
+  margin: 0;
+  padding: 0;
+}
+
+#hlqwioysxv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hlqwioysxv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hlqwioysxv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hlqwioysxv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hlqwioysxv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hlqwioysxv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hlqwioysxv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hlqwioysxv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hlqwioysxv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hlqwioysxv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hlqwioysxv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hlqwioysxv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hlqwioysxv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hlqwioysxv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hlqwioysxv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hlqwioysxv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hlqwioysxv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hlqwioysxv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hlqwioysxv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hlqwioysxv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hlqwioysxv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hlqwioysxv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hlqwioysxv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hlqwioysxv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hlqwioysxv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hlqwioysxv .gt_left {
+  text-align: left;
+}
+
+#hlqwioysxv .gt_center {
+  text-align: center;
+}
+
+#hlqwioysxv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hlqwioysxv .gt_font_normal {
+  font-weight: normal;
+}
+
+#hlqwioysxv .gt_font_bold {
+  font-weight: bold;
+}
+
+#hlqwioysxv .gt_font_italic {
+  font-style: italic;
+}
+
+#hlqwioysxv .gt_super {
+  font-size: 65%;
+}
+
+#hlqwioysxv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hlqwioysxv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hlqwioysxv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hlqwioysxv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hlqwioysxv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hlqwioysxv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hlqwioysxv .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2113,32 +2596,32 @@ and higher days mean higher risk.</p></li>
 </div>
 </div>
 </div>
-<p><img src="www/images/stream_temperature.png" width="200%"></p>
+<p><img src="www/images/temperature.png" width="150%"></p>
 </div>
 <div class="tab-pane" id="ph" role="tabpanel" aria-labelledby="ph-tab">
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-15-1.png" width="200%"></p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-19-1.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
-<div id="xfjxahqdhu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xfjxahqdhu table {
+<div id="ztlifmlmau" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ztlifmlmau table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xfjxahqdhu thead, #xfjxahqdhu tbody, #xfjxahqdhu tfoot, #xfjxahqdhu tr, #xfjxahqdhu td, #xfjxahqdhu th {
+#ztlifmlmau thead, #ztlifmlmau tbody, #ztlifmlmau tfoot, #ztlifmlmau tr, #ztlifmlmau td, #ztlifmlmau th {
   border-style: none;
 }
 
-#xfjxahqdhu p {
+#ztlifmlmau p {
   margin: 0;
   padding: 0;
 }
 
-#xfjxahqdhu .gt_table {
+#ztlifmlmau .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2164,12 +2647,12 @@ and higher days mean higher risk.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_caption {
+#ztlifmlmau .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xfjxahqdhu .gt_title {
+#ztlifmlmau .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2181,7 +2664,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-width: 0;
 }
 
-#xfjxahqdhu .gt_subtitle {
+#ztlifmlmau .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2193,7 +2676,7 @@ and higher days mean higher risk.</p></li>
   border-top-width: 0;
 }
 
-#xfjxahqdhu .gt_heading {
+#ztlifmlmau .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2205,13 +2688,13 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_bottom_border {
+#ztlifmlmau .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_col_headings {
+#ztlifmlmau .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2226,7 +2709,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_col_heading {
+#ztlifmlmau .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2246,7 +2729,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#xfjxahqdhu .gt_column_spanner_outer {
+#ztlifmlmau .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2258,15 +2741,15 @@ and higher days mean higher risk.</p></li>
   padding-right: 4px;
 }
 
-#xfjxahqdhu .gt_column_spanner_outer:first-child {
+#ztlifmlmau .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xfjxahqdhu .gt_column_spanner_outer:last-child {
+#ztlifmlmau .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xfjxahqdhu .gt_column_spanner {
+#ztlifmlmau .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2278,11 +2761,11 @@ and higher days mean higher risk.</p></li>
   width: 100%;
 }
 
-#xfjxahqdhu .gt_spanner_row {
+#ztlifmlmau .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xfjxahqdhu .gt_group_heading {
+#ztlifmlmau .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2308,7 +2791,7 @@ and higher days mean higher risk.</p></li>
   text-align: left;
 }
 
-#xfjxahqdhu .gt_empty_group_heading {
+#ztlifmlmau .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2323,15 +2806,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: middle;
 }
 
-#xfjxahqdhu .gt_from_md > :first-child {
+#ztlifmlmau .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xfjxahqdhu .gt_from_md > :last-child {
+#ztlifmlmau .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xfjxahqdhu .gt_row {
+#ztlifmlmau .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2350,7 +2833,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#xfjxahqdhu .gt_stub {
+#ztlifmlmau .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2363,7 +2846,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xfjxahqdhu .gt_stub_row_group {
+#ztlifmlmau .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2377,15 +2860,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: top;
 }
 
-#xfjxahqdhu .gt_row_group_first td {
+#ztlifmlmau .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xfjxahqdhu .gt_row_group_first th {
+#ztlifmlmau .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xfjxahqdhu .gt_summary_row {
+#ztlifmlmau .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2395,16 +2878,16 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xfjxahqdhu .gt_first_summary_row {
+#ztlifmlmau .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_first_summary_row.thick {
+#ztlifmlmau .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xfjxahqdhu .gt_last_summary_row {
+#ztlifmlmau .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2414,7 +2897,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_grand_summary_row {
+#ztlifmlmau .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2424,7 +2907,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xfjxahqdhu .gt_first_grand_summary_row {
+#ztlifmlmau .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2434,7 +2917,7 @@ and higher days mean higher risk.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_last_grand_summary_row_top {
+#ztlifmlmau .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2444,11 +2927,11 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_striped {
+#ztlifmlmau .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xfjxahqdhu .gt_table_body {
+#ztlifmlmau .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2457,7 +2940,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_footnotes {
+#ztlifmlmau .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2471,7 +2954,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_footnote {
+#ztlifmlmau .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2480,7 +2963,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xfjxahqdhu .gt_sourcenotes {
+#ztlifmlmau .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2494,7 +2977,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xfjxahqdhu .gt_sourcenote {
+#ztlifmlmau .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2502,63 +2985,63 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xfjxahqdhu .gt_left {
+#ztlifmlmau .gt_left {
   text-align: left;
 }
 
-#xfjxahqdhu .gt_center {
+#ztlifmlmau .gt_center {
   text-align: center;
 }
 
-#xfjxahqdhu .gt_right {
+#ztlifmlmau .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xfjxahqdhu .gt_font_normal {
+#ztlifmlmau .gt_font_normal {
   font-weight: normal;
 }
 
-#xfjxahqdhu .gt_font_bold {
+#ztlifmlmau .gt_font_bold {
   font-weight: bold;
 }
 
-#xfjxahqdhu .gt_font_italic {
+#ztlifmlmau .gt_font_italic {
   font-style: italic;
 }
 
-#xfjxahqdhu .gt_super {
+#ztlifmlmau .gt_super {
   font-size: 65%;
 }
 
-#xfjxahqdhu .gt_footnote_marks {
+#ztlifmlmau .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xfjxahqdhu .gt_asterisk {
+#ztlifmlmau .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xfjxahqdhu .gt_indent_1 {
+#ztlifmlmau .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xfjxahqdhu .gt_indent_2 {
+#ztlifmlmau .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xfjxahqdhu .gt_indent_3 {
+#ztlifmlmau .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xfjxahqdhu .gt_indent_4 {
+#ztlifmlmau .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xfjxahqdhu .gt_indent_5 {
+#ztlifmlmau .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2601,32 +3084,32 @@ and higher days mean higher risk.</p></li>
 </div>
 </div>
 </div>
-<p><img src="www/images/ph_model.png" width="200%" style="display: block; margin: auto;"></p>
+<p><img src="www/images/ph_model.png" width="150%" style="display: block; margin: auto;"></p>
 </div>
 <div class="tab-pane" id="hardness" role="tabpanel" aria-labelledby="hardness-tab">
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-18-1.png" width="200%"></p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-22-1.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
-<div id="ynhfcpgcvd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ynhfcpgcvd table {
+<div id="qnhnwgegcy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qnhnwgegcy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ynhfcpgcvd thead, #ynhfcpgcvd tbody, #ynhfcpgcvd tfoot, #ynhfcpgcvd tr, #ynhfcpgcvd td, #ynhfcpgcvd th {
+#qnhnwgegcy thead, #qnhnwgegcy tbody, #qnhnwgegcy tfoot, #qnhnwgegcy tr, #qnhnwgegcy td, #qnhnwgegcy th {
   border-style: none;
 }
 
-#ynhfcpgcvd p {
+#qnhnwgegcy p {
   margin: 0;
   padding: 0;
 }
 
-#ynhfcpgcvd .gt_table {
+#qnhnwgegcy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2652,12 +3135,12 @@ and higher days mean higher risk.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_caption {
+#qnhnwgegcy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ynhfcpgcvd .gt_title {
+#qnhnwgegcy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2669,7 +3152,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-width: 0;
 }
 
-#ynhfcpgcvd .gt_subtitle {
+#qnhnwgegcy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2681,7 +3164,7 @@ and higher days mean higher risk.</p></li>
   border-top-width: 0;
 }
 
-#ynhfcpgcvd .gt_heading {
+#qnhnwgegcy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2693,13 +3176,13 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_bottom_border {
+#qnhnwgegcy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_col_headings {
+#qnhnwgegcy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2714,7 +3197,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_col_heading {
+#qnhnwgegcy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2734,7 +3217,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#ynhfcpgcvd .gt_column_spanner_outer {
+#qnhnwgegcy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2746,15 +3229,15 @@ and higher days mean higher risk.</p></li>
   padding-right: 4px;
 }
 
-#ynhfcpgcvd .gt_column_spanner_outer:first-child {
+#qnhnwgegcy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ynhfcpgcvd .gt_column_spanner_outer:last-child {
+#qnhnwgegcy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ynhfcpgcvd .gt_column_spanner {
+#qnhnwgegcy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2766,11 +3249,11 @@ and higher days mean higher risk.</p></li>
   width: 100%;
 }
 
-#ynhfcpgcvd .gt_spanner_row {
+#qnhnwgegcy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ynhfcpgcvd .gt_group_heading {
+#qnhnwgegcy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2796,7 +3279,7 @@ and higher days mean higher risk.</p></li>
   text-align: left;
 }
 
-#ynhfcpgcvd .gt_empty_group_heading {
+#qnhnwgegcy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2811,15 +3294,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: middle;
 }
 
-#ynhfcpgcvd .gt_from_md > :first-child {
+#qnhnwgegcy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ynhfcpgcvd .gt_from_md > :last-child {
+#qnhnwgegcy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ynhfcpgcvd .gt_row {
+#qnhnwgegcy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2838,7 +3321,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#ynhfcpgcvd .gt_stub {
+#qnhnwgegcy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2851,7 +3334,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#ynhfcpgcvd .gt_stub_row_group {
+#qnhnwgegcy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2865,15 +3348,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: top;
 }
 
-#ynhfcpgcvd .gt_row_group_first td {
+#qnhnwgegcy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ynhfcpgcvd .gt_row_group_first th {
+#qnhnwgegcy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ynhfcpgcvd .gt_summary_row {
+#qnhnwgegcy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2883,16 +3366,16 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#ynhfcpgcvd .gt_first_summary_row {
+#qnhnwgegcy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_first_summary_row.thick {
+#qnhnwgegcy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ynhfcpgcvd .gt_last_summary_row {
+#qnhnwgegcy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2902,7 +3385,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_grand_summary_row {
+#qnhnwgegcy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2912,7 +3395,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#ynhfcpgcvd .gt_first_grand_summary_row {
+#qnhnwgegcy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2922,7 +3405,7 @@ and higher days mean higher risk.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_last_grand_summary_row_top {
+#qnhnwgegcy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2932,11 +3415,11 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_striped {
+#qnhnwgegcy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ynhfcpgcvd .gt_table_body {
+#qnhnwgegcy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2945,7 +3428,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_footnotes {
+#qnhnwgegcy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2959,7 +3442,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_footnote {
+#qnhnwgegcy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2968,7 +3451,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#ynhfcpgcvd .gt_sourcenotes {
+#qnhnwgegcy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2982,7 +3465,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#ynhfcpgcvd .gt_sourcenote {
+#qnhnwgegcy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2990,86 +3473,86 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#ynhfcpgcvd .gt_left {
+#qnhnwgegcy .gt_left {
   text-align: left;
 }
 
-#ynhfcpgcvd .gt_center {
+#qnhnwgegcy .gt_center {
   text-align: center;
 }
 
-#ynhfcpgcvd .gt_right {
+#qnhnwgegcy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ynhfcpgcvd .gt_font_normal {
+#qnhnwgegcy .gt_font_normal {
   font-weight: normal;
 }
 
-#ynhfcpgcvd .gt_font_bold {
+#qnhnwgegcy .gt_font_bold {
   font-weight: bold;
 }
 
-#ynhfcpgcvd .gt_font_italic {
+#qnhnwgegcy .gt_font_italic {
   font-style: italic;
 }
 
-#ynhfcpgcvd .gt_super {
+#qnhnwgegcy .gt_super {
   font-size: 65%;
 }
 
-#ynhfcpgcvd .gt_footnote_marks {
+#qnhnwgegcy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ynhfcpgcvd .gt_asterisk {
+#qnhnwgegcy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ynhfcpgcvd .gt_indent_1 {
+#qnhnwgegcy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ynhfcpgcvd .gt_indent_2 {
+#qnhnwgegcy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ynhfcpgcvd .gt_indent_3 {
+#qnhnwgegcy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ynhfcpgcvd .gt_indent_4 {
+#qnhnwgegcy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ynhfcpgcvd .gt_indent_5 {
+#qnhnwgegcy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 <table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead><tr class="gt_col_headings">
-<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Water Temp (f)">Water Temp (f)</th>
+<th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Hardness">Hardness</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Score">Score</th>
     </tr></thead>
 <tbody class="gt_table_body">
 <tr>
-<td headers="Water Temp (f)" class="gt_row gt_right">0 - 50</td>
+<td headers="Hardness" class="gt_row gt_right">0 - 50</td>
 <td headers="Score" class="gt_row gt_right" style="background-color: #F0E442; color: #000000;">1</td>
 </tr>
 <tr>
-<td headers="Water Temp (f)" class="gt_row gt_right">50.1 - 99</td>
+<td headers="Hardness" class="gt_row gt_right">50.1 - 99</td>
 <td headers="Score" class="gt_row gt_right" style="background-color: #56B4E9; color: #000000;">2</td>
 </tr>
 <tr>
-<td headers="Water Temp (f)" class="gt_row gt_right">100 - 125</td>
+<td headers="Hardness" class="gt_row gt_right">100 - 125</td>
 <td headers="Score" class="gt_row gt_right" style="background-color: #E69F00; color: #000000;">3</td>
 </tr>
 <tr>
-<td headers="Water Temp (f)" class="gt_row gt_right">125 - 1000</td>
+<td headers="Hardness" class="gt_row gt_right">125 - 1000</td>
 <td headers="Score" class="gt_row gt_right" style="background-color: #009E73; color: #FFFFFF;">4</td>
 </tr>
 </tbody>
@@ -3077,32 +3560,32 @@ and higher days mean higher risk.</p></li>
 </div>
 </div>
 </div>
-<p><img src="www/images/hardness_model.png" width="200%" style="display: block; margin: auto;"></p>
+<p><img src="www/images/hardness_model.png" width="150%" style="display: block; margin: auto;"></p>
 </div>
 <div class="tab-pane" id="calcium" role="tabpanel" aria-labelledby="calcium-tab">
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-21-1.png" width="200%"></p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-25-1.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
-<div id="oczxjhgzho" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oczxjhgzho table {
+<div id="ltxrmedtun" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ltxrmedtun table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oczxjhgzho thead, #oczxjhgzho tbody, #oczxjhgzho tfoot, #oczxjhgzho tr, #oczxjhgzho td, #oczxjhgzho th {
+#ltxrmedtun thead, #ltxrmedtun tbody, #ltxrmedtun tfoot, #ltxrmedtun tr, #ltxrmedtun td, #ltxrmedtun th {
   border-style: none;
 }
 
-#oczxjhgzho p {
+#ltxrmedtun p {
   margin: 0;
   padding: 0;
 }
 
-#oczxjhgzho .gt_table {
+#ltxrmedtun .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3128,12 +3611,12 @@ and higher days mean higher risk.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_caption {
+#ltxrmedtun .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oczxjhgzho .gt_title {
+#ltxrmedtun .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3145,7 +3628,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-width: 0;
 }
 
-#oczxjhgzho .gt_subtitle {
+#ltxrmedtun .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3157,7 +3640,7 @@ and higher days mean higher risk.</p></li>
   border-top-width: 0;
 }
 
-#oczxjhgzho .gt_heading {
+#ltxrmedtun .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3169,13 +3652,13 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_bottom_border {
+#ltxrmedtun .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_col_headings {
+#ltxrmedtun .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3190,7 +3673,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_col_heading {
+#ltxrmedtun .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3210,7 +3693,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#oczxjhgzho .gt_column_spanner_outer {
+#ltxrmedtun .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3222,15 +3705,15 @@ and higher days mean higher risk.</p></li>
   padding-right: 4px;
 }
 
-#oczxjhgzho .gt_column_spanner_outer:first-child {
+#ltxrmedtun .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oczxjhgzho .gt_column_spanner_outer:last-child {
+#ltxrmedtun .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oczxjhgzho .gt_column_spanner {
+#ltxrmedtun .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3242,11 +3725,11 @@ and higher days mean higher risk.</p></li>
   width: 100%;
 }
 
-#oczxjhgzho .gt_spanner_row {
+#ltxrmedtun .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oczxjhgzho .gt_group_heading {
+#ltxrmedtun .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3272,7 +3755,7 @@ and higher days mean higher risk.</p></li>
   text-align: left;
 }
 
-#oczxjhgzho .gt_empty_group_heading {
+#ltxrmedtun .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3287,15 +3770,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: middle;
 }
 
-#oczxjhgzho .gt_from_md > :first-child {
+#ltxrmedtun .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oczxjhgzho .gt_from_md > :last-child {
+#ltxrmedtun .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oczxjhgzho .gt_row {
+#ltxrmedtun .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3314,7 +3797,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#oczxjhgzho .gt_stub {
+#ltxrmedtun .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3327,7 +3810,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#oczxjhgzho .gt_stub_row_group {
+#ltxrmedtun .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3341,15 +3824,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: top;
 }
 
-#oczxjhgzho .gt_row_group_first td {
+#ltxrmedtun .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oczxjhgzho .gt_row_group_first th {
+#ltxrmedtun .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oczxjhgzho .gt_summary_row {
+#ltxrmedtun .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3359,16 +3842,16 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#oczxjhgzho .gt_first_summary_row {
+#ltxrmedtun .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_first_summary_row.thick {
+#ltxrmedtun .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oczxjhgzho .gt_last_summary_row {
+#ltxrmedtun .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3378,7 +3861,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_grand_summary_row {
+#ltxrmedtun .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3388,7 +3871,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#oczxjhgzho .gt_first_grand_summary_row {
+#ltxrmedtun .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3398,7 +3881,7 @@ and higher days mean higher risk.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_last_grand_summary_row_top {
+#ltxrmedtun .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3408,11 +3891,11 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_striped {
+#ltxrmedtun .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oczxjhgzho .gt_table_body {
+#ltxrmedtun .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3421,7 +3904,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_footnotes {
+#ltxrmedtun .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3435,7 +3918,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_footnote {
+#ltxrmedtun .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3444,7 +3927,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#oczxjhgzho .gt_sourcenotes {
+#ltxrmedtun .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3458,7 +3941,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#oczxjhgzho .gt_sourcenote {
+#ltxrmedtun .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3466,63 +3949,63 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#oczxjhgzho .gt_left {
+#ltxrmedtun .gt_left {
   text-align: left;
 }
 
-#oczxjhgzho .gt_center {
+#ltxrmedtun .gt_center {
   text-align: center;
 }
 
-#oczxjhgzho .gt_right {
+#ltxrmedtun .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oczxjhgzho .gt_font_normal {
+#ltxrmedtun .gt_font_normal {
   font-weight: normal;
 }
 
-#oczxjhgzho .gt_font_bold {
+#ltxrmedtun .gt_font_bold {
   font-weight: bold;
 }
 
-#oczxjhgzho .gt_font_italic {
+#ltxrmedtun .gt_font_italic {
   font-style: italic;
 }
 
-#oczxjhgzho .gt_super {
+#ltxrmedtun .gt_super {
   font-size: 65%;
 }
 
-#oczxjhgzho .gt_footnote_marks {
+#ltxrmedtun .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oczxjhgzho .gt_asterisk {
+#ltxrmedtun .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oczxjhgzho .gt_indent_1 {
+#ltxrmedtun .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oczxjhgzho .gt_indent_2 {
+#ltxrmedtun .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oczxjhgzho .gt_indent_3 {
+#ltxrmedtun .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oczxjhgzho .gt_indent_4 {
+#ltxrmedtun .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oczxjhgzho .gt_indent_5 {
+#ltxrmedtun .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3553,32 +4036,32 @@ and higher days mean higher risk.</p></li>
 </div>
 </div>
 </div>
-<p><img src="www/images/calcium_model.png" width="200%" style="display: block; margin: auto;"></p>
+<p><img src="www/images/calcium_model.png" width="150%" style="display: block; margin: auto;"></p>
 </div>
 <div class="tab-pane" id="conductivity" role="tabpanel" aria-labelledby="conductivity-tab">
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-24-1.png" width="200%"></p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-28-1.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
-<div id="xxjxclvfst" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xxjxclvfst table {
+<div id="ccmwuqwwog" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ccmwuqwwog table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xxjxclvfst thead, #xxjxclvfst tbody, #xxjxclvfst tfoot, #xxjxclvfst tr, #xxjxclvfst td, #xxjxclvfst th {
+#ccmwuqwwog thead, #ccmwuqwwog tbody, #ccmwuqwwog tfoot, #ccmwuqwwog tr, #ccmwuqwwog td, #ccmwuqwwog th {
   border-style: none;
 }
 
-#xxjxclvfst p {
+#ccmwuqwwog p {
   margin: 0;
   padding: 0;
 }
 
-#xxjxclvfst .gt_table {
+#ccmwuqwwog .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3604,12 +4087,12 @@ and higher days mean higher risk.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_caption {
+#ccmwuqwwog .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xxjxclvfst .gt_title {
+#ccmwuqwwog .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3621,7 +4104,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-width: 0;
 }
 
-#xxjxclvfst .gt_subtitle {
+#ccmwuqwwog .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3633,7 +4116,7 @@ and higher days mean higher risk.</p></li>
   border-top-width: 0;
 }
 
-#xxjxclvfst .gt_heading {
+#ccmwuqwwog .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3645,13 +4128,13 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_bottom_border {
+#ccmwuqwwog .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_col_headings {
+#ccmwuqwwog .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3666,7 +4149,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_col_heading {
+#ccmwuqwwog .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3686,7 +4169,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#xxjxclvfst .gt_column_spanner_outer {
+#ccmwuqwwog .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3698,15 +4181,15 @@ and higher days mean higher risk.</p></li>
   padding-right: 4px;
 }
 
-#xxjxclvfst .gt_column_spanner_outer:first-child {
+#ccmwuqwwog .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xxjxclvfst .gt_column_spanner_outer:last-child {
+#ccmwuqwwog .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xxjxclvfst .gt_column_spanner {
+#ccmwuqwwog .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3718,11 +4201,11 @@ and higher days mean higher risk.</p></li>
   width: 100%;
 }
 
-#xxjxclvfst .gt_spanner_row {
+#ccmwuqwwog .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xxjxclvfst .gt_group_heading {
+#ccmwuqwwog .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3748,7 +4231,7 @@ and higher days mean higher risk.</p></li>
   text-align: left;
 }
 
-#xxjxclvfst .gt_empty_group_heading {
+#ccmwuqwwog .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3763,15 +4246,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: middle;
 }
 
-#xxjxclvfst .gt_from_md > :first-child {
+#ccmwuqwwog .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xxjxclvfst .gt_from_md > :last-child {
+#ccmwuqwwog .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xxjxclvfst .gt_row {
+#ccmwuqwwog .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3790,7 +4273,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#xxjxclvfst .gt_stub {
+#ccmwuqwwog .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3803,7 +4286,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xxjxclvfst .gt_stub_row_group {
+#ccmwuqwwog .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3817,15 +4300,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: top;
 }
 
-#xxjxclvfst .gt_row_group_first td {
+#ccmwuqwwog .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xxjxclvfst .gt_row_group_first th {
+#ccmwuqwwog .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xxjxclvfst .gt_summary_row {
+#ccmwuqwwog .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3835,16 +4318,16 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xxjxclvfst .gt_first_summary_row {
+#ccmwuqwwog .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_first_summary_row.thick {
+#ccmwuqwwog .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xxjxclvfst .gt_last_summary_row {
+#ccmwuqwwog .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3854,7 +4337,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_grand_summary_row {
+#ccmwuqwwog .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3864,7 +4347,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xxjxclvfst .gt_first_grand_summary_row {
+#ccmwuqwwog .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3874,7 +4357,7 @@ and higher days mean higher risk.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_last_grand_summary_row_top {
+#ccmwuqwwog .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3884,11 +4367,11 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_striped {
+#ccmwuqwwog .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xxjxclvfst .gt_table_body {
+#ccmwuqwwog .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3897,7 +4380,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_footnotes {
+#ccmwuqwwog .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3911,7 +4394,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_footnote {
+#ccmwuqwwog .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3920,7 +4403,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xxjxclvfst .gt_sourcenotes {
+#ccmwuqwwog .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3934,7 +4417,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xxjxclvfst .gt_sourcenote {
+#ccmwuqwwog .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3942,63 +4425,63 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xxjxclvfst .gt_left {
+#ccmwuqwwog .gt_left {
   text-align: left;
 }
 
-#xxjxclvfst .gt_center {
+#ccmwuqwwog .gt_center {
   text-align: center;
 }
 
-#xxjxclvfst .gt_right {
+#ccmwuqwwog .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xxjxclvfst .gt_font_normal {
+#ccmwuqwwog .gt_font_normal {
   font-weight: normal;
 }
 
-#xxjxclvfst .gt_font_bold {
+#ccmwuqwwog .gt_font_bold {
   font-weight: bold;
 }
 
-#xxjxclvfst .gt_font_italic {
+#ccmwuqwwog .gt_font_italic {
   font-style: italic;
 }
 
-#xxjxclvfst .gt_super {
+#ccmwuqwwog .gt_super {
   font-size: 65%;
 }
 
-#xxjxclvfst .gt_footnote_marks {
+#ccmwuqwwog .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xxjxclvfst .gt_asterisk {
+#ccmwuqwwog .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xxjxclvfst .gt_indent_1 {
+#ccmwuqwwog .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xxjxclvfst .gt_indent_2 {
+#ccmwuqwwog .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xxjxclvfst .gt_indent_3 {
+#ccmwuqwwog .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xxjxclvfst .gt_indent_4 {
+#ccmwuqwwog .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xxjxclvfst .gt_indent_5 {
+#ccmwuqwwog .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -4029,32 +4512,32 @@ and higher days mean higher risk.</p></li>
 </div>
 </div>
 </div>
-<p><img src="www/images/conductivity_model.png" width="200%" style="display: block; margin: auto;"></p>
+<p><img src="www/images/conductivity_model.png" width="150%" style="display: block; margin: auto;"></p>
 </div>
 <div class="tab-pane" id="dissolved-oxygen" role="tabpanel" aria-labelledby="dissolved-oxygen-tab">
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-27-1.png" width="200%"></p>
+<p><img src="final_scores_files/figure-html/unnamed-chunk-31-1.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
-<div id="xnayrfzqkf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xnayrfzqkf table {
+<div id="hyxdxafnya" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hyxdxafnya table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xnayrfzqkf thead, #xnayrfzqkf tbody, #xnayrfzqkf tfoot, #xnayrfzqkf tr, #xnayrfzqkf td, #xnayrfzqkf th {
+#hyxdxafnya thead, #hyxdxafnya tbody, #hyxdxafnya tfoot, #hyxdxafnya tr, #hyxdxafnya td, #hyxdxafnya th {
   border-style: none;
 }
 
-#xnayrfzqkf p {
+#hyxdxafnya p {
   margin: 0;
   padding: 0;
 }
 
-#xnayrfzqkf .gt_table {
+#hyxdxafnya .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4080,12 +4563,12 @@ and higher days mean higher risk.</p></li>
   border-left-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_caption {
+#hyxdxafnya .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xnayrfzqkf .gt_title {
+#hyxdxafnya .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4097,7 +4580,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-width: 0;
 }
 
-#xnayrfzqkf .gt_subtitle {
+#hyxdxafnya .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4109,7 +4592,7 @@ and higher days mean higher risk.</p></li>
   border-top-width: 0;
 }
 
-#xnayrfzqkf .gt_heading {
+#hyxdxafnya .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4121,13 +4604,13 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_bottom_border {
+#hyxdxafnya .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_col_headings {
+#hyxdxafnya .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4142,7 +4625,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_col_heading {
+#hyxdxafnya .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4162,7 +4645,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#xnayrfzqkf .gt_column_spanner_outer {
+#hyxdxafnya .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4174,15 +4657,15 @@ and higher days mean higher risk.</p></li>
   padding-right: 4px;
 }
 
-#xnayrfzqkf .gt_column_spanner_outer:first-child {
+#hyxdxafnya .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xnayrfzqkf .gt_column_spanner_outer:last-child {
+#hyxdxafnya .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xnayrfzqkf .gt_column_spanner {
+#hyxdxafnya .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4194,11 +4677,11 @@ and higher days mean higher risk.</p></li>
   width: 100%;
 }
 
-#xnayrfzqkf .gt_spanner_row {
+#hyxdxafnya .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xnayrfzqkf .gt_group_heading {
+#hyxdxafnya .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4224,7 +4707,7 @@ and higher days mean higher risk.</p></li>
   text-align: left;
 }
 
-#xnayrfzqkf .gt_empty_group_heading {
+#hyxdxafnya .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4239,15 +4722,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: middle;
 }
 
-#xnayrfzqkf .gt_from_md > :first-child {
+#hyxdxafnya .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xnayrfzqkf .gt_from_md > :last-child {
+#hyxdxafnya .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xnayrfzqkf .gt_row {
+#hyxdxafnya .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4266,7 +4749,7 @@ and higher days mean higher risk.</p></li>
   overflow-x: hidden;
 }
 
-#xnayrfzqkf .gt_stub {
+#hyxdxafnya .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4279,7 +4762,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xnayrfzqkf .gt_stub_row_group {
+#hyxdxafnya .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4293,15 +4776,15 @@ and higher days mean higher risk.</p></li>
   vertical-align: top;
 }
 
-#xnayrfzqkf .gt_row_group_first td {
+#hyxdxafnya .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xnayrfzqkf .gt_row_group_first th {
+#hyxdxafnya .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xnayrfzqkf .gt_summary_row {
+#hyxdxafnya .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4311,16 +4794,16 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xnayrfzqkf .gt_first_summary_row {
+#hyxdxafnya .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_first_summary_row.thick {
+#hyxdxafnya .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xnayrfzqkf .gt_last_summary_row {
+#hyxdxafnya .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4330,7 +4813,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_grand_summary_row {
+#hyxdxafnya .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4340,7 +4823,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xnayrfzqkf .gt_first_grand_summary_row {
+#hyxdxafnya .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4350,7 +4833,7 @@ and higher days mean higher risk.</p></li>
   border-top-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_last_grand_summary_row_top {
+#hyxdxafnya .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4360,11 +4843,11 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_striped {
+#hyxdxafnya .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xnayrfzqkf .gt_table_body {
+#hyxdxafnya .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4373,7 +4856,7 @@ and higher days mean higher risk.</p></li>
   border-bottom-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_footnotes {
+#hyxdxafnya .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4387,7 +4870,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_footnote {
+#hyxdxafnya .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4396,7 +4879,7 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xnayrfzqkf .gt_sourcenotes {
+#hyxdxafnya .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4410,7 +4893,7 @@ and higher days mean higher risk.</p></li>
   border-right-color: #D3D3D3;
 }
 
-#xnayrfzqkf .gt_sourcenote {
+#hyxdxafnya .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4418,63 +4901,63 @@ and higher days mean higher risk.</p></li>
   padding-right: 5px;
 }
 
-#xnayrfzqkf .gt_left {
+#hyxdxafnya .gt_left {
   text-align: left;
 }
 
-#xnayrfzqkf .gt_center {
+#hyxdxafnya .gt_center {
   text-align: center;
 }
 
-#xnayrfzqkf .gt_right {
+#hyxdxafnya .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xnayrfzqkf .gt_font_normal {
+#hyxdxafnya .gt_font_normal {
   font-weight: normal;
 }
 
-#xnayrfzqkf .gt_font_bold {
+#hyxdxafnya .gt_font_bold {
   font-weight: bold;
 }
 
-#xnayrfzqkf .gt_font_italic {
+#hyxdxafnya .gt_font_italic {
   font-style: italic;
 }
 
-#xnayrfzqkf .gt_super {
+#hyxdxafnya .gt_super {
   font-size: 65%;
 }
 
-#xnayrfzqkf .gt_footnote_marks {
+#hyxdxafnya .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xnayrfzqkf .gt_asterisk {
+#hyxdxafnya .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xnayrfzqkf .gt_indent_1 {
+#hyxdxafnya .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xnayrfzqkf .gt_indent_2 {
+#hyxdxafnya .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xnayrfzqkf .gt_indent_3 {
+#hyxdxafnya .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xnayrfzqkf .gt_indent_4 {
+#hyxdxafnya .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xnayrfzqkf .gt_indent_5 {
+#hyxdxafnya .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -4505,7 +4988,7 @@ and higher days mean higher risk.</p></li>
 </div>
 </div>
 </div>
-<p><img src="www/images/do_model.png" width="200%" style="display: block; margin: auto;"></p>
+<p><img src="www/images/do_model.png" width="150%" style="display: block; margin: auto;"></p>
 </div>
 </div>
 </div>
@@ -4518,11 +5001,8 @@ and higher days mean higher risk.</p></li>
     <footer><!-- begin footer --><div class="footer">
     <div class="wrapper">
 
-    <h2 class="footer-heading">aisrisk</h2>
+    <h2 class="footer-heading"></h2>
 
-      <div class="footer-col footer-col-1">
-        <p></p>
-      </div>
     </div>
 </div>
 <!-- / end footer -->

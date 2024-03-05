@@ -109,10 +109,10 @@ library(patchwork)
 
 The methods used to generate the social suitability scores involve GIS processing in R and/or Python (eventually implementing). The challenging part was not necessarily the geospatial analysis but instead getting the data to work and relate together, e.g. waterbodies and streams/rivers. The first part of the vignette will go over the logic used for the waterbody type, size, and position and how to link them together using Hydrological Unit Codes (HUC) and National Hydrography Dataset Plus Version 2 (NHDPlus V2). This will then follow with the mussel proximity workflow using a road network to find how far away the recently (2023, Snake River near Twin Falls, Idaho) found mussel population is from the waterbodies and streams/rivers. We do not have any angler data or a proxy for this variable right now so this was left out of the analysis.  
 
-Our goal with the vignette is to show the steps it took to get to the figure output below. The {aisrisk} package abstracts away these steps into functions but this is the real meat of the workflow and how it was created.  
+Our goal with the vignette is to show the steps it took to get to the figure output below.  
 
 
-```{r, echo = F, out.width='200%'}
+```{r, echo = F, out.width='200%', fig.cap="Final social scores for the 4 metrics."}
   
 knitr::include_graphics('www/images/social_final.png')
 
@@ -120,7 +120,7 @@ knitr::include_graphics('www/images/social_final.png')
 
 ### Data  
 
-You'll need the waterbodies, flowlines and HUC 12's for Idaho via NDHPLus V2. This can be retrieved from various [sources](https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer) but was retrieved via thr [nhdplusTools]() package in R. The waterbodies and flowlines will contain two different geometry types: POLYLINE (flowlines) and MULTIPOLYGON (waterbodies). So be aware when bringing it all together at the end for the final score and why some things are done certain ways.     
+You'll need the waterbodies, flowlines and HUC 12's for Idaho via NDHPLus V2. This can be retrieved from various [sources](https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer) but was retrieved via the [nhdplusTools]() package in R. The waterbodies and flowlines will contain two different geometry types: POLYLINE (flowlines) and MULTIPOLYGON (waterbodies). So be aware when bringing it all together at the end for the final score and why some things are done certain ways.     
 
 ### Waterbody Type  
 
@@ -404,7 +404,7 @@ huc12 <- read_sf('data/simple_features.gpkg', layer = 'huc12')
 
 huc_list <- st_intersects(net_final_edges, st_transform(huc12, crs = st_crs(net_final_edges)))
 
-huc_list <- map_vec(huc_list, ~ifelse(is.null(.x), NA, list(.x)))
+huc_list <- map_vec(huc_list, ~ifelse(is.null(.x), NA, .x))
 
 huc12s <- huc12[huc_list,]$huc12
 
