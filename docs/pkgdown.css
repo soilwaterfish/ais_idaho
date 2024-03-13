@@ -2,6 +2,103 @@
    display: flex;
    height: 600px;
    width: 100%;
+   z-index: 1000;
+}
+
+.legend {
+    line-height: 18px;
+    padding: 6px 10px 6px 6px;
+    color: #000033;
+    background: #fff;
+    border-left:5px solid #666666;
+    border-right:5px solid #666666;
+    border-top:5px solid #666666;
+    border-bottom:5px solid #666666
+}
+
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 1;
+}
+
+.myCSSClass {
+  opacity: 0.9;
+  background:#343a40;
+  color:#fff;
+}
+
+.myCSSClass .leaflet-popup-content {
+  opacity: 0.9;
+  background-color: #343a40;
+  background:#343a40;
+  color:#fff;
+  margin: 4px 4px 3px 2px;
+  width: 130px;
+}
+
+.myCSSClass .leaflet-popup-content-wrapper {
+  opacity: 0.9;
+  background:#343a40;
+  background-color: #343a40;
+  color:#fff;
+  border-left:2px solid #fff;
+  border-right:2px solid #fff;
+  border-top:2px solid #fff;
+  border-bottom:2px solid #fff;
+  border-radius: 0px;
+}
+
+.myCSSClass  .leaflet-popup-tip {
+  opacity: 0.9;
+  background:#343a40;
+  background-color: #343a40;
+  color:#fff;
+}
+
+.box {
+  opacity: 1;
+  float: right;
+  height: 15px;
+  width: 15px;
+  margin-bottom: 25px;
+  clear: both;
+  border: 1px solid black;
+}
+
+.leaflet-tooltip-top:before {
+    border-top-color: white !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    font: 16px/24px Tahoma, Verdana, sans-serif;
+    color: #757575;
+    text-decoration: none;
+    background: transparent;
+    color: white !important;
+}
+
+path.leaflet-interactive{
+  outline: none;
+}
+
+.my-control {
+  background: #fff;
+  padding: 5px;
+}
+
+.leaflet-bar {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  border-radius: 5px;
 }
 
 html, body {
@@ -373,3 +470,63 @@ div.csl-right-inline {
 div.csl-indent {
   margin-left: 2em;
 }
+
+.open-modal-btn {
+  background-color: #fefefe;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+}
+
+.modal-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  align-content: center;
+}
+
+.modal-dialog {
+  max-width: 90%;
+  margin: 30px auto;
+}
+
+#downloadModal .modal-dialog {
+  max-width: 30%;
+  margin: 30px auto;
+}
+
+.btn-primary {
+  color: white !important;
+}
+
+
+.open-modal-btn {
+  background-color: #2f755c;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  color: white;
+  font-size: 16px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.open-modal-btn:hover {
+  background-color: #2f633a;
+}
+
+#downloadModal .modal-body a,
+#downloadModal .modal-body button {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#downloadModal .modal-body a:hover,
+#downloadModal .modal-body button:hover {
+  background-color: white;
+}
+
