@@ -91,12 +91,32 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of aisrisk is to provide a repository for the workflows and code used to create a Aquatic Invasive Species (AIS) invasion risk prioritization in Idaho specifically the Nez-Perce/Clearwater and Idaho Panhandle National Forests.</p>
+
 <p><strong>Currently in heavy development.</strong></p>
+<h2>Getting Started</h2>
+<p>The goal of aisrisk is to provide a repository for the workflows and code used to create a Aquatic Invasive Species (AIS) invasion risk prioritization in Idaho specifically the Nez-Perce/Clearwater and Idaho Panhandle National Forests. This workflow currently uses methods from Montana Fish, Wildlife and Parks AIS prioritization for lotic and lentic environments.
+
+Please use the <a aria-labelledby="dropdown--vignettes">Vignettes dropdown</a> to navigate to the <a class="link" href="articles/final_scores.html">Final Scores</a>, <a class="link" href="articles/sssc.html">Social Sutiability Score</a> and <a class="link" href="articles/hss.html">Habitat Sutiability Score</a> documentation and workflows. These Vignettes show how the model was built as well as the data retrieval inputs used.
+
+</p>
+<p>The final score calculations are done by adding together both social
+and habitat scores and then fitting into a <a href="#" class="link" id='scoringMatrix'>refined scoring matrix</a>. This
+forces the scores to be from 1 (highest risk) to 10 (least risk). You’ll
+notice in this <a href="#" class="link" id='finalScores'>graph (click me)</a> that there are no scores with 1, 2, or 5. This can be
+attributed to the lack of data available for the habitat suitability
+metrics as well as 5 being a peculiar scoring designation (no
+data in either habitat or social), which doesn’t happen in our case.</p>
+
+<p>Our goal is to potentially leverage some methods to help with this lack of data as well as the shortcomings of splitting continuous variables into categories. Currently, below is the final model output for the region of Idaho. <b>Important note</b>, the stream topology within the map below as well as the downloadable versions are simplified meaning that it's not exact to the version used in the analysis. This is merely a visual and storage decision and doesn't effect the quality of the model but <b>if downloading the data be sure to join the streams to NHDPLus V2 by comid.</b> In addition, the <b>lakes</b> data <b>wasn't</b> simplified.
+</p>
+
+<p>
+For contributing or submitting issues please go to <a class="link" href="https://github.com/soilwaterfish/aisrisk/">Github</a> to help.
+</p>
 <div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h2 id="example">Final Model Output<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>This is a preliminary output accomplished by the vignettes.</p>
+<p>This is a preliminary output accomplished by using the workflows within the vignettes. This is likely to change and is mostly for proof of concept.</p>
 <div class='leaflet-container'>
 <div id="mapid">
           <script src="extra.js"></script>
@@ -162,6 +182,21 @@
  </div>
  <div class="modal-body">
   <center> <img src='matrix.png'></center>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- final scores -->
+ <div class='modal fade' id="finalScoresModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class='modal-dialog'>
+ <div class='modal-content'>
+ <div class='modal-header'>
+ <h5 class='modal-title' id='exampleModalLabel'>Final Scores</h5>
+ <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+ </div>
+ <div class="modal-body">
+  <center> <img src='articles/final_scores_files/figure-html/unnamed-chunk-1-1.png'></center>
  </div>
  </div>
  </div>

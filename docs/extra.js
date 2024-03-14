@@ -103,7 +103,8 @@ var popupFunc = function(feature) {
           '<div class="box" style="background-color:' + getColor(feature.properties.final_score) + '"></div> ' +
           '</strong><br><b>Final Score Social: </b>' + feature.properties.final_score_social +
           '</strong><br><b>Final Score Habitat: </b>' + feature.properties.final_score_habitat +
-          '</strong><br><b>HUC 12: </b>' + feature.properties.huc12 + '</div>'
+          '</strong><br><b>HUC 12: </b>' + feature.properties.huc12 +
+          '</strong><br><b>comid: </b>' + feature.properties.comid + '</div>'
 
 }
 
@@ -325,9 +326,28 @@ var downloadControl = L.Control.extend({
 
         return button;
     },
+
+  onRemove: function(map) {
+    // Nothing to do here
+  }
+
 });
 
 map.addControl(new downloadControl());
+
+var scoringMatrix = document.getElementById('scoringMatrix');
+
+scoringMatrix.onclick = function() {
+      var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+      myModal.show();
+    }
+
+var finalScores = document.getElementById('finalScores');
+
+finalScores.onclick = function() {
+      var myScoreModal = new bootstrap.Modal(document.getElementById('finalScoresModal'));
+      myScoreModal.show();
+    }
 
 }
 
