@@ -34,26 +34,16 @@ const baseLayers = {
 var streamStyle = function(feature, layer){
 switch(feature.properties.final_score){
 
-  case 1: return layer.setStyle({fillColor: "#0D0887FF",weight: 2,
-                  opacity: 1});
-  case 2: return layer.setStyle({fillColor: "#47039FFF",weight: 2,
-                  opacity: 1});
-  case 3: return layer.setStyle({fillColor: "#7301A8FF",weight: 2,
-                  opacity: 1});
-  case 4: return layer.setStyle({fillColor: "#9C179EFF",weight: 2,
-                  opacity: 1});
-  case 5: return layer.setStyle({fillColor: "#BD3786FF",weight: 2,
-                  opacity: 1});
-  case 6: return layer.setStyle({fillColor:  "#D8576BFF",weight: 2,
-                  opacity: 1});
-  case 7: return layer.setStyle({fillColor: "#ED7953FF", weight: 2,
-                  opacity: 1});
-  case 8: return layer.setStyle({fillColor:  "#FA9E3BFF",weight: 2,
-                  opacity: 1 });
-  case 9: return layer.setStyle({fillColor: "#FDC926FF", weight: 2,
-                  opacity: 1});
-  case 10: return layer.setStyle({fillColor: "#F0F921FF", weight: 2,
-                  opacity: 1});
+  case 1: return layer.setStyle({fillColor: "#0D0887FF"});
+  case 2: return layer.setStyle({fillColor: "#47039FFF"});
+  case 3: return layer.setStyle({fillColor: "#7301A8FF"});
+  case 4: return layer.setStyle({fillColor: "#9C179EFF"});
+  case 5: return layer.setStyle({fillColor: "#BD3786FF"});
+  case 6: return layer.setStyle({fillColor:  "#D8576BFF"});
+  case 7: return layer.setStyle({fillColor: "#ED7953FF"});
+  case 8: return layer.setStyle({fillColor:  "#FA9E3BFF" });
+  case 9: return layer.setStyle({fillColor: "#FDC926FF"});
+  case 10: return layer.setStyle({fillColor: "#F0F921FF"});
 
 }
 
@@ -263,7 +253,7 @@ $.getJSON("local.geojson", function(data) {
                 onEachFeature: function onEachFeature(feature, layer) {
                 //layer.bindPopup(popupFuncPibo(feature), {className: 'myCSSClass'}).openPopup();
 
-                layer.on('mouseover', customTipPibo(layer,feature));
+                layer.on('mouseover', customTipLocal(layer,feature));
 
                 }
 
