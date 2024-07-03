@@ -34,25 +34,25 @@ const baseLayers = {
 var streamStyle = function(feature, layer){
 switch(feature.properties.final_score){
 
-  case 1: return layer.setStyle({color: "#0D0887FF",weight: 2,
+  case 1: return layer.setStyle({fillColor: "#0D0887FF",weight: 2,
                   opacity: 1});
-  case 2: return layer.setStyle({color: "#47039FFF",weight: 2,
+  case 2: return layer.setStyle({fillColor: "#47039FFF",weight: 2,
                   opacity: 1});
-  case 3: return layer.setStyle({color: "#7301A8FF",weight: 2,
+  case 3: return layer.setStyle({fillColor: "#7301A8FF",weight: 2,
                   opacity: 1});
-  case 4: return layer.setStyle({color: "#9C179EFF",weight: 2,
+  case 4: return layer.setStyle({fillColor: "#9C179EFF",weight: 2,
                   opacity: 1});
-  case 5: return layer.setStyle({color: "#BD3786FF",weight: 2,
+  case 5: return layer.setStyle({fillColor: "#BD3786FF",weight: 2,
                   opacity: 1});
-  case 6: return layer.setStyle({color:  "#D8576BFF",weight: 2,
+  case 6: return layer.setStyle({fillColor:  "#D8576BFF",weight: 2,
                   opacity: 1});
-  case 7: return layer.setStyle({color: "#ED7953FF", weight: 2,
+  case 7: return layer.setStyle({fillColor: "#ED7953FF", weight: 2,
                   opacity: 1});
-  case 8: return layer.setStyle({color:  "#FA9E3BFF",weight: 2,
+  case 8: return layer.setStyle({fillColor:  "#FA9E3BFF",weight: 2,
                   opacity: 1 });
-  case 9: return layer.setStyle({color: "#FDC926FF", weight: 2,
+  case 9: return layer.setStyle({fillColor: "#FDC926FF", weight: 2,
                   opacity: 1});
-  case 10: return layer.setStyle({color: "#F0F921FF", weight: 2,
+  case 10: return layer.setStyle({fillColor: "#F0F921FF", weight: 2,
                   opacity: 1});
 
 }
@@ -207,10 +207,23 @@ var popupFuncPibo = function(feature) {
 
 }
 
+var popupFuncLocal = function(feature) {
+
+  return  '<strong><center><div style="font-size:14px;">' + 'PIBO Site' + '</div></center></strong>' +
+          '</strong><div style="font-size:11px;"><b>Site: </b>' + feature.properties.Site_Name +'</div>'
+
+}
+
 
 function customTipPibo(layer,feature) {
     layer.unbindTooltip();
     if(!layer.isPopupOpen()) layer.bindTooltip(popupFuncPibo(feature), {className: 'myCSSClass'}).openTooltip();
+}
+
+
+function customTipLocal(layer,feature) {
+    layer.unbindTooltip();
+    if(!layer.isPopupOpen()) layer.bindTooltip(popupFuncLocal(feature), {className: 'myCSSClass'}).openTooltip();
 }
 
 
@@ -250,7 +263,7 @@ $.getJSON("local.geojson", function(data) {
                 onEachFeature: function onEachFeature(feature, layer) {
                 //layer.bindPopup(popupFuncPibo(feature), {className: 'myCSSClass'}).openPopup();
 
-                //layer.on('mouseover', customTipPibo(layer,feature));
+                layer.on('mouseover', customTipPibo(layer,feature));
 
                 }
 
