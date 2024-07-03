@@ -189,6 +189,12 @@ var markers_pibo = L.markerClusterGroup({
 	zoomToBoundsOnClick: true
 });
 
+var markers_local = L.markerClusterGroup({
+	spiderfyOnMaxZoom: true,
+	showCoverageOnHover: true,
+	zoomToBoundsOnClick: true
+});
+
 /// customTip function
 
 var popupFuncPibo = function(feature) {
@@ -234,6 +240,25 @@ $.getJSON("pibo.geojson", function(data) {
 markers_pibo.addLayer(pibo);
 
 layerControls.addOverlay(markers_pibo, 'PIBO Monitoring Sites')
+
+});
+
+
+$.getJSON("local.geojson", function(data) {
+
+ let local = L.geoJSON(data,{
+                onEachFeature: function onEachFeature(feature, layer) {
+                //layer.bindPopup(popupFuncPibo(feature), {className: 'myCSSClass'}).openPopup();
+
+                //layer.on('mouseover', customTipPibo(layer,feature));
+
+                }
+
+ });
+
+markers_local.addLayer(local);
+
+layerControls.addOverlay(markers_local, 'Local Monitoring Sites')
 
 });
 
