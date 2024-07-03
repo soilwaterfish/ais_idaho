@@ -111,12 +111,6 @@ function customTip(layer,feature) {
 $.getJSON("final_streams.geojson", function(data) {
 
   let streams = L.geoJSON(data,{
-
-  style:
-    {'weight':2},
-  onEachFeature: function onEachFeature(feature, layer) {
-                //layer.bindPopup(popupFunc(feature), {className: 'myCSSClass'} ).openPopup();
-layer.on('mouseover', function() {data, {
   style:
     {'color': '#000',
     'fillOpacity': 0.8,
@@ -129,7 +123,7 @@ layer.on('mouseover', customTip(layer,feature));
 
 streamStyle(feature, layer);
 
-  }
+}
   }).addTo(map);
 
 layerControls.addOverlay(streams, 'Final Score (streams)')
