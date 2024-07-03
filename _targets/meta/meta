@@ -1,0 +1,33 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+boundary|stem|eb7da4c587c27546|186b46c5ad8ba988|2c530c1562a7fbd1|-1002860306||t19906.7298862857s|e1240663d9ca63b8|30036|rds|local|vector|||0.02||
+burp|stem|3bb71b60fe95d4bb|b2b8fab27ca77cdb|2c530c1562a7fbd1|867156329||t19906.7299576295s|692b21dc3d1ce3fd|531283|rds|local|vector|||0.23||
+burp_func|function|979ef5a5cff5c851|||||||||||||||
+final_scores|stem|61c0d3f131fdc860|f45e6f8ac196ea59|020f228656d47a20|-1505306062||t19906.9005274825s|adf3fc6df1e8d68f|34514093|rds|local|vector|||0.16||
+flowlines|stem|2085581bbf8caa1a|9507dc0327da49a0|2c530c1562a7fbd1|-1563254083||t19906.7841244522s|ebfc32a6a4e4929d|26917051|rds|local|vector|||5.02||
+get_adminboundaries|function|100a5e3b36e11f16|||||||||||||||
+get_burp|function|8ff8fb23b54f487e|||||||||||||||
+get_data|function|14653d178ca31116|||||||||||||||
+get_final_scores|function|687061e0a7c2f170|||||||||||||||
+get_mussel_proximity|function|c13991d3d0f15882|||||||||||||||
+get_non_fs_roads|function|8d69655a48b72243|||||||||||||||
+get_streamtemp|function|95d2444c2ba71ab0|||||||||||||||
+get_type_size_position|function|b9f1a0bc3d3f8384|||||||||||||||
+get_waterbodytemp|function|ae40d4e63fa89c2f|||||||||||||||
+get_wqp|function|6643e5bfff9dd8fb|||||||||||||||
+huc12|stem|ed45a92b4e774952|69f81b9fb3e93e36|2c530c1562a7fbd1|105574745||t19906.7299520272s|f5f142506cc3f2b8|53204163|rds|local|vector|||0.35||
+link_mp_with_huc12|function|e9be890fb63f9919|||||||||||||||
+link_up|stem|b7c9ac6706805fd1|5f98dd0e24c6202f|709df610866ca47f|2055132279||t19906.6006068591s|05e4a42db975f455|864290|rds|local|vector|||12.04|st_centroid assumes attributes are constant over geometries|
+link_up_hss|stem|c1c2ef42737e9b50|51eebe0a6276eb2f|4b356f152cf4aa5c|-2107726974||t19906.870531519s|0c92a0edefab51c2|17255000|rds|local|vector|||13.72|Detected an unexpected manytomany relationship between x and y.ℹ Row 3926 of x matches multiple rows in y.ℹ Row 77271 of y matches multiple rows in x.ℹ If a manytomany relationship is expected, set relationship   manytomany to silence this warning.|
+link_up_sss|stem|b8f785fe29ae44ef|5f98dd0e24c6202f|9540659a5db7e2df|-1077456720||t19906.7856899149s|ff0ae0c3a631160d|17788435|rds|local|vector|||36.2|st_centroid assumes attributes are constant over geometries|
+link_wqs_with_huc12|function|c5eb9ee95bd85ce0|||||||||||||||
+monitorings_sites_quagga_zebra_sf|stem|3df9f7cdc08c259f|6e801fe2655f2386|6f48e2afa22eb1e6|1576283777||t19905.9940723891s|fa6b77fd5d6f43a0|7037|rds|local|vector|||38.15||
+mussel_locations|stem|7b4fd530bad0aca4|f2e1d23dc1bc6884|2c530c1562a7fbd1|-1587297869||t19906.7299531732s|23b252436f37ca8d|820|rds|local|vector|||0.01||
+mussel_proximity_df|stem|ddc1dc278c9b66d4|dfb26e8e53f08d92|2deca6eecdc9b83a|-1846161961||t19906.7518199999s|54ccf366c3f1f542|12361|rds|local|vector|||326.76|attribute variables are assumed to be spatially constant throughout all geometries. attribute variables are assumed to be spatially constant throughout all geometries. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only. keeping first linestring only|
+non_fs_roads|stem|e52b01a6be3e52c4|670f14a0721502fa|c44a72d77a10a3cf|3526673||t19906.7298855912s|d609ba4eae6e1379|23536763|rds|local|vector|||58.71||
+stream_temp_id|stem|3a7087097a631c01|71f37cecedf4bf05|3bd9263a3c5cb654|-547202763||t19906.6004657364s|8f0683e638ba628e|2573229|rds|local|vector|||65.86|attribute variables are assumed to be spatially constant throughout all geometries|
+streamtemp|stem|d0f2055e0fa09934|71f37cecedf4bf05|1d1875972559ba25|-1384570355||t19906.7937156595s|d5cc0eeba8cfef48|20450905|rds|local|vector|||88.86|attribute variables are assumed to be spatially constant throughout all geometries|
+type_size_position|stem|d63f4f3e50c7eebe|7b1feb88a8b46b90|2edd3faa95dc53ef|-373774961||t19906.7850942337s|c6415df19dd4d21f|27590718|rds|local|vector|||80.27|st_centroid assumes attributes are constant over geometries|
+usfs_roads|stem|75e01ccaf6ba2956|944e2762be99d701|2c530c1562a7fbd1|-151787213||t19905.9056639472s|6ea0929187aec308|107203365|rds|local|vector|||9.72||
+waterbodies|stem|53b014d761a2239c|b37318f18bef5478|2c530c1562a7fbd1|-1116447528||t19906.7841267092s|dbd6a0ad367d8d6e|663534|rds|local|vector|||0.06||
+waterbodytemp|stem|3841e985a828a35e|f35c01e64b785d9d|00a237a9a90c9e88|-398665394||t19906.7852435177s|836bb91145507d24|393|rds|local|vector|||12.82|attribute variables are assumed to be spatially constant throughout all geometries|
+wqp|stem|a61408b4a1d21a9f|9fd5876fa0346196|a2c7081b3c1fd5d2|226608686||t19906.7452364365s|e86abb141b5813db|600550|rds|local|vector|||1016.14||

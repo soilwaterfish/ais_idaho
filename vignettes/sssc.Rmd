@@ -482,12 +482,14 @@ waterbodies_idaho_final_social <- waterbodies_idaho %>% mutate(mussel_proximity 
 
 waterbodies_idaho_final_social %>% 
   st_intersection(idaho) %>% 
+  mutate(mussel_proximity = if_else(is.na(mussel_proximity), 4, mussel_proximity)) %>% # clean up areas on other forests
   write_sf('data/simple_features.gpkg', layer = 'waterbodies_idaho_final_social', delete_layer = T)
 
 nhdplus_idaho_final_social  %>% 
   st_intersection(idaho) %>% 
+  nhdplus_idaho_final_social %>% 
+  mutate(mussel_proximity = if_else(is.na(mussel_proximity), 4, mussel_proximity)) %>% # clean up areas on other forests
   write_sf('data/simple_features.gpkg', layer = 'nhdplus_idaho_final_social', delete_layer = T)
-
 
 ```
 

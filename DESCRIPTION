@@ -7,12 +7,21 @@ Description: The package provides functions and workflows for reproducing and up
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 URL: https://soilwaterfish.github.io/aisrisk/
 imports: 
   dplyr,
   sf,
-  sfnetworks
+  sfnetworks,
+  arcgislayers,
+  purrr,
+  tidygraph,
+  lubridate,
+  readr,
+  janitor,
+  httr2,
+  stringr,
+  plyr
 Suggests: 
     knitr,
     rmarkdown
