@@ -116,16 +116,20 @@ $.getJSON("final_streams.geojson", function(data) {
     {'weight':2},
   onEachFeature: function onEachFeature(feature, layer) {
                 //layer.bindPopup(popupFunc(feature), {className: 'myCSSClass'} ).openPopup();
-layer.on('mouseover', function() {layer.setStyle({color: 'grey',
-                                                  opacity: 0.5,
-                                                  weight: 4});
-                                    });
+layer.on('mouseover', function() {data, {
+  style:
+    {'color': '#000',
+    'fillOpacity': 0.8,
+    'opacity': 0.5,
+    'weight':1},
+  onEachFeature: function onEachFeature(feature, layer) {
+                //layer.bindPopup(popupFunc(feature), {className: 'myCSSClass'}).openPopup();
+
 layer.on('mouseover', customTip(layer,feature));
-layer.on('mouseout', function() {streamStyle(feature, layer)});
 
 streamStyle(feature, layer);
 
-}
+  }
   }).addTo(map);
 
 layerControls.addOverlay(streams, 'Final Score (streams)')
