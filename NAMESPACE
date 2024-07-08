@@ -2,7 +2,6 @@
 
 export(get_adminboundaries)
 export(get_burp)
-export(get_data)
 export(get_final_scores)
 export(get_mussel_proximity)
 export(get_streamtemp)

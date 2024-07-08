@@ -1,4 +1,88 @@
 
+#' Connect Lakes with Outlet COMID
+#'
+#' @param mussel_proximity_df A previously created `get_mussel_proximity()` object.
+#' @param type_size_position A previously created `get_type_size_position()` object.
+#' @param huc12 A sf object with USGS HUC 12s.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+link_mp_with_huc12 <- function(mussel_proximity_df,
+                               type_size_position,
+                               huc12) {
+
+  # Need to get centroid of lakes and then associated HUC12s
+
+  waterbodies <- type_size_position[['wb']]
+  flowlines <- type_size_position[['flowlines']]
+
+  lake_list <- sf::st_centroid(waterbodies) %>%
+    sf::st_intersects(huc12)
+
+  lake_list <- purrr::map_vec(lake_list, ~ifelse(is.null(.x), NA, .x))
+
+  huc12s <- huc12[lake_list,]$huc12
+
+  waterbodies$huc12 <- huc12s
+
+  # we'll need to get COMIDs and HUC12 codes
+
+  waterbody_huc12 <- read.csv('data/huc12_outlet_comids.csv') %>%
+    dplyr::mutate(HUC_12 = as.character(HUC_12))
+
+  flowlines <- flowlines %>% dplyr::left_join(waterbody_huc12 %>% dplyr::select(comid = 'COMID', huc12 = 'HUC_12'))
+
+  # now join back with the waterbodies and nhdplus datasets
+
+  flowlines <- flowlines %>% dplyr::left_join(mussel_proximity_df, by = 'huc12')
+
+  waterbodies <- waterbodies %>% dplyr::left_join(mussel_proximity_df, by = 'huc12')
+
+  fsland <- get_adminboundaries(sf::st_as_sfc(sf::st_bbox(flowlines))) %>%
+    sf::st_make_valid() %>%
+    sf::st_transform(sf::st_crs(flowlines))
+
+  wild_water <- flowlines %>% sf::st_intersects(fsland)
+
+  wild_water <- purrr::map_vec(wild_water, ~ifelse(is.null(.x), NA, .x))
+
+  flowlines$fs_land <- wild_water
+
+  ### now for waterbodies
+
+  wild_water <- waterbodies %>% sf::st_intersects(fsland)
+
+  wild_water <- purrr::map_vec(wild_water, ~ifelse(is.null(.x), NA, .x))
+
+  waterbodies$fs_land <- wild_water
+
+  ### bring it all together
+  flowline_final_social <- flowlines %>%
+    dplyr::mutate(mussel_proximity = dplyr::if_else(is.na(mussel_proximity) & fs_land == 1, 1, mussel_proximity),
+                  mussel_proximity = dplyr::if_else(is.na(mussel_proximity), 1, mussel_proximity))
+
+  waterbodies_final_social <- waterbodies %>%
+    dplyr::mutate(mussel_proximity = dplyr::if_else(is.na(mussel_proximity) & fs_land == 1, 1, mussel_proximity),
+                  mussel_proximity = dplyr::if_else(is.na(mussel_proximity), 1, mussel_proximity))
+
+  flowline_final_social <- flowline_final_social %>%
+    dplyr::group_by(huc12) %>%
+    dplyr::mutate(dplyr::across(c('waterbody_type', 'waterbody_size_rec', 'waterbody_position'), ~ifelse(is.na(.x), 2, .x))) %>%
+    dplyr::mutate(dplyr::across(c('waterbody_type', 'waterbody_size_rec', 'waterbody_position'), ~mean(.x , na.rm = T))) %>%
+    dplyr::slice(1) %>%
+    dplyr::ungroup() %>%
+    sf::st_drop_geometry() %>%
+    dplyr::left_join(huc12, by = 'huc12')
+
+
+  list(flowline_final_social = flowline_final_social%>%
+         sf::st_as_sf(),
+       waterbodies_final_social = waterbodies_final_social)
+
+}
+
 
 #' Get Type, Size, Position
 #' @param wb_layer A sf object of NHDPlus V2 waterbodies.
@@ -199,88 +283,6 @@ get_mussel_proximity <- function (boundary,
                             TRUE ~ NA_real_
                           )
                     )
-
-}
-
-#' Connect Lakes with Outlet COMID
-#'
-#' @param mussel_proximity_df A previously created `get_mussel_proximity()` object.
-#' @param type_size_position A previously created `get_type_size_position()` object.
-#' @param huc12 A sf object with USGS HUC 12s.
-#'
-#' @return
-#' @export
-#'
-#' @examples
-link_mp_with_huc12 <- function(mussel_proximity_df,
-                               type_size_position,
-                               huc12) {
-
-  # Need to get centroid of lakes and then associated HUC12s
-
-  waterbodies <- type_size_position[['wb']]
-  flowlines <- type_size_position[['flowlines']]
-
-  lake_list <- sf::st_centroid(waterbodies) %>%
-               sf::st_intersects(huc12)
-
-  lake_list <- purrr::map_vec(lake_list, ~ifelse(is.null(.x), NA, .x))
-
-  huc12s <- huc12[lake_list,]$huc12
-
-  waterbodies$huc12 <- huc12s
-
-  # we'll need to get COMIDs and HUC12 codes
-
-  waterbody_huc12 <- read.csv('data/huc12_outlet_comids.csv') %>%
-                     dplyr::mutate(HUC_12 = as.character(HUC_12))
-
-  flowlines <- flowlines %>% dplyr::left_join(waterbody_huc12 %>% dplyr::select(comid = 'COMID', huc12 = 'HUC_12'))
-
-  # now join back with the waterbodies and nhdplus datasets
-
-  flowlines <- flowlines %>% dplyr::left_join(mussel_proximity_df, by = 'huc12')
-
-  waterbodies <- waterbodies %>% dplyr::left_join(mussel_proximity_df, by = 'huc12')
-
-  fsland <- get_adminboundaries(sf::st_as_sfc(sf::st_bbox(flowlines))) %>%
-            sf::st_make_valid() %>%
-            sf::st_transform(sf::st_crs(flowlines))
-
-  wild_water <- flowlines %>% sf::st_intersects(fsland)
-
-  wild_water <- purrr::map_vec(wild_water, ~ifelse(is.null(.x), NA, .x))
-
-  flowlines$fs_land <- wild_water
-
-  ### now for waterbodies
-
-  wild_water <- waterbodies %>% sf::st_intersects(fsland)
-
-  wild_water <- purrr::map_vec(wild_water, ~ifelse(is.null(.x), NA, .x))
-
-  waterbodies$fs_land <- wild_water
-
-  ### bring it all together
-  flowline_final_social <- flowlines %>%
-                                dplyr::mutate(mussel_proximity = dplyr::if_else(is.na(mussel_proximity) & fs_land == 1, 1, mussel_proximity))
-
-  waterbodies_final_social <- waterbodies %>%
-                                    dplyr::mutate(mussel_proximity = dplyr::if_else(is.na(mussel_proximity) & fs_land == 1, 1, mussel_proximity))
-
-  flowline_final_social <- flowline_final_social %>%
-    dplyr::group_by(huc12) %>%
-    dplyr::mutate(dplyr::across(c('waterbody_type', 'waterbody_size_rec', 'waterbody_position', 'mussel_proximity'), ~ifelse(is.na(.x), 2, .x))) %>%
-    dplyr::mutate(dplyr::across(c('waterbody_type', 'waterbody_size_rec', 'waterbody_position', 'mussel_proximity'), ~mean(.x , na.rm = T))) %>%
-    dplyr::slice(1) %>%
-    dplyr::ungroup() %>%
-    sf::st_drop_geometry() %>%
-    dplyr::left_join(huc12, by = 'huc12')
-
-
-  list(flowline_final_social = flowline_final_social%>%
-         sf::st_as_sf(),
-       waterbodies_final_social = waterbodies_final_social)
 
 }
 

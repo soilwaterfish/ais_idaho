@@ -17,160 +17,24 @@ library(ggtext)
 library(gt)
 library(patchwork)
 
+idaho <- AOI::aoi_get(state = 'ID') 
 
-final_stream <- read_sf('Z:/GIT/aisrisk/data/simple_features.gpkg', layer = 'nhdplus_idaho_final_together')
+final_lakes <- sf::read_sf('Z:/GIT/aisrisk/dev/data/final_results.gpkg', layer = 'final_lakes') %>% st_intersection(idaho)
 
-final_lakes <- read_sf( 'Z:/GIT/aisrisk/data/simple_features.gpkg', layer = 'waterbodies_idaho_final_together')
+final_stream <- sf::read_sf('Z:/GIT/aisrisk/dev/data/final_results.gpkg', layer = 'final_streams')%>% st_intersection(idaho)
+
+social_and_habitat_final <- bind_rows(final_stream, final_lakes) %>% st_as_sf()
+
+social_and_habitat_final_df_final <- social_and_habitat_final %>% sf::st_drop_geometry()
 
 myColors <- c("#F0E442", "#56B4E9", "#E69F00", "#009E73")
 
 names(myColors) <- factor(1:4)
 
-idaho <- AOI::aoi_get(state = 'Idaho') %>% st_crop(st_transform(final_stream, st_crs(.)))
-
-social_and_habitat_final_final <- bind_rows(final_stream, final_lakes) %>% 
-  mutate(across(c(waterbody_type:mussel_proximity, p_h_model:temperature_model), ~ifelse(is.na(.x), 0, .x))) %>%
-  mutate(
-    summed_social = waterbody_position + waterbody_size_rec + waterbody_type + mussel_proximity,
-    summed_habitat = temperature_model + p_h_model + calcium_model + hardness_model + do_model + conductivity_model
-  ) %>%
-  mutate(
-    final_score_social = case_when(
-      summed_social > 0 & summed_social <= 5 ~ 1,
-      summed_social > 5 & summed_social <= 10 ~ 2,
-      summed_social > 10 & summed_social <= 16 ~ 3,
-      summed_social > 16 & summed_social <= 24 ~ 4,
-    ),
-    final_score_habitat = case_when(
-      summed_habitat > 0 & summed_habitat <= 5 ~ 1,
-      summed_habitat > 5 & summed_habitat <= 10 ~ 2,
-      summed_habitat > 10 & summed_habitat <= 16 ~ 3,
-      summed_habitat > 16 & summed_habitat <= 24 ~ 4,
-    )
-  ) %>%
-  mutate(
-    final_score = case_when(
-      final_score_social==4 & final_score_habitat==4 ~ 1,
-      final_score_social==4 & final_score_habitat==3 ~ 2,
-      final_score_social==3& final_score_habitat==4 ~ 2,
-      final_score_social==3& final_score_habitat==3 ~ 3,
-      final_score_social==4& final_score_habitat==2 ~ 4,
-      final_score_social==4& final_score_habitat==1 ~ 4,
-      final_score_social==2& final_score_habitat==4 ~ 4,
-      final_score_social==1& final_score_habitat==4 ~ 4,
-      final_score_social==3& final_score_habitat==NA_real_ ~ 5,
-      final_score_social==NA_real_& final_score_habitat==3 ~ 5,
-      final_score_social==3& final_score_habitat==2 ~ 6,
-      final_score_social==2& final_score_habitat==3 ~ 6,
-      final_score_social==3& final_score_habitat==1 ~ 7,
-      final_score_social==1& final_score_habitat==3 ~ 7,
-      final_score_social==2& final_score_habitat==2 ~ 8,
-      final_score_social==2& final_score_habitat==1 ~ 9,
-      final_score_social==1& final_score_habitat==2 ~ 9,
-      final_score_social==1 &final_score_habitat==1 ~ 10,
-      TRUE ~ NA_real_
+idaho <- idaho %>% st_intersection(st_as_sfc(st_bbox(final_stream)))
 
 
 
-    )
-  )
-
-social_and_habitat_final_df_final <- social_and_habitat_final_final %>% st_drop_geometry()
-
-
-final_lakes <- final_lakes %>% 
-  mutate(across(c(waterbody_type:mussel_proximity, p_h_model:temperature_model), ~ifelse(is.na(.x), 0, .x))) %>%
-  mutate(
-    summed_social = waterbody_position + waterbody_size_rec + waterbody_type + mussel_proximity,
-    summed_habitat = temperature_model + p_h_model + calcium_model + hardness_model + do_model + conductivity_model
-  ) %>%
-  mutate(
-    final_score_social = case_when(
-      summed_social > 0 & summed_social <= 5 ~ 1,
-      summed_social > 5 & summed_social <= 10 ~ 2,
-      summed_social > 10 & summed_social <= 16 ~ 3,
-      summed_social > 16 & summed_social <= 24 ~ 4,
-    ),
-    final_score_habitat = case_when(
-      summed_habitat > 0 & summed_habitat <= 5 ~ 1,
-      summed_habitat > 5 & summed_habitat <= 10 ~ 2,
-      summed_habitat > 10 & summed_habitat <= 16 ~ 3,
-      summed_habitat > 16 & summed_habitat <= 24 ~ 4,
-    )
-  ) %>%
-  mutate(
-    final_score = case_when(
-      final_score_social==4 & final_score_habitat==4 ~ 1,
-      final_score_social==4 & final_score_habitat==3 ~ 2,
-      final_score_social==3& final_score_habitat==4 ~ 2,
-      final_score_social==3& final_score_habitat==3 ~ 3,
-      final_score_social==4& final_score_habitat==2 ~ 4,
-      final_score_social==4& final_score_habitat==1 ~ 4,
-      final_score_social==2& final_score_habitat==4 ~ 4,
-      final_score_social==1& final_score_habitat==4 ~ 4,
-      final_score_social==3& final_score_habitat==NA_real_ ~ 5,
-      final_score_social==NA_real_& final_score_habitat==3 ~ 5,
-      final_score_social==3& final_score_habitat==2 ~ 6,
-      final_score_social==2& final_score_habitat==3 ~ 6,
-      final_score_social==3& final_score_habitat==1 ~ 7,
-      final_score_social==1& final_score_habitat==3 ~ 7,
-      final_score_social==2& final_score_habitat==2 ~ 8,
-      final_score_social==2& final_score_habitat==1 ~ 9,
-      final_score_social==1& final_score_habitat==2 ~ 9,
-      final_score_social==1 &final_score_habitat==1 ~ 10,
-      TRUE ~ NA_real_
-
-
-
-    )
-  )
-
-final_stream <- final_stream %>% 
-  mutate(across(c(waterbody_type:mussel_proximity, p_h_model:temperature_model), ~ifelse(is.na(.x), 0, .x))) %>%
-  mutate(
-    summed_social = waterbody_position + waterbody_size_rec + waterbody_type + mussel_proximity,
-    summed_habitat = temperature_model + p_h_model + calcium_model + hardness_model + do_model + conductivity_model
-  ) %>%
-  mutate(
-    final_score_social = case_when(
-      summed_social > 0 & summed_social <= 5 ~ 1,
-      summed_social > 5 & summed_social <= 10 ~ 2,
-      summed_social > 10 & summed_social <= 16 ~ 3,
-      summed_social > 16 & summed_social <= 24 ~ 4,
-    ),
-    final_score_habitat = case_when(
-      summed_habitat > 0 & summed_habitat <= 5 ~ 1,
-      summed_habitat > 5 & summed_habitat <= 10 ~ 2,
-      summed_habitat > 10 & summed_habitat <= 16 ~ 3,
-      summed_habitat > 16 & summed_habitat <= 24 ~ 4,
-    )
-  ) %>%
-  mutate(
-    final_score = case_when(
-      final_score_social==4 & final_score_habitat==4 ~ 1,
-      final_score_social==4 & final_score_habitat==3 ~ 2,
-      final_score_social==3& final_score_habitat==4 ~ 2,
-      final_score_social==3& final_score_habitat==3 ~ 3,
-      final_score_social==4& final_score_habitat==2 ~ 4,
-      final_score_social==4& final_score_habitat==1 ~ 4,
-      final_score_social==2& final_score_habitat==4 ~ 4,
-      final_score_social==1& final_score_habitat==4 ~ 4,
-      final_score_social==3& final_score_habitat==NA_real_ ~ 5,
-      final_score_social==NA_real_& final_score_habitat==3 ~ 5,
-      final_score_social==3& final_score_habitat==2 ~ 6,
-      final_score_social==2& final_score_habitat==3 ~ 6,
-      final_score_social==3& final_score_habitat==1 ~ 7,
-      final_score_social==1& final_score_habitat==3 ~ 7,
-      final_score_social==2& final_score_habitat==2 ~ 8,
-      final_score_social==2& final_score_habitat==1 ~ 9,
-      final_score_social==1& final_score_habitat==2 ~ 9,
-      final_score_social==1 &final_score_habitat==1 ~ 10,
-      TRUE ~ NA_real_
-
-
-
-    )
-  )
 
 
 ```
@@ -183,7 +47,7 @@ This is a report that covers the methods used to generate Aquatic Invasive Speci
 
 ## Final Scores  
 
-The final score calculations are done by adding together both social and habitat scores and then fitting into a refined scoring matrix. This forces the scores to be from 1 (highest risk) to 10 (least risk). You'll notice below that there are no scores with 1, 2, or 5 and this can be attributed to the lack of data available in the habitat suitability metrics (1 and 2) as well as 5 being a peculiar scoring designation (no data in either habitat or social), which doesn't happen in our case. Below are the final designations;  
+The final score calculations are done by adding together both social and habitat scores and then fitting into a refined scoring matrix. This forces the scores to be from 1 (lowest risk) to 10 (highest risk). You'll notice below that there are only scores in four levels and this can be attributed to the lack of data available in the habitat suitability metrics. Below are the final designations;  
 
 
 ```{r, echo = FALSE, out.width='200%', message=F, error=F, warning=F}
@@ -197,12 +61,12 @@ dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
 dummy_sf <- st_sf(final_score = factor(1:10, levels = 1:10), geom = dummy_sf)
 
 p1 <- ggplot() +
-    geom_sf(data = idaho, fill = NA, linewidth = 0.5) +
-    geom_sf(data = dummy_sf, aes(color = final_score, fill = final_score), show.legend = F) +
-    geom_sf(data = final_stream , aes(color = factor(final_score)), linewidth = .25, inherit.aes = F) +
-    geom_sf(data = final_lakes , aes(fill = factor(final_score)), linewidth = 0, inherit.aes = F) +
-    scale_color_manual(values = myColorsFinal, guide = 'none',  name = 'Final Score', na.value = NA) +
+    geom_sf(data = dummy_sf, aes(fill = factor(final_score)), show.legend = F) +
+    geom_sf(data = final_stream , aes(fill = factor(final_score)), linewidth = 0,color = NA,
+            inherit.aes = F) +
+    geom_sf(data = final_lakes , aes(fill = factor(final_score)), linewidth = 0,color = NA, inherit.aes = F) +
     scale_fill_manual(values = myColorsFinal, name = 'Final Score', na.value = NA) +
+    geom_sf(data = idaho, fill = NA, linewidth = 0.75, color = 'black') +
     resourceviz::custom_theme(map_void = 4) +
     theme(legend.position = 'none')
 
@@ -250,7 +114,7 @@ social_and_habitat_final_df_final %>%
 
 4. Mussel Proximity - This is the distance from nearest invasive mussel populations via road network.  
 
-5. Angler Days - These are the days that anglers are fishing and higher days mean higher risk.   
+5. Angler Days - These are the days that anglers are fishing and higher days mean higher risk (**we don't currently have data for this**).  
 
 ### Waterbody Type   
 
@@ -302,8 +166,8 @@ tribble(
 # 
 # ggplot() +
 #     geom_sf(data = idaho, fill = NA, linewidth = 0.5) +
-#     geom_sf(data = dummy_sf, aes(color = waterbody_type, fill = waterbody_type), show.legend = F) +
-#     geom_sf(data = final_stream , aes(color = factor(waterbody_type)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = dummy_sf, aes(fill = waterbody_type), show.legend = F) +
+#     geom_sf(data = final_stream , aes(fill = factor(waterbody_type)), linewidth = .25, inherit.aes = F) +
 #     geom_sf(data = final_lakes , aes(fill = factor(waterbody_type)), linewidth = 0, inherit.aes = F) +
 #     scale_color_manual(values = myColors, guide = 'none',  name = 'Waterbody Type Score', na.value = NA) +
 #     scale_fill_manual(values = myColors, name = 'Waterbody Type Score', na.value = NA) +
@@ -361,15 +225,15 @@ tribble(
 
 ::::  
 ```{r, echo=F, out.width='200%'}
-
+# 
 # dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
 # 
 # dummy_sf <- st_sf(waterbody_size_rec = factor(1:4, levels = 1:4), geom = dummy_sf)
 # 
 # ggplot() +
 #   geom_sf(data = idaho, fill = NA, linewidth = 0.5) +
-#     geom_sf(data = dummy_sf, aes(color = waterbody_size_rec, fill = waterbody_size_rec), show.legend = F) +
-#     geom_sf(data = final_stream , aes(color = factor(waterbody_size_rec)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = dummy_sf, aes( fill = waterbody_size_rec), show.legend = F) +
+#     geom_sf(data = final_stream , aes(fill = factor(waterbody_size_rec)), linewidth = .25, inherit.aes = F) +
 #     geom_sf(data = final_lakes , aes(fill = factor(waterbody_size_rec)), linewidth = 0, inherit.aes = F) +
 #     scale_color_manual(values = myColors, guide = 'none',  name = 'Waterbody Size Score') +
 #     scale_fill_manual(values = myColors, name = 'Waterbody Size Score') +
@@ -430,8 +294,8 @@ tribble(
 # 
 # ggplot() +
 #   geom_sf(data = idaho, fill = NA, linewidth = 0.5) +
-#     geom_sf(data = dummy_sf, aes(color = waterbody_position, fill = waterbody_position), show.legend = F) +
-#     geom_sf(data = final_stream , aes(color = factor(waterbody_position)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = dummy_sf, aes( fill = waterbody_position), show.legend = F) +
+#     geom_sf(data = final_stream , aes(fill = factor(waterbody_position)), linewidth = .25, inherit.aes = F) +
 #     geom_sf(data = final_lakes , aes(fill = factor(waterbody_position)), linewidth = 0, inherit.aes = F) +
 #     scale_color_manual(values = myColors, guide = 'none',  name = 'Waterbody Position Score') +
 #     scale_fill_manual(values = myColors, name = 'Waterbody Position Score') +
@@ -489,17 +353,16 @@ tribble(
 
 ::::  
 ```{r, echo=F, out.width='150%'}
-
+# 
 # dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
 # 
 # dummy_sf <- st_sf(mussel_proximity = factor(1:4, levels = 1:4), geom = dummy_sf)
 # 
 # ggplot() +
 #   geom_sf(data = idaho, fill = NA, linewidth = 0.5) +
-#     geom_sf(data = dummy_sf, aes(color = mussel_proximity, fill = mussel_proximity), show.legend = F) +
-#     geom_sf(data = final_stream , aes(color = factor(mussel_proximity)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = dummy_sf, aes( fill = mussel_proximity), show.legend = F) +
+#     geom_sf(data = final_stream , aes(fill = factor(mussel_proximity)), linewidth = .25, inherit.aes = F) +
 #     geom_sf(data = final_lakes , aes(fill = factor(mussel_proximity)), linewidth = 0, inherit.aes = F) +
-#     scale_color_manual(values = myColors, guide = 'none',  name = 'Waterbody Position Score', na.value = NA) +
 #     scale_fill_manual(values = myColors, name = 'Mussel Proximity Score', na.value = NA) +
 #     guides(fill = guide_legend(order = 3)) +
 #     resourceviz::custom_theme(map_void = 4) +
@@ -512,12 +375,12 @@ knitr::include_graphics('www/images/mussel_prox_score.png')
 
 ### Angler Days   
 
-Still need to figure out angler days.  
+Still need to figure out angler days or a substitute for it.  
 
 
 ## Habitat Suitability Score  {.tabset .tabset-pills}    
 
-The Habitat Suitability Score is broken into 6 different indicators of potential risk of invasion via physical conditions. These factors are then stratified into categories 1-4 based on different thresholds (see Tables below). These scores are then used for the final risk score by adding to the Social Suitability Score. Of note, there was a large data gap in some of these variables (calcium, dissolved oxygen, hardness), which will likely effect the overall score since it will be missing these data. This data gap leads to a low score, which it might be, but is structurally biased since the scores are additive.  
+The Habitat Suitability Score is broken into 6 different indicators of potential risk of invasion via physical conditions. These factors are then stratified into categories 1-4 based on different thresholds (see Tables below). These scores are then used for the final risk score by adding to the Social Suitability Score. Of note, there was a large data gap in some of these variables (calcium, dissolved oxygen, hardness), which will likely effect the overall score since it will be missing these data. This data gap leads to final scores being 3's, the uninformed middle, but is structurally biased since the scores are additive.  
 
 ```{r, echo = FALSE, out.width='200%', warning=F}
 social_and_habitat_final_df_final %>% 
@@ -526,6 +389,7 @@ social_and_habitat_final_df_final %>%
    geom_col(aes(fill = factor(final_score_habitat)), color = 'black') + 
   scale_fill_manual(values = myColors, name = 'pH Score', guide = 'none') +
   scale_y_continuous(labels = scales::comma) +
+  scale_x_continuous(breaks = c(0,1,2,3,4), limits = c(0,4)) +
   labs(x = 'Final Scores Habitat') +
   resourceviz::custom_theme()
 ```
@@ -533,15 +397,15 @@ social_and_habitat_final_df_final %>%
 
 1. Water Temperature - This breaks water into different levels of risk based on temperature.  
 
-2. pH - This is a surrogate to recreation based on the idea that the longer the river or larger the lake we would then typically see more recreational use.   
+2. pH - This breaks water into different levels of risk based on pH.  
 
-3. Hardness - Position in watershed highlights areas that are lower in the watershed are typically going to be at more risk for AIS due to accessibility and downstream of other waterways.   
+3. Hardness - This breaks water into different levels of risk based on hardness in mg/L, e.g. Hardness, Ca, Mg from Water Quality Portal.  
 
-4. Calcium - This is the distance from nearest invasive mussel populations via road network.  
+4. Calcium - This breaks water into different levels of risk based on calcium in mg/L.  
 
-5. Conductivity - These are the days that anglers are fishing and higher days mean higher risk.  
+5. Conductivity - This breaks water into different levels of risk based on conductivity in S/L (Siemens).  
 
-6. Dissolved Oxygen - These are the days that anglers are fishing and higher days mean higher risk.  
+6. Dissolved Oxygen - This breaks water into different levels of risk based on dissolved oxygen mg/L.  
 
 <br>
 
@@ -562,7 +426,7 @@ social_and_habitat_final_df_final %>%
   geom_rug(aes(color = factor(temperature_model)), size = 2) +
   scale_color_manual(values = myColors, name = 'Water Temperature Score', guide = 'none') +
   labs(x = 'Water Temperature (f)', subtitle = paste0('n = ', scales::comma(nrow(
-social_and_habitat_final_df_final %>% filter(!is.na(temperature_model))))
+social_and_habitat_final_df_final %>% filter(!is.na(temperature))))
 )) +
   resourceviz::custom_theme(font_size = 20,
                             font_family = "Open Sans")
@@ -594,18 +458,17 @@ tribble(
 
 ::::  
 ```{r, echo=FALSE, out.width='150%'}
-# 
+
 # dummy_sf <- st_sfc(st_point(c(NA_real_, NA_real_)), crs = st_crs(final_stream))
 # 
 # dummy_sf <- st_sf(temperature_model = factor(1:4, levels = 1:4), geom = dummy_sf)
 # 
 # ggplot() +
-#     geom_sf(data = dummy_sf, aes(color = temperature_model, fill = temperature_model), show.legend = F) +
-#     geom_sf(data = final_stream , aes(color = factor(temperature_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = dummy_sf, aes(fill = factor(temperature_model)), show.legend = F) +
+#     geom_sf(data = final_stream , aes(fill = factor(temperature_model)), linewidth = .25, inherit.aes = F) +
 #     geom_sf(data = final_lakes , aes(fill = factor(temperature_model)), linewidth = 0, inherit.aes = F) +
-#     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score', na.value = NA) +
 #     scale_fill_manual(values = myColors, name = 'Water Temperature Score', na.value = NA) +
-#     guides(fill = guide_legend(order = 3)) +
+#     guides(fill = guide_legend(order = 2)) +
 #     resourceviz::custom_theme(map_void = 4) +
 #     theme(legend.position = 'bottom')
 
@@ -633,7 +496,7 @@ social_and_habitat_final_df_final %>%
   scale_color_manual(values = myColors, name = 'pH Score', guide = 'none') +
   labs(x = 'pH', subtitle = paste0('n = ', scales::comma(nrow(
 social_and_habitat_final_df_final %>% 
-  filter( !is.na(p_h_model), p_h < 15))))) +
+  filter( !is.na(p_h), p_h < 15))))) +
   resourceviz::custom_theme(font_size = 20,
                             font_family = "Open Sans")
 ```
@@ -673,8 +536,8 @@ tribble(
 # dummy_sf <- st_sf(p_h_model = factor(1:4, levels = 1:4), geom = dummy_sf)
 # 
 # ggplot() +
-#     geom_sf(data = dummy_sf, aes(color = p_h_model, fill = p_h_model), show.legend = F) +
-#     geom_sf(data = final_stream , aes(color = factor(p_h_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = dummy_sf, aes(fill = p_h_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(fill = factor(p_h_model)), linewidth = .25, inherit.aes = F) +
 #     geom_sf(data = final_lakes , aes(fill = factor(p_h_model)), linewidth = 0, inherit.aes = F) +
 #     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score', na.value = NA) +
 #     scale_fill_manual(values = myColors, name = 'pH Score', na.value = NA) +
@@ -705,8 +568,8 @@ social_and_habitat_final_df_final %>%
   scale_color_manual(values = myColors, name = 'pH Score', guide = 'none') +
   labs(x = 'Hardness',
        subtitle = paste0('n = ', scales::comma(nrow(social_and_habitat_final_df_final %>% 
-                                                      filter(!is.na(hardness_model),
-         hardness_model != 0))))
+                                                      filter(!is.na(hardness),
+         hardness != 0))))
        ) +
   resourceviz::custom_theme(font_size = 20,
                             font_family = "Open Sans")
@@ -750,8 +613,8 @@ tribble(
 # 
 # ggplot() +
 #     geom_sf(data = idaho, fill = NA, linewidth = 0.5) +
-#     geom_sf(data = dummy_sf, aes(color = hardness_model, fill = hardness_model), show.legend = F) +
-#     geom_sf(data = final_stream , aes(color = factor(hardness_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = dummy_sf, aes(fill = hardness_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(fill = factor(hardness_model)), linewidth = .25, inherit.aes = F) +
 #     geom_sf(data = final_lakes , aes(fill = factor(hardness_model)), linewidth = 0, inherit.aes = F) +
 #     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score', na.value = NA) +
 #     scale_fill_manual(values = myColors, name = 'Hardness Score', na.value = NA) +
@@ -778,7 +641,7 @@ social_and_habitat_final_df_final %>% filter(calcium > 0, !is.na(calcium_model))
   geom_rug(aes(color = factor(calcium_model)), size = 2) +
   scale_color_manual(values = myColors, name = 'pH Score', guide = 'none') +
   labs(x = 'Calcium',
-       subtitle = paste0('n = ', scales::comma(nrow(social_and_habitat_final_df_final %>% filter(calcium > 0, !is.na(calcium_model)))))) +
+       subtitle = paste0('n = ', scales::comma(nrow(social_and_habitat_final_df_final %>% filter(calcium > 0, !is.na(calcium)))))) +
   resourceviz::custom_theme(font_size = 20,
                             font_family = "Open Sans")
 ```
@@ -816,8 +679,8 @@ tribble(
 # 
 # ggplot() +
 #     geom_sf(data = idaho, fill = NA, linewidth = 0.5) +
-#     geom_sf(data = dummy_sf, aes(color = calcium_model, fill = calcium_model), show.legend = F) +
-#     geom_sf(data = final_stream , aes(color = factor(calcium_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = dummy_sf, aes(fill = calcium_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(fill = factor(calcium_model)), linewidth = .25, inherit.aes = F) +
 #     geom_sf(data = final_lakes , aes(fill = factor(calcium_model)), linewidth = 0, inherit.aes = F) +
 #     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score', na.value = NA) +
 #     scale_fill_manual(values = myColors, name = 'Calcium Score', na.value = NA) +
@@ -843,7 +706,7 @@ social_and_habitat_final_df_final %>% filter(conductivity > 0, !is.na(conductivi
   geom_rug(aes(color = factor(conductivity_model)), size = 2) +
   scale_color_manual(values = myColors, name = 'pH Score', guide = 'none') +
   labs(x = 'Conductivity',
-       subtitle = paste0('n = ', scales::comma(nrow(social_and_habitat_final_df_final %>% filter(conductivity > 0, !is.na(conductivity_model)))))) +
+       subtitle = paste0('n = ', scales::comma(nrow(social_and_habitat_final_df_final %>% filter(conductivity > 0, !is.na(conductivity)))))) +
   resourceviz::custom_theme(font_size = 20,
                             font_family = "Open Sans")
 ```
@@ -881,8 +744,8 @@ tribble(
 # 
 # ggplot() +
 #   geom_sf(data = idaho, fill = NA, linewidth = 0.5) +
-#     geom_sf(data = dummy_sf, aes(color = conductivity_model, fill = conductivity_model), show.legend = F) +
-#     geom_sf(data = final_stream , aes(color = factor(conductivity_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = dummy_sf, aes(fill = conductivity_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(fill = factor(conductivity_model)), linewidth = .25, inherit.aes = F) +
 #     geom_sf(data = final_lakes , aes(fill = factor(conductivity_model)), linewidth = 0, inherit.aes = F) +
 #     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score', na.value = NA) +
 #     scale_fill_manual(values = myColors, name = 'Conductivity Score', na.value = NA) +
@@ -908,7 +771,7 @@ social_and_habitat_final_df_final %>% filter(dissolved_oxygen > 0, !is.na(do_mod
   geom_rug(aes(color = factor(do_model)), size = 2) +
   scale_color_manual(values = myColors, name = 'pH Score', guide = 'none') +
   labs(x = 'Dissolved Oxygen',
-       subtitle = paste0('n = ', scales::comma(nrow(social_and_habitat_final_df_final %>% filter(dissolved_oxygen > 0, !is.na(do_model)))))) +
+       subtitle = paste0('n = ', scales::comma(nrow(social_and_habitat_final_df_final %>% filter(dissolved_oxygen > 0, !is.na(dissolved_oxygen)))))) +
   resourceviz::custom_theme(font_size = 20,
                             font_family = "Open Sans")
 ```
@@ -947,8 +810,8 @@ tribble(
 # 
 # ggplot() +
 #   geom_sf(data = idaho, fill = NA, linewidth = 0.5) +
-#     geom_sf(data = dummy_sf, aes(color = do_model, fill = do_model), show.legend = F) +
-#     geom_sf(data = final_stream , aes(color = factor(do_model)), linewidth = .25, inherit.aes = F) +
+#     geom_sf(data = dummy_sf, aes(fill = do_model), show.legend = F) +
+#     geom_sf(data = final_stream , aes(fill = factor(do_model)), linewidth = .25, inherit.aes = F) +
 #     geom_sf(data = final_lakes , aes(fill = factor(do_model)), linewidth = 0, inherit.aes = F) +
 #     scale_color_manual(values = myColors, guide = 'none',  name = 'Stream Temperature Score', na.value = NA) +
 #     scale_fill_manual(values = myColors, name = 'Dissolved Oxygen Score', na.value = NA) +

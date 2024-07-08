@@ -111,15 +111,8 @@ with these final results.</p>
 <div class="section level2">
 <h2 id="final-scores">Final Scores<a class="anchor" aria-label="anchor" href="#final-scores"></a>
 </h2>
-<p>The final score calculations are done by adding together both social
-and habitat scores and then fitting into a refined scoring matrix. This
-forces the scores to be from 1 (highest risk) to 10 (least risk). You’ll
-notice below that there are no scores with 1, 2, or 5 and this can be
-attributed to the lack of data available in the habitat suitability
-metrics (1 and 2) as well as 5 being a peculiar scoring designation (no
-data in either habitat or social), which doesn’t happen in our case.
-Below are the final designations;</p>
-<p><img src="final_scores_files/figure-html/unnamed-chunk-1-1.png" width="200%"></p>
+<p>The final score calculations are done by adding together both social and habitat scores and then fitting into a refined scoring matrix. This forces the scores to be from 1 (lowest risk) to 10 (highest risk). You'll notice below that there are only scores in four levels and this can be attributed to the lack of data available in the habitat suitability metrics. Below are the final designations; </p>
+<p><img src="www/images/final_score.png" width="200%"></p>
 </div>
 <div class="section level2 tabset tabset-pills">
 <h2 class="tabset tabset-pills" id="social-suitability-score">Social Suitability Score<a class="anchor" aria-label="anchor" href="#social-suitability-score"></a>
@@ -129,7 +122,7 @@ potential invasion risk via social proxies. These factors are then
 stratified into categories 1-4 based on different thresholds (see Tables
 below). These scores are then used for the final risk score by adding to
 the Habitat Suitability Score.</p>
-<p><img src="final_scores_files/figure-html/unnamed-chunk-2-1.png" width="200%"></p>
+<p><img src="www/images/social_hist.png" width="200%"></p>
 <ol style="list-style-type: decimal">
 <li><p>Waterbody Type - This is simply breaking waters into risk by
 large lakes being most risk and small streams being less risk.</p></li>
@@ -142,7 +135,7 @@ for AIS due to accessibility and downstream of other waterways.</p></li>
 <li><p>Mussel Proximity - This is the distance from nearest invasive
 mussel populations via road network.</p></li>
 <li><p>Angler Days - These are the days that anglers are fishing and
-higher days mean higher risk.</p></li>
+higher days mean higher risk (we don't currently have data for this).</p></li>
 </ol>
 
 
@@ -160,7 +153,7 @@ higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-3-1.png" width="200%"></p>
+<p><img src="www/images/wb_hist.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
 <div id="vtvavkgvpo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -636,7 +629,7 @@ higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-6-1.png" width="200%"></p>
+<p><img src="www/images/wb_size_hist.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
 <div id="kgvgfncryj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -1112,7 +1105,7 @@ higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-9-1.png" width="200%"></p>
+<p><img src="www/images/wb_position_hist.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
 <div id="tovowphdxa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -1588,7 +1581,7 @@ higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-12-1.png" width="200%"></p>
+<p><img src="www/images/mussel_hist.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
 <div id="hrkkhzgloh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -2078,22 +2071,15 @@ gap in some of these variables (calcium, dissolved oxygen, hardness),
 which will likely effect the overall score since it will be missing
 these data. This data gap leads to a low score, which it might be, but
 is structurally biased since the scores are additive.</p>
-<p><img src="final_scores_files/figure-html/unnamed-chunk-15-1.png" width="200%"></p>
+<p><img src="www/images/habitat_hist.png" width="200%"></p>
 <ol style="list-style-type: decimal">
 <li><p>Water Temperature - This breaks water into different levels of
 risk based on temperature.</p></li>
-<li><p>pH - This is a surrogate to recreation based on the idea that the
-longer the river or larger the lake we would then typically see more
-recreational use.</p></li>
-<li><p>Hardness - Position in watershed highlights areas that are lower
-in the watershed are typically going to be at more risk for AIS due to
-accessibility and downstream of other waterways.</p></li>
-<li><p>Calcium - This is the distance from nearest invasive mussel
-populations via road network.</p></li>
-<li><p>Conductivity - These are the days that anglers are fishing and
-higher days mean higher risk.</p></li>
-<li><p>Dissolved Oxygen - These are the days that anglers are fishing
-and higher days mean higher risk.</p></li>
+<li><p>pH - This breaks water into different levels of risk based on pH.</p></li>
+<li><p>Hardness - This breaks water into different levels of risk based on hardness in mg/L, e.g. Hardness, Ca, Mg from Water Quality Portal.  </p></li>
+<li><p>Calcium - This breaks water into different levels of risk based on calcium in mg/L. </p></li>
+<li><p>Conductivity - This breaks water into different levels of risk based on conductivity in S/L (Siemens).  </p></li>
+<li><p>Dissolved Oxygen - This breaks water into different levels of risk based on dissolved oxygen mg/L.  </p></li>
 </ol>
 <p><br></p>
 
@@ -2115,7 +2101,7 @@ and higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-16-1.png" width="200%"></p>
+<p><img src="www/images/temp_hist.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
 <div id="hlqwioysxv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -2603,7 +2589,7 @@ and higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-19-1.png" width="200%"></p>
+<p><img src="www/images/ph_hist.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
 <div id="ztlifmlmau" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -3091,7 +3077,7 @@ and higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-22-1.png" width="200%"></p>
+<p><img src="www/images/hardness_hist.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
 <div id="qnhnwgegcy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -3567,7 +3553,7 @@ and higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-25-1.png" width="200%"></p>
+<p><img src="www/images/calcium_hist.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
 <div id="ltxrmedtun" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -4043,7 +4029,7 @@ and higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-28-1.png" width="200%"></p>
+<p><img src="www/images/conductivity_hist.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
 <div id="ccmwuqwwog" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -4519,7 +4505,7 @@ and higher days mean higher risk.</p></li>
 
 <div style="display: flex;">
 <div style="flex-basis: 500%;">
-<p><img src="final_scores_files/figure-html/unnamed-chunk-31-1.png" width="200%"></p>
+<p><img src="www/images/do_hist.png" width="200%"></p>
 </div>
 <div style="flex-basis: 250%;">
 <div id="hyxdxafnya" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
