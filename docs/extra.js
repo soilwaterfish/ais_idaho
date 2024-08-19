@@ -126,7 +126,7 @@ streamStyle(feature, layer);
 }
   }).addTo(map);
 
-layerControls.addOverlay(streams, 'Final Score (streams)')
+layerControls.addOverlay(streams, 'Final Score (HUC 12)')
 
 
 });
@@ -259,10 +259,28 @@ $.getJSON("local.geojson", function(data) {
 
 markers_local.addLayer(local);
 
+
+
 layerControls.addOverlay(markers_local, 'Local Monitoring Sites')
 
 });
 
+
+var velinger_2023 = L.esri.featureLayer({
+
+  url: 'https://services1.arcgis.com/CNPdEkvnGl65jCX8/ArcGIS/rest/services/survey123_88ec632aac0f4aeeacd00fda729bb433_results/FeatureServer/0'
+});
+
+layerControls.addOverlay(velinger_2023, 'Velinger 2023');
+
+var velinger_2024 = L.esri.featureLayer({
+
+  url: 'https://services1.arcgis.com/CNPdEkvnGl65jCX8/ArcGIS/rest/services/survey123_1aa8eff370124fe69c58295f6ddbb777_results/FeatureServer/0'
+
+});
+
+
+layerControls.addOverlay(velinger_2024, 'Velinger 2024');
 
 var legend = L.control({position: 'bottomright'});
 

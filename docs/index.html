@@ -15,7 +15,7 @@
 <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css'>
 <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css'>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js'></script>
-
+<script src='https://unpkg.com/esri-leaflet'></script>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -102,13 +102,10 @@ Please use the <a aria-labelledby="dropdown--vignettes">Vignettes dropdown</a> t
 <p>The final score calculations are done by adding together both social
 and habitat scores and then fitting into a <a href="#" class="link" id='scoringMatrix'>refined scoring matrix</a>. This
 forces the scores to be from 1 (highest risk) to 10 (least risk). You’ll
-notice in this <a href="#" class="link" id='finalScores'>graph (click me)</a> that there are no scores with 1, 2, or 5. This can be
-attributed to the lack of data available for the habitat suitability
-metrics as well as 5 being a peculiar scoring designation (no
-data in either habitat or social), which doesn’t happen in our case.</p>
+notice in this <a href="#" class="link" id='finalScores'>graph (click me)</a> that there are only scores in four levels. This can be
+attributed to the lack of data available for the habitat suitability.</p>
 
-<p>Our goal is to potentially leverage some methods to help with this lack of data as well as the shortcomings of splitting continuous variables into categories. Currently, below is the final model output for the region of Idaho. <b>Important note</b>, the stream topology within the map below as well as the downloadable versions are simplified meaning that it's not exact to the version used in the analysis. This is merely a visual and storage decision and doesn't effect the quality of the model but <b>if downloading the data be sure to join the streams to NHDPLus V2 by comid.</b> In addition, the <b>lakes</b> data <b>wasn't</b> simplified.
-</p>
+<p>Our goal is to potentially leverage some methods to help with this lack of data as well as the shortcomings of splitting continuous variables into categories. Currently, below is the final model output for the region of Idaho. The data pipeline used to generate the scores can be accessed <a class="link" href="https://github.com/soilwaterfish/aisrisk/blob/main/_targets.R">here</a>.
 
 <p>Or, if you have access to USDA internal network you can access via this path <i>T:\FS\NFS\R01\Program\2500WatershedAirMgmt\GIS\WorkSpace\jerickson\Spatial\ais\ais_idaho.gdb</i></p>
 
@@ -198,7 +195,7 @@ For contributing or submitting issues please go to <a class="link" href="https:/
  <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
  </div>
  <div class="modal-body">
-  <center> <img src='articles/final_scores_files/figure-html/unnamed-chunk-1-1.png'></center>
+  <center> <img src='www/images/final_score.png'></center>
  </div>
  </div>
  </div>
@@ -215,7 +212,7 @@ For contributing or submitting issues please go to <a class="link" href="https:/
       <div class="modal-body">
         <p>Select the file you wish to download:</p>
         <a href="final_lakes.geojson" download="final_lakes.geojson" class="btn btn-primary">Lakes GeoJSON</a>
-        <a href="final_streams.geojson" download="final_streams.geojson" class="btn btn-primary">Streams GeoJSON</a>
+        <a href="final_streams.geojson" download="final_streams.geojson" class="btn btn-primary">HUC 12 GeoJSON</a>
         <a href="ais_model.gpkg" download="ais_model.gpkg" class="btn btn-primary">Download GPKG</a>
         <!-- Add more download links as needed -->
       </div>
