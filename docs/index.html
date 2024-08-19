@@ -15,7 +15,22 @@
 <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css'>
 <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css'>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js'></script>
-<script src='https://unpkg.com/esri-leaflet'></script>
+ <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
+    <!-- Load Esri Leaflet Vector from CDN -->
+    <script src="https://unpkg.com/esri-leaflet-vector@4.2.3/dist/esri-leaflet-vector.js" crossorigin=""></script>
+  <!-- Load Leaflet MarkerCluster and Esri Leaflet Cluster from CDN -->
+    <link rel="stylesheet" type="text/css"
+      href="https://unpkg.com/leaflet.markercluster@1.5.0/dist/MarkerCluster.Default.css"
+      integrity="sha512-6ZCLMiYwTeli2rVh3XAPxy3YoR5fVxGdH/pz+KMCzRY2M65Emgkw00Yqmhh8qLGeYQ3LbVZGdmOX9KUjSKr0TA=="
+      crossorigin="">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.5.0/dist/MarkerCluster.css"
+      integrity="sha512-mQ77VzAakzdpWdgfL/lM1ksNy89uFgibRQANsNneSTMD/bj0Y/8+94XMwYhnbzx8eki2hrbPpDm0vD0CiT2lcg=="
+      crossorigin="">
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.0/dist/leaflet.markercluster.js"
+      integrity="sha512-pWPELjRaw2ZdoT0PDi7iRpRlk1XX3rtnfejJ/HwskyojpHei+9hKpwdphC4yssNt4FM0TjMQOmMrk6ZYSn274w=="
+      crossorigin=""></script>
+    <script src="https://unpkg.com/esri-leaflet-cluster@3.0.1/dist/esri-leaflet-cluster.js"></script>
+
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -195,7 +210,7 @@ For contributing or submitting issues please go to <a class="link" href="https:/
  <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
  </div>
  <div class="modal-body">
-  <center> <img src='www/images/final_score.png'></center>
+  <center> <img src='articles/www/images/final_score.png'></center>
  </div>
  </div>
  </div>

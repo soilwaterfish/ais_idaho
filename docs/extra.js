@@ -93,8 +93,7 @@ var popupFunc = function(feature) {
           '<div class="box" style="background-color:' + getColor(feature.properties.final_score) + '"></div> ' +
           '</strong><br><b>Final Score Social: </b>' + feature.properties.final_score_social +
           '</strong><br><b>Final Score Habitat: </b>' + feature.properties.final_score_habitat +
-          '</strong><br><b>HUC 12: </b>' + feature.properties.huc12 +
-          '</strong><br><b>comid: </b>' + feature.properties.comid + '</div>'
+          '</strong><br><b>HUC 12: </b>' + feature.properties.huc12 +'</div>'
 
 }
 
@@ -183,6 +182,12 @@ var markers_local = L.markerClusterGroup({
 	zoomToBoundsOnClick: true
 });
 
+var markers_idf = L.markerClusterGroup({
+	spiderfyOnMaxZoom: true,
+	showCoverageOnHover: true,
+	zoomToBoundsOnClick: true
+});
+
 /// customTip function
 
 var popupFuncPibo = function(feature) {
@@ -202,6 +207,18 @@ var popupFuncLocal = function(feature) {
 
 }
 
+var popupFuncIDF = function(feature) {
+
+  return  '<strong><center><div style="font-size:14px;">' + 'IDF Veliger Adult Form Final' + '</div></center></strong>' +
+          '</strong><div style="font-size:11px;"><b>Waterbody: </b>' + feature.properties.Waterbody +
+          '</strong><br><b>Sample Location: </b>' + feature.properties.SampleLocation +
+  '</strong><br><b>Survey Type: </b>' + feature.properties.SurveyType +
+  '</strong><br><b># of Samples: </b>' + feature.properties.NumberSamples +
+  '</strong><br><b>Tow Type: </b>' + feature.properties.TowType +
+  '</strong><br><b>Tow Length: </b>' + feature.properties.TowLength +'</div>'
+
+}
+
 
 function customTipPibo(layer,feature) {
     layer.unbindTooltip();
@@ -212,6 +229,12 @@ function customTipPibo(layer,feature) {
 function customTipLocal(layer,feature) {
     layer.unbindTooltip();
     if(!layer.isPopupOpen()) layer.bindTooltip(popupFuncLocal(feature), {className: 'myCSSClass'}).openTooltip();
+}
+
+
+function customTipIDF(layer,feature) {
+    layer.unbindTooltip();
+    if(!layer.isPopupOpen()) layer.bindTooltip(popupFuncIDF(feature), {className: 'myCSSClass'}).openTooltip();
 }
 
 
@@ -265,22 +288,31 @@ layerControls.addOverlay(markers_local, 'Local Monitoring Sites')
 
 });
 
+var velinger_2023 = L.esri.Cluster.featureLayer({
+  url: 'https://services1.arcgis.com/CNPdEkvnGl65jCX8/ArcGIS/rest/services/survey123_88ec632aac0f4aeeacd00fda729bb433_results/FeatureServer/0',
 
-var velinger_2023 = L.esri.featureLayer({
+                onEachFeature: function onEachFeature(feature, layer) {
+                //layer.bindPopup(popupFuncPibo(feature), {className: 'myCSSClass'}).openPopup();
 
-  url: 'https://services1.arcgis.com/CNPdEkvnGl65jCX8/ArcGIS/rest/services/survey123_88ec632aac0f4aeeacd00fda729bb433_results/FeatureServer/0'
-});
-
-layerControls.addOverlay(velinger_2023, 'Velinger 2023');
-
-var velinger_2024 = L.esri.featureLayer({
-
-  url: 'https://services1.arcgis.com/CNPdEkvnGl65jCX8/ArcGIS/rest/services/survey123_1aa8eff370124fe69c58295f6ddbb777_results/FeatureServer/0'
-
+                layer.on('mouseover', customTipIDF(layer,feature));
+                }
 });
 
 
-layerControls.addOverlay(velinger_2024, 'Velinger 2024');
+var velinger_2024 = L.esri.Cluster.featureLayer({
+  url: 'https://services1.arcgis.com/CNPdEkvnGl65jCX8/ArcGIS/rest/services/survey123_1aa8eff370124fe69c58295f6ddbb777_results/FeatureServer/0',
+
+                onEachFeature: function onEachFeature(feature, layer) {
+                //layer.bindPopup(popupFuncPibo(feature), {className: 'myCSSClass'}).openPopup();
+
+                layer.on('mouseover', customTipIDF(layer,feature));
+                }
+
+});
+
+var overlays = {'IDF Sites (2024)': velinger_2024,
+  'IDF Sites (2023)': velinger_2023
+};
 
 var legend = L.control({position: 'bottomright'});
 
@@ -305,7 +337,7 @@ legend.onAdd = function (map) {
 legend.addTo(map);
 
 
-const layerControls = L.control.layers(baseLayers, {}, {}).addTo(map);
+const layerControls = L.control.layers(baseLayers,overlays,{}, {}).addTo(map);
 
 // adding controls
 L.Control.Watermark = L.Control.extend({
